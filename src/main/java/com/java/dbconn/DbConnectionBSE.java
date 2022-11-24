@@ -26,8 +26,6 @@ public class DbConnectionBSE {
     
     public static void main(String[] args) throws Exception
     {
-//        DefaultTreeModel BSETableabc = null;
-//        readBSETable(BSETableabc);
     }
 
     public static ArrayList readBSETable() throws ClassNotFoundException {

@@ -7,6 +7,7 @@ package com.java.ui;
 import com.java.dbconn.DbConnectionBSE;
 import com.java.dbconn.DbConnectionNSE;
 import com.java.dbconn.DbConnectionNYSE;
+import com.java.sebprofiles.SEBProfileClass;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import com.java.stocks.BSEClass;
@@ -15,6 +16,7 @@ import com.java.stocks.NYSEClass;
 import java.awt.Color;
 import java.awt.Component;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 /**
@@ -41,6 +43,7 @@ public class MainPanel extends javax.swing.JFrame {
         
         
         //Objects
+        SEBProfileClass sebverify = new SEBProfileClass();
        
         //BSE Populate Table
         try{
@@ -75,6 +78,7 @@ public class MainPanel extends javax.swing.JFrame {
         
         //NSE Populate Table
         try{
+            down = new ArrayList<>();
             ArrayList<NSEClass> allNSEStocks  = DbConnectionNSE.readNSETable();
             NSETableModel.setRowCount(0);
             int i =0;
@@ -133,6 +137,13 @@ public class MainPanel extends javax.swing.JFrame {
                 
                 i++;
             }
+        }catch(Exception e){e.printStackTrace();}
+        
+        //verify is SEBProfile Exist
+        try{
+            Object[] loginProfileSEB = (Object[]) sebverify.verifySEBProfile(185047);
+            sebverify.banUser(1);
+            JOptionPane.showMessageDialog(this, loginProfileSEB[1] + " "+ loginProfileSEB[2]+ " "+ loginProfileSEB[3]);
         }catch(Exception e){e.printStackTrace();}
       
     }
@@ -292,8 +303,7 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
     }
-   
-        
+      
     public class MonCellRenderer extends DefaultTableCellRenderer {
 
         public Component getTableCellRendererComponent(JTable table, Object value,
@@ -308,6 +318,7 @@ public class MainPanel extends javax.swing.JFrame {
             }
             return this;
         }
+        
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

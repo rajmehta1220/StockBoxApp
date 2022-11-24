@@ -27,8 +27,6 @@ public class DbConnectionNYSE {
     
     public static void main(String[] args) throws Exception
     {
-//        DefaultTreeModel BSETableabc = null;
-//        readBSETable(BSETableabc);
     }
 
     public static ArrayList readNYSETable() throws ClassNotFoundException {
