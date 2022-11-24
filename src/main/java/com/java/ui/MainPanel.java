@@ -4,13 +4,19 @@
  */
 package com.java.ui;
 
-import com.java.stockbox.api.StockDto;
-import com.java.stockbox.api.YahooStockAPI;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
+import com.java.dbconn.DbConnectionBSE;
+import com.java.dbconn.DbConnectionNSE;
+import com.java.dbconn.DbConnectionNYSE;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import com.java.stocks.BSEClass;
+import com.java.stocks.NSEClass;
+import com.java.stocks.NYSEClass;
+import java.awt.Color;
+import java.awt.Component;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 /**
  *
  * @author rajmehta
@@ -20,8 +26,115 @@ public class MainPanel extends javax.swing.JFrame {
     /**
      * Creates new form MainPanel
      */
-    public MainPanel() {
+    
+    List<Integer> down = new ArrayList<>();
+    
+    public MainPanel(){
         initComponents();
+        
+        //UI Elements
+        DefaultTableModel BSETableModel = (DefaultTableModel) BSETable.getModel();
+        DefaultTableModel NSETableModel = (DefaultTableModel) NSETable.getModel();
+        DefaultTableModel NYSETableModel = (DefaultTableModel) NYSETable.getModel();
+        
+        //Variables
+        
+        
+        //Objects
+       
+        //BSE Populate Table
+        try{
+            ArrayList<BSEClass> allBSEStocks  = DbConnectionBSE.readBSETable();
+            BSETableModel.setRowCount(0);
+            int i =0;
+            for(BSEClass stock: allBSEStocks){
+                Object[] row = new Object[12];
+
+                row[0] = stock.getStocktag();
+                row[1] = stock.getStockname();
+                row[2] = stock.getDate();
+                row[3] = stock.getType();
+                row[4] = stock.getStockprice();
+                row[5] = stock.getChangerate();
+                row[6] = stock.getCurency();
+                row[7] = stock.getBid();
+                row[8] = stock.getDayhigh();
+                row[9] = stock.getDaylow();
+                row[10] = stock.getLastfetched();
+                row[11] = stock.getPrevprice();
+                
+                BSETableModel.addRow(row);
+                
+                if(stock.getStockprice() < stock.getPrevprice()){
+                    down.add(i);
+                }
+                
+                i++;
+            }
+        }catch(Exception e){e.printStackTrace();}
+        
+        //NSE Populate Table
+        try{
+            ArrayList<NSEClass> allNSEStocks  = DbConnectionNSE.readNSETable();
+            NSETableModel.setRowCount(0);
+            int i =0;
+            for(NSEClass stock: allNSEStocks){
+                Object[] row = new Object[12];
+
+                row[0] = stock.getStocktag();
+                row[1] = stock.getStockname();
+                row[2] = stock.getDate();
+                row[3] = stock.getType();
+                row[4] = stock.getStockprice();
+                row[5] = stock.getChangerate();
+                row[6] = stock.getCurency();
+                row[7] = stock.getBid();
+                row[8] = stock.getDayhigh();
+                row[9] = stock.getDaylow();
+                row[10] = stock.getLastfetched();
+                row[11] = stock.getPrevprice();
+                
+                NSETableModel.addRow(row);
+                
+                if(stock.getStockprice() < stock.getPrevprice()){
+                    down.add(i);
+                }
+                
+                i++;
+            }
+        }catch(Exception e){e.printStackTrace();}
+        
+        //NYSE Populate Table
+        try{
+            ArrayList<NYSEClass> allNYSEStocks  = DbConnectionNYSE.readNYSETable();
+            NYSETableModel.setRowCount(0);
+            int i =0;
+            for(NYSEClass stock: allNYSEStocks){
+                Object[] row = new Object[12];
+
+                row[0] = stock.getStocktag();
+                row[1] = stock.getStockname();
+                row[2] = stock.getDate();
+                row[3] = stock.getType();
+                row[4] = stock.getStockprice();
+                row[5] = stock.getChangerate();
+                row[6] = stock.getCurency();
+                row[7] = stock.getBid();
+                row[8] = stock.getDayhigh();
+                row[9] = stock.getDaylow();
+                row[10] = stock.getLastfetched();
+                row[11] = stock.getPrevprice();
+                
+                NYSETableModel.addRow(row);
+                
+                if(stock.getStockprice() < stock.getPrevprice()){
+                    down.add(i);
+                }
+                
+                i++;
+            }
+        }catch(Exception e){e.printStackTrace();}
+      
     }
 
     /**
@@ -33,49 +146,117 @@ public class MainPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        NYSETable = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        BSETable = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        NSETable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("TSLA Stock Price");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        NYSETable.setDefaultRenderer(Object.class, new MonCellRenderer());
+        NYSETable.setForeground(new java.awt.Color(255, 255, 255));
+        NYSETable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "stocktag", "stockname", "date", "type", "stockprice", "changerate", "currency", "bid", "dayHigh", "dayLow", "lastfetched", "prevprice"
             }
-        });
+        ));
+        jScrollPane1.setViewportView(NYSETable);
+
+        BSETable.setDefaultRenderer(Object.class, new MonCellRenderer());
+        BSETable.setForeground(new java.awt.Color(255, 255, 255));
+        BSETable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "stocktag", "stockname", "date", "type", "stockprice", "changerate", "currency", "bid", "dayHigh", "dayLow", "lastfetched", "prevprice"
+            }
+        ));
+        jScrollPane2.setViewportView(BSETable);
+
+        NSETable.setDefaultRenderer(Object.class, new MonCellRenderer());
+        NSETable.setForeground(new java.awt.Color(255, 255, 255));
+        NSETable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "stocktag", "stockname", "date", "type", "stockprice", "changerate", "currency", "bid", "dayHigh", "dayLow", "lastfetched", "prevprice"
+            }
+        ));
+        jScrollPane3.setViewportView(NSETable);
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel1.setText("BSE Stock Market");
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel2.setText("NYSE Stock Market");
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel3.setText("NSE Stock Market");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(jButton1)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 917, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 917, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(433, 433, 433)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(339, 339, 339))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(337, 337, 337))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(jButton1)
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        YahooStockAPI obj = new YahooStockAPI();
-        StockDto stock;
-        try {
-            stock = obj.getStock("BABA");
-            JOptionPane.showMessageDialog(this,"Name:"+stock.getName() +" Price:"+ stock.getPrice() +" Change:"+ stock.getChange() +" Currency:" +stock.getCurrency() +" Bid:"+ stock.getBid());
-        } catch (IOException ex) {
-            Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,8 +292,33 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
     }
+   
+        
+    public class MonCellRenderer extends DefaultTableCellRenderer {
+
+        public Component getTableCellRendererComponent(JTable table, Object value,
+                        boolean isSelected, boolean hasFocus, int row, int column) {
+            super.getTableCellRendererComponent(table, value,
+                            isSelected, hasFocus, row, column);
+
+            if (down.contains(row)) {
+                setBackground(Color.decode("#3d754e"));
+            } else {
+                setBackground(Color.decode("#bf0205"));
+            }
+            return this;
+        }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable BSETable;
+    private javax.swing.JTable NSETable;
+    private javax.swing.JTable NYSETable;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
 }
