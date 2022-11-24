@@ -6,10 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+import javax.swing.tree.DefaultTreeModel;
 
-public class DbConnection {
+public class DbConnectionNSE {
     public static void main(String[] args) throws Exception
     {
+        DefaultTreeModel NSETable=null;
+        readNSETable(NSETable);
+    }
+    public static DefaultTreeModel readNSETable(DefaultTreeModel NSETable) throws ClassNotFoundException
+    {
+
         try 
         {
         Connection con = null;
@@ -43,8 +50,27 @@ public class DbConnection {
                 String name = rs.getString("stockname");
                 double price = rs.getDouble("stockprice");
                 String tag = rs.getString("stocktag");
-                System.out.println(name + "\t\t" + price+ "\t\t" + tag);
-            }       
+                model=(DefaultTableModel) NSETable.getModel();
+                model.setRowCount(0);
+                 Object[] row=new Object[3];
+                 row[0]=rs.getString("stockname");
+                 row[1]=rs.getDouble("stockprice");
+                 row[2]=rs.getString("stocktag");
+                 row[3]=rs.getString("type");
+                 row[4]=rs.getDate("stockdate");
+                 row[5]=rs.getString("currency");
+                 row[6]=rs.getDouble("changerate");
+                 row[7]=rs.getDouble("bid");
+                 row[8]=rs.getDouble("dayhigh");
+                 row[9]=rs.getDouble("daylow");
+                 row[10]=rs.getDate("lastfetched");
+                 
+   
+                 model.addRow(row);
+                 System.out.println(name+"\t\t"+price+"\t\t"+tag);
+                
+            } 
+            return NSETable;
         }
     } 
     catch (SQLException ex) 
