@@ -101,5 +101,125 @@ public class DbConnectionBSE {
         System.out.println("SQLState: " + ex.getSQLState());
         System.out.println("VendorError: " + ex.getErrorCode());
     }
+<<<<<<< Updated upstream
 }
+=======
+    return null;
+    }
+
+    public static Object readBSEStock(String stocktag) throws ClassNotFoundException, SQLException{
+            try 
+            {
+                Connection con = null;
+                PreparedStatement p = null;
+                ResultSet rs = null;
+
+                String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+                String username = "root"; // MySQL credentials
+                String password = "root123$";
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con = DriverManager.getConnection(url, username, password);
+
+                if (con != null) 
+                {
+                    System.out.println("Connected to the database StockDB");
+
+                    String sql = "select * from stocksdatatableBSE where stocktag = '"+stocktag+"';";
+                    p = con.prepareStatement(sql);
+                    rs = p.executeQuery();
+
+                    // Printing ID, name, email of customers
+                    // of the SQL command above
+                    System.out.println("stockname\t\tstockprice\t\tstocktag");
+                    Object[] stock = new Object[12];
+                    while (rs.next()) 
+                    {
+                        stock[0] = rs.getString("stockname");
+                        stock[1]= rs.getDouble("stockprice");
+                        stock[2] = rs.getString("stocktag");
+                        stock[3] = rs.getString("type");
+                        stock[4] = rs.getDouble("changerate");
+                        stock[5] =rs.getString("currency");
+                        stock[6] = rs.getDouble("bid");
+                        stock[7] = rs.getDouble("dayhigh");
+                        stock[8] = rs.getDouble("prevprice");
+                        stock[9] = rs.getDouble("daylow");
+                        stock[10] = rs.getDate("lastfetched");
+
+                      
+                    }
+                    return stock;
+                } 
+        }
+        catch (SQLException ex) 
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        return null;
+    }
+    
+    public void deleteBSEStock(String stocktag) throws ClassNotFoundException{
+        try 
+            {
+                Connection con = null;
+                PreparedStatement p = null;
+                ResultSet rs = null;
+
+                String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+                String username = "root"; // MySQL credentials
+                String password = "root123$";
+
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con = DriverManager.getConnection(url, username, password);
+
+                if (con != null) 
+                {
+                    System.out.println("Connected to the database StockDB");
+
+                    String sql = "delete * from stocksdatatableBSE where stocktag = '"+stocktag+"';";
+                    p = con.prepareStatement(sql);
+//                    rs = p.executeQuery();
+                    
+                    int rowsDeleted = p.executeUpdate();
+                    if (rowsDeleted > 0) {
+                        System.out.println("A user was deleted successfully!");
+                    }
+                    // Printing ID, name, email of customers
+                    // of the SQL command above
+//                    System.out.println("stockname\t\tstockprice\t\tstocktag");
+//                    Object[] stock = new Object[12];
+//                    while (rs.next()) 
+//                    {
+//                        stock[0] = rs.getString("stockname");
+//                        stock[1]= rs.getDouble("stockprice");
+//                        stock[2] = rs.getString("stocktag");
+//                        stock[3] = rs.getString("type");
+//                        stock[4] = rs.getDouble("changerate");
+//                        stock[5] =rs.getString("currency");
+//                        stock[6] = rs.getDouble("bid");
+//                        stock[7] = rs.getDouble("dayhigh");
+//                        stock[8] = rs.getDouble("prevprice");
+//                        stock[9] = rs.getDouble("daylow");
+//                        stock[10] = rs.getDate("lastfetched");
+//
+//                      
+//                    }
+                    
+                } 
+        }
+        catch (SQLException ex) 
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+    }
+>>>>>>> Stashed changes
 }
+            
+
