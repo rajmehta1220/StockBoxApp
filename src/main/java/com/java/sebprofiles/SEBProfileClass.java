@@ -106,53 +106,38 @@ public class SEBProfileClass {
 
     }
     
-//    public void approveIPO(String companyName, String board)throws ClassNotFoundException{
-//        try 
-//        {
-//            Connection con = null;
-//            PreparedStatement p = null;
-//            ResultSet rs = null;
-//
-//            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
-//            String username = "root"; // MySQL credentials
-//            String password = "root123$";
-//
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            con = DriverManager.getConnection(url, username, password);
-//
-//            if (con != null) 
-//            {
-//                System.out.println("Connected to the database StockDB");
-//
-//                String sql = "INSERT INTO stocksdatatableBSE(stockname,stocktag,stockdate,type,stockprice,changerate,currency,bid,dayhigh,daylow,lastfetched,prevprice) VALUES ("'+stockname+'","'+stocktag+'",'+stockdate+',"'+stocktype+'",'+stockprice+','+changerate+',"'+currency+'",'+bid+','+dayhigh+','+daylow+','+lastfetched+','+prevPrice+');'
-//
-//                p = con.prepareStatement(sql);
-//                rs = p.executeQuery();
-//
-//                boolean flag = false;
-//                String region = "";
-//                Object[] loginProfile = new Object[4];
-//                
-//                while (rs.next()) 
-//                {
-//                    if(rs.getInt("id") == verifyId){
-//                        flag = true;
-//                        loginProfile[0] = rs.getInt("id");
-//                        loginProfile[1] = rs.getString("name");
-//                        loginProfile[2] = rs.getString("board");
-//                        loginProfile[3] = rs.getString("region");
-//                    }
-//                }
-//            }
-//        } 
-//        catch (SQLException ex) 
-//        {
-//            // handle any errors
-//            System.out.println("SQLException: " + ex.getMessage());
-//            System.out.println("SQLState: " + ex.getSQLState());
-//            System.out.println("VendorError: " + ex.getErrorCode());
-//        }
-//        
-//    }
+    public void approveIPO(String companyName, Object[] stock,String board)throws ClassNotFoundException{
+        try 
+        {
+            Connection con = null;
+            PreparedStatement p = null;
+            ResultSet rs = null;
+
+            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+            String username = "root"; // MySQL credentials
+            String password = "root123$";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+
+            if (con != null) 
+            {
+                System.out.println("Connected to the database StockDB");
+
+                String sql = "INSERT INTO stocksdatatable" +board+ " (stockname,stocktag,stockdate,type,stockprice,changerate,currency,bid,dayhigh,daylow,lastfetched,prevprice) VALUES ('" +stock[0]+ "'," +stock[1]+ "',SYSDATE()" +stock[3]+ "',"+stock[4]+ "',"+stock[5]+ "',"+stock[6]+ "',"+stock[7]+ "',"+stock[8]+ "',"+stock[9]+ "',CURRENT_TIMESTAMP(),"+stock[11]+ ");";
+
+                p = con.prepareStatement(sql);
+                rs = p.executeQuery(); 
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        
+    }
     
 }//end class
