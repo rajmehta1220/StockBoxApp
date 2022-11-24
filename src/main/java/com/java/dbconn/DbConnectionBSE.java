@@ -181,26 +181,6 @@ public class DbConnectionBSE {
                     if (rowsDeleted > 0) {
                         System.out.println("A user was deleted successfully!");
                     }
-                    // Printing ID, name, email of customers
-                    // of the SQL command above
-//                    System.out.println("stockname\t\tstockprice\t\tstocktag");
-//                    Object[] stock = new Object[12];
-//                    while (rs.next()) 
-//                    {
-//                        stock[0] = rs.getString("stockname");
-//                        stock[1]= rs.getDouble("stockprice");
-//                        stock[2] = rs.getString("stocktag");
-//                        stock[3] = rs.getString("type");
-//                        stock[4] = rs.getDouble("changerate");
-//                        stock[5] =rs.getString("currency");
-//                        stock[6] = rs.getDouble("bid");
-//                        stock[7] = rs.getDouble("dayhigh");
-//                        stock[8] = rs.getDouble("prevprice");
-//                        stock[9] = rs.getDouble("daylow");
-//                        stock[10] = rs.getDate("lastfetched");
-//
-//                      
-//                    }
                     
                 } 
         }
