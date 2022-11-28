@@ -8,7 +8,8 @@ package com.java.dbconn;
  *
  * @author rajmehta
  */
-import com.java.stocks.BSEClass;
+import com.java.stocks.NSEClass;
+import com.java.stocks.NYSEClass;
 import com.java.ui.MainPanel;
 import java.sql.Array;
 import java.sql.Connection;
@@ -21,17 +22,17 @@ import java.util.Date;
 import java.util.Properties;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultTreeModel;
-public class DbConnectionBSE {
+public class DbConnectionNYSE {
    
     
     public static void main(String[] args) throws Exception
     {
     }
 
-    public static ArrayList readBSETable() throws ClassNotFoundException {
+    public static ArrayList readNYSETable() throws ClassNotFoundException {
         try 
         {
-            ArrayList<BSEClass> allBSEStocks = new ArrayList<BSEClass>();
+            ArrayList<NYSEClass> allNYSEStocks = new ArrayList<NYSEClass>();
             Connection con = null;
             PreparedStatement p = null;
             ResultSet rs = null;
@@ -47,17 +48,14 @@ public class DbConnectionBSE {
             {
                 System.out.println("Connected to the database StockDB");
 
-                String sql = "select * from stocksdatatableBSE";
+                String sql = "select * from stocksdatatableNYSE";
                 p = con.prepareStatement(sql);
                 rs = p.executeQuery();
 
-                // Printing ID, name, email of customers
-                // of the SQL command above
-                System.out.println("stockname\t\tstockprice\t\tstocktag");
 
                 while (rs.next()) 
                 {
-                    BSEClass obj = new BSEClass();
+                    NYSEClass obj = new NYSEClass();
 
                     String name = rs.getString("stockname");
                     double stockprice = rs.getDouble("stockprice");
@@ -85,10 +83,10 @@ public class DbConnectionBSE {
                     obj.setDate(String.valueOf(rs.getDate("stockdate")));
                     
 
-                    allBSEStocks.add(obj);
+                    allNYSEStocks.add(obj);
                     System.out.println("OBJ: "+obj);
                 }
-                return allBSEStocks;
+                return allNYSEStocks;
             }
     } 
     catch (SQLException ex) 
@@ -118,7 +116,7 @@ public class DbConnectionBSE {
                 {
                     System.out.println("Connected to the database StockDB");
 
-                    String sql = "select * from stocksdatatableBSE where stocktag = '"+stocktag+"';";
+                    String sql = "select * from stocksdatatableNYSE where stocktag = '"+stocktag+"';";
                     p = con.prepareStatement(sql);
                     rs = p.executeQuery();
 
@@ -173,7 +171,7 @@ public class DbConnectionBSE {
                 {
                     System.out.println("Connected to the database StockDB");
 
-                    String sql = "delete * from stocksdatatableBSE where stocktag = '"+stocktag+"';";
+                    String sql = "delete * from stocksdatatableNYSE where stocktag = '"+stocktag+"';";
                     p = con.prepareStatement(sql);
 //                    rs = p.executeQuery();
                     
@@ -192,5 +190,4 @@ public class DbConnectionBSE {
             System.out.println("VendorError: " + ex.getErrorCode());
         }
     }
-
 }

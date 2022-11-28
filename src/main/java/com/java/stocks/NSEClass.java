@@ -6,9 +6,9 @@ package com.java.stocks;
 
 /**
  *
- * @author aakashbhatt
+ * @author rajmehta
  */
-public class BSEClass {
+public class NSEClass {
 
     String stockname;
     String stocktag;
@@ -23,7 +23,7 @@ public class BSEClass {
     String lastfetched;
     String date;
 
-    public BSEClass(String stockname, String stocktag, String type, Double stockprice, Double changerate, String curency, Double bid, Double dayhigh, Double daylow, Double prevprice, String lastfetched, String date) {
+    public NSEClass(String stockname, String stocktag, String type, Double stockprice, Double changerate, String curency, Double bid, Double dayhigh, Double daylow, Double prevprice, String lastfetched, String date) {
         this.stockname = stockname;
         this.stocktag = stocktag;
         this.type = type;
@@ -38,7 +38,7 @@ public class BSEClass {
         this.date = date;
     }
     
-    public BSEClass(){}
+    public NSEClass(){}
 
     public String getDate() {
         return date;
@@ -140,7 +140,7 @@ public class BSEClass {
 
     @Override
     public String toString() {
-        return "BSEClass{" + "stockname=" + stockname + ", stocktag=" + stocktag + ", type=" + type + ", stockprice=" + stockprice + ", changerate=" + changerate + ", curency=" + curency + ", bid=" + bid + ", dayhigh=" + dayhigh + ", daylow=" + daylow + ", prevprice=" + prevprice + ", lastfetched=" + lastfetched + '}';
+        return "NSEClass{" + "stockname=" + stockname + ", stocktag=" + stocktag + ", type=" + type + ", stockprice=" + stockprice + ", changerate=" + changerate + ", curency=" + curency + ", bid=" + bid + ", dayhigh=" + dayhigh + ", daylow=" + daylow + ", prevprice=" + prevprice + ", lastfetched=" + lastfetched + '}';
     }
     
     
