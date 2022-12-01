@@ -47,14 +47,16 @@ public class MainProfile extends javax.swing.JPanel {
     DefaultTableModel stocksTableModel;
     List<Integer> down = new ArrayList();
     String loginPass;
+    String loginType;
     
-    public MainProfile(int loginId, String loginName, String loginRegion, double loginFunds, String loginPass) {
+    public MainProfile(int loginId, String loginName, String loginRegion, double loginFunds, String loginPass, String loginType) {
         initComponents();
         this.loginId = loginId;
         this.loginName = loginName;
         this.loginRegion = loginRegion;
         this.loginFunds = loginFunds;
         this.loginPass = loginPass;
+        this.loginType =loginType;
     
         stocksTableModel = (DefaultTableModel) stocksTable.getModel();
         
@@ -103,7 +105,7 @@ public class MainProfile extends javax.swing.JPanel {
         }
         
         fundsConverter();
-        if(loginRegion.equals("INDIA")){
+        if(loginType.equals("INDIA")){
             fundsUSD_ui.setText(String.valueOf(convertedFunds));
             fundsINR_ui.setText(String.valueOf(loginFunds));
         }
@@ -114,14 +116,25 @@ public class MainProfile extends javax.swing.JPanel {
         
         stockMarket_ui.removeAllItems();
         
-        if(loginRegion.equals("INDIA")){
+        if(loginType.equals("Customer") && loginRegion.equals("INDIA")){
             stockMarket_ui.addItem("NSE");
             stockMarket_ui.addItem("BSE");
         }
-        else if(loginRegion.equals("USA")){
+        else if(loginType.equals("Customer") && loginRegion.equals("USA")){
+            stockMarket_ui.addItem("NYSE");
+        }
+        else if(loginType.equals("Customer") && loginRegion.equals("BOSTON")){
+            stockMarket_ui.addItem("NEUSE");
+        }
+        else if(loginType.equals("Business")){
+            stockMarket_ui.addItem("BSE");
+            stockMarket_ui.addItem("NSE");
             stockMarket_ui.addItem("NYSE");
         }
         else{
+            stockMarket_ui.addItem("BSE");
+            stockMarket_ui.addItem("NSE");
+            stockMarket_ui.addItem("NYSE");
             stockMarket_ui.addItem("NEUSE");
         }
 
@@ -258,7 +271,7 @@ public class MainProfile extends javax.swing.JPanel {
                                 .addComponent(jButton1))
                             .addGroup(mainProfilePageLayout.createSequentialGroup()
                                 .addComponent(loadStocks_ui1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fundsUSD_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,7 +317,7 @@ public class MainProfile extends javax.swing.JPanel {
         portfolioPage.setLayout(portfolioPageLayout);
         portfolioPageLayout.setHorizontalGroup(
             portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 794, Short.MAX_VALUE)
+            .addGap(0, 768, Short.MAX_VALUE)
         );
         portfolioPageLayout.setVerticalGroup(
             portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,7 +383,7 @@ public class MainProfile extends javax.swing.JPanel {
                     .addGroup(addFundsPageLayout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(jLabel5)))
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         addFundsPageLayout.setVerticalGroup(
             addFundsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,7 +410,7 @@ public class MainProfile extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addGap(28, 28, 28)
                 .addComponent(addFunds_ui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(19, 19, 19))
         );
@@ -408,7 +421,7 @@ public class MainProfile extends javax.swing.JPanel {
         newsPage.setLayout(newsPageLayout);
         newsPageLayout.setHorizontalGroup(
             newsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 794, Short.MAX_VALUE)
+            .addGap(0, 768, Short.MAX_VALUE)
         );
         newsPageLayout.setVerticalGroup(
             newsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

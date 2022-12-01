@@ -4,6 +4,8 @@
  */
 package com.java.ui;
 
+import com.java.broker.Broker;
+import com.java.broker.BrokerHandler;
 import com.java.dbconn.DbConnectionBSE;
 import com.java.dbconn.DbConnectionNSE;
 import com.java.dbconn.DbConnectionNYSE;
@@ -42,125 +44,16 @@ public class MainPanel extends javax.swing.JFrame {
     String loginName ="";
     String loginRegion = "";
     double loginFunds=0;
+    String loginType="";
+    BrokerHandler brokHandlerobj = new BrokerHandler();
+    ArrayList<Broker> allBrokerList;
+    String custRegion;
     
     public MainPanel(){
         initComponents();
         
         loginPage_ui.setVisible(true);
-//        
-//        //UI Elements
-//        DefaultTableModel BSETableModel = (DefaultTableModel) BSETable.getModel();
-//        DefaultTableModel NSETableModel = (DefaultTableModel) NSETable.getModel();
-//        DefaultTableModel NYSETableModel = (DefaultTableModel) NYSETable.getModel();
-//        
-//        //Variables
-//        
-//        
-//        //Objects
-//        SEBProfileClass sebverify = new SEBProfileClass();
-////       
-////        //BSE Populate Table
-//
-//        //TABLE CUSTOMISE CODE
-//        NYSETable.setDefaultRenderer(Object.class, new MonCellRenderer());
-//        try{
-//            ArrayList<BSEClass> allBSEStocks  = DbConnectionBSE.readBSETable();
-//            BSETableModel.setRowCount(0);
-//            int i =0;
-//            for(BSEClass stock: allBSEStocks){
-//                Object[] row = new Object[12];
-//
-//                row[0] = stock.getStocktag();
-//                row[1] = stock.getStockname();
-//                row[2] = stock.getDate();
-//                row[3] = stock.getType();
-//                row[4] = stock.getStockprice();
-//                row[5] = stock.getChangerate();
-//                row[6] = stock.getCurency();
-//                row[7] = stock.getBid();
-//                row[8] = stock.getDayhigh();
-//                row[9] = stock.getDaylow();
-//                row[10] = stock.getLastfetched();
-//                row[11] = stock.getPrevprice();
-//                
-//                BSETableModel.addRow(row);
-//                
-//                if(stock.getStockprice() < stock.getPrevprice()){
-//                    down.add(i);
-//                }
-//                
-//                i++;
-//            }
-//        }catch(Exception e){e.printStackTrace();}
-//        
-//        //NSE Populate Table
-//        try{
-//            down = new ArrayList<>();
-//            ArrayList<NSEClass> allNSEStocks  = DbConnectionNSE.readNSETable();
-//            NSETableModel.setRowCount(0);
-//            int i =0;
-//            for(NSEClass stock: allNSEStocks){
-//                Object[] row = new Object[12];
-//
-//                row[0] = stock.getStocktag();
-//                row[1] = stock.getStockname();
-//                row[2] = stock.getDate();
-//                row[3] = stock.getType();
-//                row[4] = stock.getStockprice();
-//                row[5] = stock.getChangerate();
-//                row[6] = stock.getCurency();
-//                row[7] = stock.getBid();
-//                row[8] = stock.getDayhigh();
-//                row[9] = stock.getDaylow();
-//                row[10] = stock.getLastfetched();
-//                row[11] = stock.getPrevprice();
-//                
-//                NSETableModel.addRow(row);
-//                
-//                if(stock.getStockprice() < stock.getPrevprice()){
-//                    down.add(i);
-//                }
-//                
-//                i++;
-//            }
-//        }catch(Exception e){e.printStackTrace();}
-//        
-//        //NYSE Populate Table
-//        try{
-//            ArrayList<NYSEClass> allNYSEStocks  = DbConnectionNYSE.readNYSETable();
-//            NYSETableModel.setRowCount(0);
-//            int i =0;
-//            for(NYSEClass stock: allNYSEStocks){
-//                Object[] row = new Object[12];
-//
-//                row[0] = stock.getStocktag();
-//                row[1] = stock.getStockname();
-//                row[2] = stock.getDate();
-//                row[3] = stock.getType();
-//                row[4] = stock.getStockprice();
-//                row[5] = stock.getChangerate();
-//                row[6] = stock.getCurency();
-//                row[7] = stock.getBid();
-//                row[8] = stock.getDayhigh();
-//                row[9] = stock.getDaylow();
-//                row[10] = stock.getLastfetched();
-//                row[11] = stock.getPrevprice();
-//                
-//                NYSETableModel.addRow(row);
-//                
-//                if(stock.getStockprice() < stock.getPrevprice()){
-//                    down.add(i);
-//                }
-//                
-//                
-//                System.out.println(stock.getStocktag());
-//                if(String.valueOf(stock.getStocktag()).equals("AAPL")){
-//                    aplStk = row;
-//                }
-//                
-//                i++;
-//            }
-//        }catch(Exception e){e.printStackTrace();}
+        
 //        
 //        //verify is SEBProfile Exist
 //        try{
@@ -211,6 +104,9 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         backSignin_ui = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        chooseBroker_ui = new javax.swing.JComboBox<>();
+        loadBrokers = new javax.swing.JButton();
         profileLink_ui = new javax.swing.JPanel();
         splitPane = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
@@ -331,32 +227,47 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("Choose Broker:");
+
+        chooseBroker_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        loadBrokers.setText("Load Brokers in your region");
+        loadBrokers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadBrokersActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout signinPage_uiLayout = new javax.swing.GroupLayout(signinPage_ui);
         signinPage_ui.setLayout(signinPage_uiLayout);
         signinPage_uiLayout.setHorizontalGroup(
             signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signinPage_uiLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(regionSignin_ui, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nameSignin_ui)
-                    .addComponent(passSignin_ui)
-                    .addComponent(typeSignin_ui, 0, 170, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(signinPage_uiLayout.createSequentialGroup()
-                .addGap(439, 439, 439)
-                .addComponent(signinSignin_ui)
-                .addContainerGap(449, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signinPage_uiLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backSignin_ui)
                 .addGap(31, 31, 31))
+            .addGroup(signinPage_uiLayout.createSequentialGroup()
+                .addGap(0, 236, Short.MAX_VALUE)
+                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(regionSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(passSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(typeSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(chooseBroker_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(loadBrokers)
+                .addContainerGap(242, Short.MAX_VALUE))
+            .addGroup(signinPage_uiLayout.createSequentialGroup()
+                .addGap(371, 371, 371)
+                .addComponent(signinSignin_ui)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         signinPage_uiLayout.setVerticalGroup(
             signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,9 +288,14 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(typeSignin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
+                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(chooseBroker_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loadBrokers))
+                .addGap(49, 49, 49)
                 .addComponent(signinSignin_ui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(backSignin_ui)
                 .addGap(16, 16, 16))
         );
@@ -555,6 +471,7 @@ public class MainPanel extends javax.swing.JFrame {
                             loginName =rs.getString("name");
                             loginRegion = rs.getString("region");
                             loginFunds = rs.getDouble("funds");
+                            loginType = rs.getString("type");
                             
                             login = true;
                             JOptionPane.showMessageDialog(this,"Login successful for "+loginId+ " Name: "+loginName);  
@@ -589,6 +506,7 @@ public class MainPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String fundsType = "";
+        int id =0;
         if(String.valueOf(regionSignin_ui.getSelectedItem()).equals("INDIA")){fundsType = "INR";}
         else{fundsType = "USD";}
 
@@ -618,7 +536,7 @@ public class MainPanel extends javax.swing.JFrame {
                     p = con.prepareStatement(fetchId);
                     rs = p.executeQuery();
 
-                    int id =0;
+                    
 
                     while (rs.next()) 
                     {   
@@ -638,6 +556,17 @@ public class MainPanel extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        try{
+            int brokerId = 0;
+            String brokerName = String.valueOf(chooseBroker_ui.getSelectedItem());
+            for(Broker b:allBrokerList){
+                if(b.getName().equals(brokerName)){
+                    brokerId = b.getBrokerid();
+                }
+            }
+            brokHandlerobj.assignBrokertoProfile(id, brokerId);
+        }catch(Exception e){e.printStackTrace();}
     }//GEN-LAST:event_signinSignin_uiActionPerformed
 
     private void backSignin_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backSignin_uiActionPerformed
@@ -648,7 +577,7 @@ public class MainPanel extends javax.swing.JFrame {
 
     private void proceedMain_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proceedMain_uiActionPerformed
         // TODO add your handling code here:
-        MainProfile mainProfileObj = new MainProfile(loginId, loginName, loginRegion, loginFunds, String.valueOf(passLogin_ui.getText()));
+        MainProfile mainProfileObj = new MainProfile(loginId, loginName, loginRegion, loginFunds, String.valueOf(passLogin_ui.getText()), loginType);
         splitPane.setRightComponent(mainProfileObj);
     }//GEN-LAST:event_proceedMain_uiActionPerformed
 
@@ -663,6 +592,18 @@ public class MainPanel extends javax.swing.JFrame {
         moreLoginPages_ui.setVisible(true);
         loginPage_ui.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void loadBrokersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadBrokersActionPerformed
+        // TODO add your handling code here:
+        custRegion = String.valueOf(regionSignin_ui.getSelectedItem());
+        try{
+            allBrokerList = brokHandlerobj.viewAllBrokerInfo(custRegion);
+            chooseBroker_ui.removeAllItems();
+            for(int i=0;i<allBrokerList.size();i++){
+                chooseBroker_ui.addItem(String.valueOf(allBrokerList.get(i).getName()));
+            }
+        }catch(Exception e){e.printStackTrace();}
+    }//GEN-LAST:event_loadBrokersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -718,6 +659,7 @@ public class MainPanel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backSignin_ui;
+    private javax.swing.JComboBox<String> chooseBroker_ui;
     private javax.swing.JTextField idLogin_ui;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -730,9 +672,11 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton loadBrokers;
     private javax.swing.JTextField loginName_ui;
     private javax.swing.JPanel loginPage_ui;
     private javax.swing.JButton login_ui;
