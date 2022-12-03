@@ -133,6 +133,8 @@ public class BrokerHandler {
                 System.out.println("Connected to the database StockDB");
 
                 String sql = "select id from brokerToCustomer where brokerid = "+brokerId+";";
+                System.out.println(sql);
+                
                 p = con.prepareStatement(sql);
                 rs = p.executeQuery();
                 ArrayList<Profile> allProfforBrokList= new ArrayList<Profile>();
@@ -160,7 +162,7 @@ public class BrokerHandler {
                         double funds=rs.getDouble("funds");
                         String region=rs.getString("region"); 
                         double balance=rs.getDouble("balance");
-                        String type= rs.getString("typr");
+                        String type= rs.getString("type");
                         String Ppassword= rs.getString("password");
                         String fundstype= rs.getString("fundstype");
 
@@ -187,6 +189,49 @@ public class BrokerHandler {
         System.out.println("VendorError: " + ex.getErrorCode());
     }
     return null;
+    }
+    
+    public int getCustomerBroker(int id) throws ClassNotFoundException{
+        int brokerid = 0;
+        try 
+        {
+            Connection con = null;
+            PreparedStatement p = null;
+            ResultSet rs = null;
+
+            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+            String username = "root"; // MySQL credentials
+            String password = "root123$";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+
+            if (con != null) 
+            {
+                System.out.println("Connected to the database StockDB");
+
+                String sql = "select * from brokerToCustomer where id = "+id+";";
+                System.out.println(sql);
+                
+                p = con.prepareStatement(sql);
+                rs = p.executeQuery();
+                ArrayList<Profile> allProfforBrokList= new ArrayList<Profile>();
+                ArrayList<Integer> CustforBrok= new ArrayList<Integer>();
+
+                while (rs.next()) 
+                {
+                    brokerid = rs.getInt("brokerid");
+                }
+            }
+        }
+        catch (SQLException ex) 
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        return brokerid;
     }
     
 }
