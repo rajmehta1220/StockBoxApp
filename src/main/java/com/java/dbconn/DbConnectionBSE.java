@@ -100,6 +100,7 @@ public class DbConnectionBSE {
     }
     return null;
     }
+    
     public static Object readBSEStock(String stocktag) throws ClassNotFoundException, SQLException{
             try 
             {
@@ -173,13 +174,13 @@ public class DbConnectionBSE {
                 {
                     System.out.println("Connected to the database StockDB");
 
-                    String sql = "delete * from stocksdatatableBSE where stocktag = '"+stocktag+"';";
+                    String sql = "delete from stocksdatatableBSE where stocktag = '"+stocktag+"';";
                     p = con.prepareStatement(sql);
 //                    rs = p.executeQuery();
                     
                     int rowsDeleted = p.executeUpdate();
                     if (rowsDeleted > 0) {
-                        System.out.println("A user was deleted successfully!");
+                        System.out.println("The"+stocktag+"  stock was deleted successfully!");
                     }
                     
                 } 
@@ -192,5 +193,4 @@ public class DbConnectionBSE {
             System.out.println("VendorError: " + ex.getErrorCode());
         }
     }
-
 }

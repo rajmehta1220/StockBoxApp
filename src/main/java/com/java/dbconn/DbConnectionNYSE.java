@@ -98,7 +98,7 @@ public class DbConnectionNYSE {
     }
     return null;
     }
-    public static Object readBSEStock(String stocktag) throws ClassNotFoundException, SQLException{
+    public static Object readNYSEStock(String stocktag) throws ClassNotFoundException, SQLException{
             try 
             {
                 Connection con = null;
@@ -153,7 +153,7 @@ public class DbConnectionNYSE {
         return null;
     }
     
-    public void deleteBSEStock(String stocktag) throws ClassNotFoundException{
+    public void deleteNYSEStock(String stocktag) throws ClassNotFoundException{
         try 
             {
                 Connection con = null;
@@ -171,13 +171,13 @@ public class DbConnectionNYSE {
                 {
                     System.out.println("Connected to the database StockDB");
 
-                    String sql = "delete * from stocksdatatableNYSE where stocktag = '"+stocktag+"';";
+                    String sql = "delete from stocksdatatableNYSE where stocktag = '"+stocktag+"';";
                     p = con.prepareStatement(sql);
 //                    rs = p.executeQuery();
                     
                     int rowsDeleted = p.executeUpdate();
                     if (rowsDeleted > 0) {
-                        System.out.println("A user was deleted successfully!");
+                        System.out.println("The "+stocktag+" stock was deleted successfully!");
                     }
                     
                 } 
