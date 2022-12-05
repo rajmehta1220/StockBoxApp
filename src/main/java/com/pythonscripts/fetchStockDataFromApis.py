@@ -143,4 +143,4 @@ while True:
 
         print(mycursor.rowcount, "NYSE updated.")
 
-    time.sleep(60.0 - ((time.time() - starttime) % 60.0))
+    time.sleep(180.0 - ((time.time() - starttime) % 180.0))

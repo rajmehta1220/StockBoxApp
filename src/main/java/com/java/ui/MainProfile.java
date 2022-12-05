@@ -30,6 +30,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.lang.Math;
 
 /**
  *
@@ -50,6 +51,7 @@ public class MainProfile extends javax.swing.JPanel {
     double convertedFunds;
     DefaultTableModel stocksTableModel;
     List<Integer> down = new ArrayList();
+    List<Integer> loss = new ArrayList();
     String loginPass;
     String loginType;
     ArrayList<String> stkTagPortfolio;
@@ -60,6 +62,10 @@ public class MainProfile extends javax.swing.JPanel {
     double selectedCommission;
     int selectedBrokerId;
     DefaultTableModel portfolioTable;
+    
+    double currPrice=0;
+    String portType;
+    String portStockTag;
     
     private static final DecimalFormat df = new DecimalFormat("0.000");
     
@@ -208,6 +214,8 @@ public class MainProfile extends javax.swing.JPanel {
         portfolioComm_ui = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        balance_ui = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         addFundsPage = new javax.swing.JPanel();
         addFunds_ui = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -380,17 +388,20 @@ public class MainProfile extends javax.swing.JPanel {
         portfolioTitle_ui.setFont(new java.awt.Font("Helvetica Neue", 1, 30)); // NOI18N
         portfolioTitle_ui.setText("Raj's Portfolio Page");
 
+        portfolioTable_ui.setDefaultRenderer(Object.class, new MonCellRenderer());
+        portfolioTable_ui.setForeground(new java.awt.Color(255, 255, 255));
         portfolioTable_ui.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "StockTag", "BoughtFor", "Qty", "CurrentPrice", "BoughtTotal", "PnL", "Title 7", "Title 8", "Title 9"
+                "stockName", "TransactionId", "Qty", "Market", "BuyPrice", "BuyTotal", "Commission", "BuyDate", "CurrentPrice", "P&L"
             }
         ));
+        portfolioTable_ui.setToolTipText("");
         jScrollPane1.setViewportView(portfolioTable_ui);
 
         portfolioStockTag_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -424,45 +435,14 @@ public class MainProfile extends javax.swing.JPanel {
 
         jLabel18.setText("Commission");
 
+        jLabel19.setText("Portfolio P&L:");
+
         javax.swing.GroupLayout portfolioPageLayout = new javax.swing.GroupLayout(portfolioPage);
         portfolioPage.setLayout(portfolioPageLayout);
         portfolioPageLayout.setHorizontalGroup(
             portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(portfolioPageLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(portfolioPageLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(18, 18, 18)
-                                .addComponent(portfolioComm_ui))
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addGap(18, 18, 18)
-                                .addComponent(portfolioPrice_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addComponent(portfolioStockTag_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(portfolioQty_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(jLabel14))
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabel15)
-                                .addGap(68, 68, 68)
-                                .addComponent(jLabel16))))
-                    .addComponent(portfolioLoadPrice_ui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(portfolioBuy_ui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
-                .addContainerGap(270, Short.MAX_VALUE)
+                .addContainerGap(261, Short.MAX_VALUE)
                 .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
                         .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -483,6 +463,47 @@ public class MainProfile extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addContainerGap())))
+            .addGroup(portfolioPageLayout.createSequentialGroup()
+                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                                        .addComponent(jLabel18)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(portfolioComm_ui))
+                                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                                        .addComponent(jLabel17)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(portfolioPrice_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                                        .addComponent(portfolioStockTag_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(portfolioQty_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                                        .addGap(82, 82, 82)
+                                        .addComponent(jLabel14))
+                                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                                        .addGap(35, 35, 35)
+                                        .addComponent(jLabel15)
+                                        .addGap(68, 68, 68)
+                                        .addComponent(jLabel16))))
+                            .addComponent(portfolioLoadPrice_ui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(portfolioBuy_ui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
+                .addGap(0, 173, Short.MAX_VALUE)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(balance_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(276, 276, 276))
         );
         portfolioPageLayout.setVerticalGroup(
             portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,7 +525,11 @@ public class MainProfile extends javax.swing.JPanel {
                         .addComponent(jLabel11)))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(balance_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -526,7 +551,7 @@ public class MainProfile extends javax.swing.JPanel {
                 .addComponent(portfolioLoadPrice_ui)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(portfolioBuy_ui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(jButton3)
                 .addContainerGap())
         );
@@ -642,6 +667,7 @@ public class MainProfile extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(String.valueOf(stockMarket_ui.getSelectedItem()).equals("BSE")){
             stkTagPortfolio = new ArrayList<String>();
+            loss = new ArrayList<>();
         //BSE Populate Table
             try{
                 ArrayList<BSEClass> allBSEStocks  = DbConnectionBSE.readBSETable();
@@ -677,6 +703,7 @@ public class MainProfile extends javax.swing.JPanel {
         }
         else if(String.valueOf(stockMarket_ui.getSelectedItem()).equals("NSE")){
             stkTagPortfolio = new ArrayList<String>();
+            loss = new ArrayList<>();
         //NSE Populate Table
             try{
                 down = new ArrayList<>();
@@ -714,6 +741,7 @@ public class MainProfile extends javax.swing.JPanel {
         else{
             //NYSE Populate Table
             stkTagPortfolio = new ArrayList<String>();
+            loss = new ArrayList<>();
             try{
                 down = new ArrayList<>();
                 ArrayList<NYSEClass> allNYSEStocks  = DbConnectionNYSE.readNYSETable();
@@ -810,6 +838,7 @@ public class MainProfile extends javax.swing.JPanel {
         mainProfilePage.setVisible(false);
         portfolioPage.setVisible(true);
         refreshPortfolioPage();
+        refreshPortfolioTable();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void fundsUSDPortfolio_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fundsUSDPortfolio_uiActionPerformed
@@ -820,6 +849,7 @@ public class MainProfile extends javax.swing.JPanel {
         // TODO add your handling code here:
         mainProfilePage.setVisible(true);
         portfolioPage.setVisible(false);
+        reloadStocksDataTable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void portfolioLoadPrice_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portfolioLoadPrice_uiActionPerformed
@@ -929,7 +959,7 @@ public class MainProfile extends javax.swing.JPanel {
     private void refreshPortfolioTable() {
         portfolioTable = (DefaultTableModel) portfolioTable_ui.getModel();
         portfolioTable.setRowCount(0);
-        
+        double pnl = 0;
         try 
         {
             Connection con = null;
@@ -951,20 +981,34 @@ public class MainProfile extends javax.swing.JPanel {
                 p = con.prepareStatement(sql);
                 rs = p.executeQuery();
                 Object[] row = new Object[11];
+                int m =0;
+                down = new ArrayList<>();
                     while (rs.next()) 
                     {   
-                            row[0] = rs.getInt("transactionid");
-                            row[1] = rs.getInt("brokerid");
-                            row[2] = rs.getInt("profileid");
-                            row[3] = rs.getInt("qty");
-                            row[4] = rs.getString("type");
-                            row[5] = rs.getDouble("stockprice");
-                            row[6] = rs.getDouble("transactiontotal");
-                            row[7] = rs.getString("stocktag");
-                            row[8] = rs.getString("transactiondate");
-                            row[9] = rs.getString("action");
+                            row[0] = rs.getString("stocktag");
+                            row[1] = rs.getInt("transactionid");
+                            row[2] = rs.getInt("qty");
+                            row[3] = rs.getString("type");
                             
+                            portType = rs.getString("type");
+                            portStockTag = rs.getString("stocktag");
+                            row[4] = rs.getDouble("stockprice");
+                            row[5] = rs.getDouble("transactiontotal");
+                            row[6] = rs.getDouble("commission");
+                            row[7] = rs.getString("transactiondate");
+
+                            getPortfolioValues();
+                            
+                            row[8] = currPrice;
+                            row[9] = currPrice - rs.getDouble("stockprice");
+                            double check = currPrice - rs.getDouble("stockprice");
+                            
+                            pnl+= check;
+                            if(check < 0){
+                                loss.add(m);
+                            }
                             portfolioTable.addRow(row);
+                            m++;
                     }
             }
         } 
@@ -977,6 +1021,157 @@ public class MainProfile extends javax.swing.JPanel {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        balance_ui.setText(String.valueOf(pnl));
+    }
+
+    private void getPortfolioValues() throws ClassNotFoundException {
+        try
+        {
+            Connection con1 = null;
+            PreparedStatement p1 = null;
+            ResultSet rs1 = null;
+
+            String url1= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+            String username1 = "root"; // MySQL credentials
+            String password1 = "root123$";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con1 = DriverManager.getConnection(url1, username1, password1);
+
+            if (con1 != null) 
+            {                                    
+                System.out.println("Connected to the database StockDB");
+                
+                String sql1 = "select * from stocksdatatable"+portType+" WHERE stocktag='"+portStockTag+"';";
+                p1 = con1.prepareStatement(sql1);
+                rs1 = p1.executeQuery();
+
+                while (rs1.next()) 
+                {
+                    currPrice = rs1.getDouble("stockprice");
+                }
+                System.out.println("Fetched Latest stock price");
+                }
+            }
+        catch (SQLException ex)
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+    }
+
+    private void reloadStocksDataTable() {
+        if(String.valueOf(stockMarket_ui.getSelectedItem()).equals("BSE")){
+            stkTagPortfolio = new ArrayList<String>();
+            loss = new ArrayList<>();
+        //BSE Populate Table
+            try{
+                ArrayList<BSEClass> allBSEStocks  = DbConnectionBSE.readBSETable();
+                stocksTableModel.setRowCount(0);
+                int i =0;
+                for(BSEClass stock: allBSEStocks){
+                    Object[] row = new Object[12];
+
+                    row[0] = stock.getStocktag();
+                    row[1] = stock.getStockname();
+                    row[2] = stock.getDate();
+                    row[3] = stock.getType();
+                    row[4] = stock.getStockprice();
+                    row[5] = stock.getChangerate();
+                    row[6] = stock.getCurency();
+                    row[7] = stock.getBid();
+                    row[8] = stock.getDayhigh();
+                    row[9] = stock.getDaylow();
+                    row[10] = stock.getLastfetched();
+                    row[11] = stock.getPrevprice();
+
+                    stkTagPortfolio.add(stock.getStocktag());
+                    stocksTableModel.addRow(row);
+
+                    if(stock.getStockprice() < stock.getPrevprice()){
+                        down.add(i);
+                    }
+
+                    i++;
+                }
+            }catch(Exception e){e.printStackTrace();}
+            
+        }
+        else if(String.valueOf(stockMarket_ui.getSelectedItem()).equals("NSE")){
+            stkTagPortfolio = new ArrayList<String>();
+            loss = new ArrayList<>();
+        //NSE Populate Table
+            try{
+                down = new ArrayList<>();
+                ArrayList<NSEClass> allNSEStocks  = DbConnectionNSE.readNSETable();
+                stocksTableModel.setRowCount(0);
+                int i =0;
+                for(NSEClass stock: allNSEStocks){
+                    Object[] row = new Object[12];
+
+                    row[0] = stock.getStocktag();
+                    row[1] = stock.getStockname();
+                    row[2] = stock.getDate();
+                    row[3] = stock.getType();
+                    row[4] = stock.getStockprice();
+                    row[5] = stock.getChangerate();
+                    row[6] = stock.getCurency();
+                    row[7] = stock.getBid();
+                    row[8] = stock.getDayhigh();
+                    row[9] = stock.getDaylow();
+                    row[10] = stock.getLastfetched();
+                    row[11] = stock.getPrevprice();
+
+                    stkTagPortfolio.add(stock.getStocktag());
+                    stocksTableModel.addRow(row);
+
+                    if(stock.getStockprice() < stock.getPrevprice()){
+                        down.add(i);
+                    }
+
+                    i++;
+                }
+            }catch(Exception e){e.printStackTrace();}
+            
+        }
+        else{
+            //NYSE Populate Table
+            stkTagPortfolio = new ArrayList<String>();
+            loss = new ArrayList<>();
+            try{
+                down = new ArrayList<>();
+                ArrayList<NYSEClass> allNYSEStocks  = DbConnectionNYSE.readNYSETable();
+                stocksTableModel.setRowCount(0);
+                int i =0;
+                for(NYSEClass stock: allNYSEStocks){
+                    Object[] row = new Object[12];
+
+                    row[0] = stock.getStocktag();
+                    row[1] = stock.getStockname();
+                    row[2] = stock.getDate();
+                    row[3] = stock.getType();
+                    row[4] = stock.getStockprice();
+                    row[5] = stock.getChangerate();
+                    row[6] = stock.getCurency();
+                    row[7] = stock.getBid();
+                    row[8] = stock.getDayhigh();
+                    row[9] = stock.getDaylow();
+                    row[10] = stock.getLastfetched();
+                    row[11] = stock.getPrevprice();
+
+                    stkTagPortfolio.add(stock.getStocktag());
+                    stocksTableModel.addRow(row);
+
+                    if(stock.getStockprice() < stock.getPrevprice()){
+                        down.add(i);
+                    }
+
+                    i++;
+                }
+            }catch(Exception e){e.printStackTrace();}
+        }//populate end
         
     }
     
@@ -987,12 +1182,22 @@ public class MainProfile extends javax.swing.JPanel {
             super.getTableCellRendererComponent(table, value,
                             isSelected, hasFocus, row, column);
 
-            if (down.contains(row)) {
-                setBackground(Color.decode("#3d754e"));
-            } else {
-                setBackground(Color.decode("#bf0205"));
+            if(!down.isEmpty()){
+                if (down.contains(row)) {
+                    setBackground(Color.decode("#bf0205"));
+                } else {
+                    setBackground(Color.decode("#3d754e"));
+                }
+                return this;
             }
-            return this;
+            else{
+                if (loss.contains(row)) {
+                    setBackground(Color.decode("#bf0205"));
+                } else {
+                    setBackground(Color.decode("#3d754e"));
+                }
+                return this;
+            }
         }  
     }
     
@@ -1000,6 +1205,7 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JTextField addBal_ui;
     private javax.swing.JPanel addFundsPage;
     private javax.swing.JButton addFunds_ui;
+    private javax.swing.JTextField balance_ui;
     private javax.swing.JTextField fundsINRPortfolio_ui;
     private javax.swing.JTextField fundsINR_ui;
     private javax.swing.JTextField fundsUSDPortfolio_ui;
@@ -1019,6 +1225,7 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

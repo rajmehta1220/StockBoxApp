@@ -6,6 +6,7 @@ package com.java.ui;
 
 import com.java.broker.BrokerHandler;
 import com.java.profile.Profile;
+import com.java.transaction.TransactionHandler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -38,6 +39,19 @@ public class BrokerPanel extends javax.swing.JPanel {
     BrokerHandler brokhandobj = new BrokerHandler();
     DefaultTableModel brokerClients;
     DefaultTableModel transactionTable;
+    TransactionHandler thobj = new TransactionHandler();
+    
+    int transactionid_db;
+    int brokerid_db;
+    int profileid_db;
+    int qty_db;
+    String type_db;
+    double stockprice_db;
+    double transactiontotal_db;
+    String stocktag_db;
+    double commission_db;
+    String transactiondate_db;
+    String action_db;
     
     public BrokerPanel() {
         initComponents();
@@ -562,8 +576,25 @@ public class BrokerPanel extends javax.swing.JPanel {
         else{
             transactionTable = (DefaultTableModel) transacionTable_ui.getModel();
             int tid = (Integer) transactionTable.getValueAt(selectedRowIndex, 0);
+            brokerid_db = (Integer) transactionTable.getValueAt(selectedRowIndex, 1);
+            profileid_db = (Integer) transactionTable.getValueAt(selectedRowIndex, 2);
+            qty_db = (Integer) transactionTable.getValueAt(selectedRowIndex, 3);
+            type_db = (String) transactionTable.getValueAt(selectedRowIndex, 4);
+            stockprice_db = (Double) transactionTable.getValueAt(selectedRowIndex, 5);
+            transactiontotal_db = (Double) transactionTable.getValueAt(selectedRowIndex, 6);
+            stocktag_db = (String) transactionTable.getValueAt(selectedRowIndex, 7);
+            commission_db = (Double) transactionTable.getValueAt(selectedRowIndex, 8);
+            transactiondate_db = (String) transactionTable.getValueAt(selectedRowIndex, 9);
+            action_db = (String) transactionTable.getValueAt(selectedRowIndex, 10);
+  
             System.out.println("TransactionId is: "+tid);
-            
+            System.out.println("StockTag for approval is: "+stocktag_db);
+
+            try {
+                thobj.ApproveStkReq(tid, transactiontotal_db, commission_db, profileid_db, type_db, qty_db, stocktag_db,loginId);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(BrokerPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }
     }//GEN-LAST:event_aproveStockActionPerformed
@@ -603,7 +634,7 @@ public class BrokerPanel extends javax.swing.JPanel {
             {
                 System.out.println("Connected to the database StockDB");
 
-                String sql = "Select * from transaction where brokerid="+loginId+";";
+                String sql = "Select * from transaction where brokerid="+loginId+" AND action ='PENDING';";
                 System.out.println(sql);
                 p = con.prepareStatement(sql);
                 rs = p.executeQuery();
@@ -621,6 +652,7 @@ public class BrokerPanel extends javax.swing.JPanel {
                             row[8] = rs.getDouble("commission");
                             row[9] = rs.getString("transactiondate");
                             row[10] = rs.getString("action");
+
                             
                             transactionTable.addRow(row);
                     }

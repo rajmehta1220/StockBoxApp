@@ -180,7 +180,8 @@ public class TransactionHandler {
         }
     }
     
-    public void ApproveStkReq(int transactionid, double tprice, double commission, int profId, String type, int qty) throws ClassNotFoundException{
+    public void ApproveStkReq(int transactionid, double tprice, double commission, int profId, String type, int qty, String stocktag, int brokerid) throws ClassNotFoundException{
+        //update transaction table to approved
         try
         {
             Connection con = null;
@@ -272,7 +273,7 @@ public class TransactionHandler {
         }
         else{System.out.println("Funds Coversion error");}
         
-        
+        //update profile funds
         try
         {
             Connection con = null;
@@ -306,6 +307,101 @@ public class TransactionHandler {
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
         }
+        
+        //deduct qty from stock market
+        try
+        {
+            Connection con = null;
+            PreparedStatement p = null;
+            ResultSet rs = null;
+
+            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+            String username = "root"; // MySQL credentials
+            String password = "root123$";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+
+            if (con != null) 
+            {
+                int newQty = 1000;
+                int qtyStk = 0;
+                System.out.println("Connected to the database StockDB");
+                
+                String sql = "select * from stocksdatatable"+type+" WHERE stocktag='"+stocktag+"';";
+                p = con.prepareStatement(sql);
+                rs = p.executeQuery();
+
+                while (rs.next()) 
+                {
+                    qtyStk = rs.getInt("qty");
+                }
+                
+                newQty = qtyStk - qty;
+
+                sql = "UPDATE stocksdatatable"+type+" SET qty = "+newQty+" WHERE stocktag = '"+stocktag+"';";
+                System.out.println(sql);
+                p = con.prepareStatement(sql);
+                int rowInsert = p.executeUpdate(); 
+                if(rowInsert > 0){
+                    System.out.println("Approved Transaction");
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        
+        //set broker commission
+        try
+        {
+            Connection con = null;
+            PreparedStatement p = null;
+            ResultSet rs = null;
+
+            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+            String username = "root"; // MySQL credentials
+            String password = "root123$";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+
+            double brokercomm = 0;
+            if (con != null) 
+            {
+                System.out.println("Connected to the database StockDB");
+                
+                String sql = "select * from broker WHERE brokerid="+brokerid+";";
+                p = con.prepareStatement(sql);
+                rs = p.executeQuery();
+
+                while (rs.next()) 
+                {
+                    brokercomm = rs.getDouble("commission");
+                }
+                
+                double newCommission = brokercomm + commission;
+                
+                sql = "UPDATE broker SET commission = "+newCommission+" WHERE brokerid = "+brokerid+";";
+                System.out.println(sql);
+                p = con.prepareStatement(sql);
+                int rowInsert = p.executeUpdate(); 
+                if(rowInsert > 0){
+                    System.out.println("Added Transaction");
+                }
+            }
+        } 
+        catch (SQLException ex)
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        } 
         
     }
     
