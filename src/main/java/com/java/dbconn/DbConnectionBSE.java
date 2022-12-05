@@ -173,7 +173,7 @@ public class DbConnectionBSE {
                 {
                     System.out.println("Connected to the database StockDB");
 
-                    String sql = "delete * from stocksdatatableBSE where stocktag = '"+stocktag+"';";
+                    String sql = "delete from stocksdatatableBSE where stocktag = '"+stocktag+"';";
                     p = con.prepareStatement(sql);
 //                    rs = p.executeQuery();
                     

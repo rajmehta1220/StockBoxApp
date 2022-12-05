@@ -13,13 +13,13 @@ public class NSEClass {
     String stockname;
     String stocktag;
     String type;
-    Double stockprice;
-    Double changerate;
+    double stockprice;
+    double changerate;
     String curency;
-    Double bid;
-    Double dayhigh;
-    Double daylow;
-    Double prevprice;
+    double bid;
+    double dayhigh;
+    double daylow;
+    double prevprice;
     String lastfetched;
     String date;
 
