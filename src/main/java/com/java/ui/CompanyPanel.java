@@ -66,13 +66,13 @@ public class CompanyPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         revenue_ui = new javax.swing.JTextField();
         companyname_ui = new javax.swing.JTextField();
-        region_ui = new javax.swing.JTextField();
         type_ui = new javax.swing.JTextField();
         listingprice_ui = new javax.swing.JTextField();
         qty_ui = new javax.swing.JTextField();
         btnCreate = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         enterpassword_ui = new javax.swing.JTextField();
+        region_ui = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
 
         setLayout(new java.awt.CardLayout());
@@ -165,12 +165,6 @@ public class CompanyPanel extends javax.swing.JPanel {
             }
         });
 
-        region_ui.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                region_uiActionPerformed(evt);
-            }
-        });
-
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +179,8 @@ public class CompanyPanel extends javax.swing.JPanel {
                 enterpassword_uiActionPerformed(evt);
             }
         });
+
+        region_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INDIA", "USA", "BOSTON" }));
 
         javax.swing.GroupLayout createCompanyProfileLayout = new javax.swing.GroupLayout(createCompanyProfile);
         createCompanyProfile.setLayout(createCompanyProfileLayout);
@@ -210,15 +206,20 @@ public class CompanyPanel extends javax.swing.JPanel {
                                 .addGroup(createCompanyProfileLayout.createSequentialGroup()
                                     .addGap(78, 78, 78)
                                     .addComponent(jLabel9)))
-                            .addGap(37, 37, 37)
                             .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(revenue_ui)
-                                .addComponent(companyname_ui)
-                                .addComponent(region_ui)
-                                .addComponent(type_ui)
-                                .addComponent(listingprice_ui)
-                                .addComponent(qty_ui)
-                                .addComponent(enterpassword_ui))))
+                                .addGroup(createCompanyProfileLayout.createSequentialGroup()
+                                    .addGap(37, 37, 37)
+                                    .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(revenue_ui)
+                                        .addComponent(companyname_ui)
+                                        .addComponent(type_ui)
+                                        .addComponent(listingprice_ui)
+                                        .addComponent(qty_ui)
+                                        .addComponent(enterpassword_ui)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createCompanyProfileLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(region_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(51, 51, 51)))))
                     .addGroup(createCompanyProfileLayout.createSequentialGroup()
                         .addGap(190, 190, 190)
                         .addComponent(btnCreate)))
@@ -243,8 +244,8 @@ public class CompanyPanel extends javax.swing.JPanel {
                     .addComponent(enterpassword_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(region_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(region_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(type_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,10 +346,6 @@ public class CompanyPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_revenue_uiActionPerformed
 
-    private void region_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_region_uiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_region_uiActionPerformed
-
     private void signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpActionPerformed
 loginPage.setVisible(false);
 createCompanyProfile.setVisible(true);        // TODO add your handling code here:
@@ -359,7 +356,7 @@ createCompanyProfile.setVisible(true);        // TODO add your handling code her
         
         double revenue = Double.parseDouble(revenue_ui.getText());
         String companyname = String.valueOf(companyname_ui.getText());
-        String region = String.valueOf(region_ui.getText());
+        String region = String.valueOf(region_ui.getSelectedItem());
         String type = String.valueOf(type_ui.getText());
         double listingprice = Double.parseDouble(listingprice_ui.getText());
         int qty = Integer.parseInt(qty_ui.getText());
@@ -369,11 +366,12 @@ createCompanyProfile.setVisible(true);        // TODO add your handling code her
         try {
             comobj.createCompanyProfile(companyname, revenue, region, type, listingprice,qty,password);
             // TODO add your handling code here:
-        } catch (ClassNotFoundException ex) {
+        } catch (Exception ex) {
+            //Logger.getLogger(CompanyPanel.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        } /*catch (SQLException ex) {
             Logger.getLogger(CompanyPanel.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(CompanyPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
 
     }//GEN-LAST:event_btnCreateActionPerformed
 
@@ -403,7 +401,7 @@ createCompanyProfile.setVisible(true);        // TODO add your handling code her
     private javax.swing.JPanel loginPage;
     private javax.swing.JTextField loginPassword;
     private javax.swing.JTextField qty_ui;
-    private javax.swing.JTextField region_ui;
+    private javax.swing.JComboBox<String> region_ui;
     private javax.swing.JTextField revenue_ui;
     private javax.swing.JButton signIn;
     private javax.swing.JButton signUp;

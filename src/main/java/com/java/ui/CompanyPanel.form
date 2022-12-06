@@ -148,15 +148,23 @@
                                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="revenue_ui" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="companyname_ui" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="region_ui" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="type_ui" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="listingprice_ui" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="qty_ui" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="enterpassword_ui" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="37" pref="37" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="revenue_ui" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="companyname_ui" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="type_ui" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="listingprice_ui" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="qty_ui" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="enterpassword_ui" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="region_ui" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -191,8 +199,8 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="region_ui" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="region_ui" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -259,11 +267,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="companyname_ui">
         </Component>
-        <Component class="javax.swing.JTextField" name="region_ui">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="region_uiActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JTextField" name="type_ui">
         </Component>
         <Component class="javax.swing.JTextField" name="listingprice_ui">
@@ -287,6 +290,20 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterpassword_uiActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="region_ui">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="INDIA"/>
+                <StringItem index="1" value="USA"/>
+                <StringItem index="2" value="BOSTON"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

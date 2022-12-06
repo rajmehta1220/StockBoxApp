@@ -40,7 +40,7 @@ public class CompanyProfile {
 
                 boolean flag = false;
                 String region = "";
-                Object[] companyProfile = new Object[6];
+                Object[] companyProfile = new Object[7];
                 
                 while (rs.next()) 
                 {
@@ -53,6 +53,7 @@ public class CompanyProfile {
                         companyProfile[3] = rs.getString("type");
                         companyProfile[4] = rs.getDouble("listingprice");
                         companyProfile[5] = rs.getInt("qty");
+                        companyProfile[7] = rs.getString("password");
                     }
                 }
                 
@@ -70,7 +71,7 @@ public class CompanyProfile {
     }
     
     
-   public Object createCompanyProfile(String companyname, double revenue,String region,String type,double listingprice,int qty) throws ClassNotFoundException, SQLException {
+   public Object createCompanyProfile(String companyname, double revenue,String region,String type,double listingprice,int qty, String cpassword) throws ClassNotFoundException, SQLException {
         try 
         {
             Connection con = null;
@@ -88,13 +89,13 @@ public class CompanyProfile {
             {
                 System.out.println("Connected to the database StockDB");
 
-                String sql = "INSERT INTO Company(revenue,companyname,region,type,listingprice,qty) VALUES ('+revenue+',\"'+companyname+'\",\"'+region+'\",\"'+type+'\",'+listingprice+','+qty+');";
+                String sql = "INSERT INTO Company(revenue,companyname,region,type,listingprice,qty,password) VALUES ('+revenue+',\"'+companyname+'\",\"'+region+'\",\"'+type+'\",'+listingprice+','+qty+',\"'+cpassword+'\");";
                 p = con.prepareStatement(sql);
                 rs = p.executeQuery();
 
                 boolean flag = false;
                 //String region = "";
-                Object[] companyProfile = new Object[6];
+                Object[] companyProfile = new Object[7];
                 
                 while (rs.next()) 
                 {
@@ -108,6 +109,7 @@ public class CompanyProfile {
                         companyProfile[3] = rs.getString("type");
                         companyProfile[4] = rs.getDouble("listingprice");
                         companyProfile[5] = rs.getInt("qty");
+                        companyProfile[6] = rs.getString("password");
                     }
                 }
                 
