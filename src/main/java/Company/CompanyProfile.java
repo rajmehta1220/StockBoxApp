@@ -72,7 +72,8 @@ public class CompanyProfile {
     
     
    public Object createCompanyProfile(String companyname, double revenue,String region,String type,double listingprice,int qty, String cpassword) throws ClassNotFoundException, SQLException {
-        try 
+       Object[] companyProfile = new Object[7]; 
+       try 
         {
             Connection con = null;
             PreparedStatement p = null;
@@ -89,33 +90,17 @@ public class CompanyProfile {
             {
                 System.out.println("Connected to the database StockDB");
 
-                String sql = "INSERT INTO Company(revenue,companyname,region,type,listingprice,qty,password) VALUES ('+revenue+',\"'+companyname+'\",\"'+region+'\",\"'+type+'\",'+listingprice+','+qty+',\"'+cpassword+'\");";
+                String sql = "INSERT INTO company(revenue,companyname,region,type,listingprice,qty,password) VALUES ("+revenue+",'"+companyname+"','"+region+"','"+type+"',"+listingprice+","+qty+",'"+cpassword+"');";
                 p = con.prepareStatement(sql);
-                rs = p.executeQuery();
-
-                boolean flag = false;
-                //String region = "";
-                Object[] companyProfile = new Object[7];
-                
-                while (rs.next()) 
-                {
-                   if((rs.getString("companyname")).equalsIgnoreCase(companyname))
-                    {
-                        flag = true;
-                        
-                        companyProfile[0] = rs.getDouble("revenue");
-                        companyProfile[1] = rs.getString("companyname");
-                        companyProfile[2] = rs.getString("region");
-                        companyProfile[3] = rs.getString("type");
-                        companyProfile[4] = rs.getDouble("listingprice");
-                        companyProfile[5] = rs.getInt("qty");
-                        companyProfile[6] = rs.getString("password");
-                    }
+                int rowInsert = p.executeUpdate(); 
+                if(rowInsert > 0){
+                    System.out.print("Created Company Successfully");
                 }
-                
-               return companyProfile;
+                else{System.out.print("Company Already Exists");}
             }
-    } 
+      
+        return companyProfile;
+    }
     catch (SQLException ex) 
     {
         // handle any errors
