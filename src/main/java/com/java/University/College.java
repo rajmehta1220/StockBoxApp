@@ -14,7 +14,7 @@ public class College {
 
     String name;
     ArrayList<Department> departments;
-    
+
     public ArrayList<Department> getDepartments() {
         return departments;
     }
@@ -22,11 +22,11 @@ public class College {
         name = cname;
         departments = new ArrayList();
     }
-    
+
     public void setDepartments(ArrayList<Department> departments) {
         this.departments = departments;
     }
-    
+
     public Department addDepartment(String dname){
         Department newDepartment = new Department(dname);
         this.getDepartments().add(newDepartment);

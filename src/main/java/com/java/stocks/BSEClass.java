@@ -22,8 +22,9 @@ public class BSEClass {
     double prevprice;
     String lastfetched;
     String date;
+    int qty;
 
-    public BSEClass(String stockname, String stocktag, String type, double stockprice, double changerate, String curency, double bid, double dayhigh, double daylow, double prevprice, String lastfetched, String date) {
+    public BSEClass(String stockname, String stocktag, String type, double stockprice, double changerate, String curency, double bid, double dayhigh, double daylow, double prevprice, String lastfetched, String date, int qty) {
         this.stockname = stockname;
         this.stocktag = stocktag;
         this.type = type;
@@ -36,10 +37,20 @@ public class BSEClass {
         this.prevprice = prevprice;
         this.lastfetched = lastfetched;
         this.date = date;
+        this.qty = qty;
     }
     
     public BSEClass(){}
 
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    
     public String getDate() {
         return date;
     }

@@ -34,7 +34,7 @@ public class Department {
     public void setCoursedir(ArrayList<CourseDirectory> coursedir) {
         this.coursedir = coursedir;
     }
-    
+
     public CourseDirectory addCourseDiectory(double crn, String cname){
         CourseDirectory newCourse = new CourseDirectory(crn, cname);
         this.getCoursedir().add(newCourse);

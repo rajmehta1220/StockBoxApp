@@ -13,17 +13,18 @@ public class NSEClass {
     String stockname;
     String stocktag;
     String type;
-    Double stockprice;
-    Double changerate;
+    double stockprice;
+    double changerate;
     String curency;
-    Double bid;
-    Double dayhigh;
-    Double daylow;
-    Double prevprice;
+    double bid;
+    double dayhigh;
+    double daylow;
+    double prevprice;
     String lastfetched;
     String date;
+    int qty;
 
-    public NSEClass(String stockname, String stocktag, String type, Double stockprice, Double changerate, String curency, Double bid, Double dayhigh, Double daylow, Double prevprice, String lastfetched, String date) {
+    public NSEClass(String stockname, String stocktag, String type, Double stockprice, Double changerate, String curency, Double bid, Double dayhigh, Double daylow, Double prevprice, String lastfetched, String date, int qty) {
         this.stockname = stockname;
         this.stocktag = stocktag;
         this.type = type;
@@ -36,9 +37,18 @@ public class NSEClass {
         this.prevprice = prevprice;
         this.lastfetched = lastfetched;
         this.date = date;
+        this.qty = qty;
     }
     
     public NSEClass(){}
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
 
     public String getDate() {
         return date;

@@ -2,40 +2,39 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.java.sebprofiles;
+package com.java.broker;
 
 /**
  *
- * @author aakashbhatt
+ * @author rajmehta
  */
-public class SEB {
-    int id;
+public class Broker {
+    int brokerid;
     String name;
     String region;
-    String board;
+    double commission;
+    double commissionrate;
     String password;
 
-    public SEB(int id, String name, String region, String board, String password) {
-        this.id = id;
+    public Broker(String name, String region, double commission, double commissionrate, String password) {
         this.name = name;
         this.region = region;
-        this.board = board;
+        this.commission = commission;
+        this.commissionrate = commissionrate;
         this.password = password;
     }
-
-    public SEB() {
-    }
     
+    public Broker(){}
+
+    public int getBrokerid() {
+        return brokerid;
+    }
+
+    public void setBrokerid(int brokerid) {
+        this.brokerid = brokerid;
+    }
+
     
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -52,12 +51,20 @@ public class SEB {
         this.region = region;
     }
 
-    public String getBoard() {
-        return board;
+    public double getCommission() {
+        return commission;
     }
 
-    public void setBoard(String board) {
-        this.board = board;
+    public void setCommission(double commission) {
+        this.commission = commission;
+    }
+
+    public double getCommissionrate() {
+        return commissionrate;
+    }
+
+    public void setCommissionrate(double commissionrate) {
+        this.commissionrate = commissionrate;
     }
 
     public String getPassword() {

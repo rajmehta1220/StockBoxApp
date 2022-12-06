@@ -14,12 +14,12 @@ public class CourseDirectory {
     double crn;
     String course_name;
     ArrayList<Professor> professor;
-    
+
     public CourseDirectory(double crn, String c_name){
         professor = new ArrayList();
         this.crn = crn;
         this.course_name = c_name;
-        
+
     }
 
     public double getCrn() {
@@ -37,7 +37,7 @@ public class CourseDirectory {
     public void setProfessor(ArrayList<Professor> professor) {
         this.professor = professor;
     }
-    
+
 
     public String getCourse_name() {
         return course_name;
@@ -46,12 +46,12 @@ public class CourseDirectory {
     public void setCourse_name(String course_name) {
         this.course_name = course_name;
     }
-    
+
     public Professor addProfessor(int id, String p_name) {
         Professor newProfessor = new Professor(id, p_name);
         professor.add(newProfessor);
         return newProfessor;
     }
 
-    
+
 }

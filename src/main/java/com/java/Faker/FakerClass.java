@@ -23,22 +23,22 @@ public class FakerClass {
     Department dept;
     CourseDirectory c1;
     Professor professor;
-    
-    
+
+
     Random random = new Random();   
-    
-    public FakerClass() {
-        
+
+    public FakerClass() throws ClassNotFoundException {
+
         college = new College("COE");
         dept = college.addDepartment("IS");
-        
+
         for(int i=0; i< 30; i++){
             c1 = dept.addCourseDiectory(random.nextInt(), generateNames());
             for(int j=0; j<(random.nextInt(15-2)+2);j++){
                 c1.addProfessor(random.nextInt(), generateNames());
             }
         }
-        
+
         for(CourseDirectory c: dept.getCoursedir()){
             System.out.println("Couse Name: "+c.getCourse_name());
             System.out.println();
@@ -51,7 +51,7 @@ public class FakerClass {
         obj.generateNeuStocks(dept);
     }
     // price = random.nextDouble() * noOfProfs;
-    
+
     public String generateNames(){
         final String lexicon = "ABCDEFGHIJKLMNOPQRSTUVWXYZ12345674890";
 
@@ -73,5 +73,3 @@ public class FakerClass {
             return builder.toString();
         }
     }
-
-

@@ -16,39 +16,39 @@ import java.util.regex.Pattern;
  */
 public class Parser {
 public long convertToLong(String text) {
-              
+
        return Long.parseLong( text );
-        
+
     }
-    
+
     public double convertToDouble(String text) {
-              
+
        return Double.parseDouble( text );
-        
+
     }
-    
+
     public LocalDate convertToDate(String date) {
-        
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MMM-yyyy");
         formatter = formatter.withLocale( Locale.US );  // Locale specifies human language for translating, and cultural norms for lowercase/uppercase and abbreviations and such. Example: Locale.US or Locale.CANADA_FRENCH
-        
+
         LocalDate dt;
         //System.out.println(date);
-        
+
         try{
             dt = LocalDate.parse(date, formatter);
         }catch(Exception e){
             dt = LocalDate.parse("1-Jan-1990", formatter);
         }
-         
+
         return dt;
     }
-    
+
     public String covertDateToString (LocalDate dob) {
-        
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-MMM-yyyy");
         String dt;
-        
+
         try{
             dt = dob.format(formatter);
         }catch(Exception e){
@@ -56,17 +56,17 @@ public long convertToLong(String text) {
             dt = ld.format(formatter);
         }
         return dt;
-        
+
     }
-    
+
     public int runValidation(String pattern,String matcher){
-        
+
         //Used for defining the pattern
         Pattern ptn = Pattern.compile(pattern, Pattern.CASE_INSENSITIVE);
-        
+
         //Used to search the pattern
         Matcher mchr = ptn.matcher(matcher);
-        
+
         if (mchr.find()){
             return 0;
         }else return 1;
@@ -74,15 +74,15 @@ public long convertToLong(String text) {
     }
 
     public String covertLongToString(long num) {
-        
+
         return num+"";
-        
+
     }
-    
+
     public String covertDoubleToString(double num) {
-        
+
         return num+"";
-        
+
     }
     public boolean checkNull(String a){
          if(a == null){
@@ -98,14 +98,14 @@ public long convertToLong(String text) {
             return true;
         }catch(Exception e){return false;}
     }
-    
+
     public boolean isLong(String a){
         try{
             Long.parseLong(a);
             return true;
         }catch(Exception e){return false;}
     }
-    
+
     public boolean isFloat(String a){
         try{
             Float.parseFloat(a);
