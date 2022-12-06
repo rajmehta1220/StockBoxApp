@@ -4,6 +4,7 @@
  */
 package com.java.ui;
 
+import com.java.Faker.FakerClass;
 import com.java.broker.Broker;
 import com.java.broker.BrokerHandler;
 import com.java.dbconn.DbConnectionBSE;
@@ -48,21 +49,26 @@ public class MainPanel extends javax.swing.JFrame {
     BrokerHandler brokHandlerobj = new BrokerHandler();
     ArrayList<Broker> allBrokerList;
     String custRegion;
+    FakerClass fakerobj;
     
     public MainPanel(){
         initComponents();
         
         loginPage_ui.setVisible(true);
-        
-//        
+//        try {
+//            fakerobj = new FakerClass();
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
 //        //verify is SEBProfile Exist
 //        try{
 //            Object[] loginProfileSEB = (Object[]) sebverify.verifySEBProfile(185047);
 //            sebverify.banUser(1);
 //            JOptionPane.showMessageDialog(this, loginProfileSEB[1] + " "+ loginProfileSEB[2]+ " "+ loginProfileSEB[3]);
 //        }catch(Exception e){e.printStackTrace();}
-        
-        //AcceptIPO
+
+//AcceptIPO
 //        try{
 //            SEBProfileClass obj = new SEBProfileClass();
 //            obj.approveIPO("AAPL", aplStk, "NYSE", 2000);
@@ -73,6 +79,7 @@ public class MainPanel extends javax.swing.JFrame {
 //            SEBProfileClass obj = new SEBProfileClass();
 //            obj.rejectIPO("Apple");
 //        }catch(Exception e){e.printStackTrace();}
+        
         
     }
 

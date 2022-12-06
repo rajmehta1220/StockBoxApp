@@ -12,15 +12,16 @@ public class NeuSEClass {
     String stockname;
     String stocktag;
     String type;
-    Double stockprice;
-    Double changerate;
+    double stockprice;
+    double changerate;
     String curency;
-    Double bid;
-    Double dayhigh;
-    Double daylow;
-    Double prevprice;
+    double bid;
+    double dayhigh;
+    double daylow;
+    double prevprice;
     String lastfetched;
     String date;
+    int qty;
 
     public NeuSEClass() {
     }
@@ -39,6 +40,14 @@ public class NeuSEClass {
         this.prevprice = prevprice;
         this.lastfetched = lastfetched;
         this.date = date;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
     }
     
     

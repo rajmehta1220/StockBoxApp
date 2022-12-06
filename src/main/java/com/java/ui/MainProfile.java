@@ -6,12 +6,14 @@ package com.java.ui;
 
 import com.java.broker.BrokerHandler;
 import com.java.dbconn.DbConnectionBSE;
+import com.java.dbconn.DbConnectionNEUSE;
 import com.java.dbconn.DbConnectionNSE;
 import com.java.dbconn.DbConnectionNYSE;
 import com.java.sebprofiles.SEBProfileClass;
 import com.java.stocks.BSEClass;
 import com.java.stocks.NSEClass;
 import com.java.stocks.NYSEClass;
+import com.java.stocks.NeuSEClass;
 import com.java.transaction.TransactionHandler;
 import java.awt.Color;
 import java.awt.Component;
@@ -251,13 +253,13 @@ public class MainProfile extends javax.swing.JPanel {
         stocksTable.setForeground(new java.awt.Color(255, 255, 255));
         stocksTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Tag", "CompanyName", "Date", "Price", "ChangeRate", "Currency", "Bid", "DayHigh", "DayLow", "LastFetched", "PrevPrice", "Qty"
+                "Tag", "CompanyName", "Date", "Market", "Price", "ChangeRate", "Currency", "Bid", "DayHigh", "DayLow", "LastFetched", "PrevPrice", "Qty"
             }
         ));
         jScrollPane2.setViewportView(stocksTable);
@@ -642,7 +644,7 @@ public class MainProfile extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addGap(28, 28, 28)
                 .addComponent(addFunds_ui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(19, 19, 19))
         );
@@ -657,7 +659,7 @@ public class MainProfile extends javax.swing.JPanel {
         );
         newsPageLayout.setVerticalGroup(
             newsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 535, Short.MAX_VALUE)
+            .addGap(0, 635, Short.MAX_VALUE)
         );
 
         add(newsPage, "card15");
@@ -674,7 +676,7 @@ public class MainProfile extends javax.swing.JPanel {
                 stocksTableModel.setRowCount(0);
                 int i =0;
                 for(BSEClass stock: allBSEStocks){
-                    Object[] row = new Object[12];
+                    Object[] row = new Object[13];
 
                     row[0] = stock.getStocktag();
                     row[1] = stock.getStockname();
@@ -688,6 +690,7 @@ public class MainProfile extends javax.swing.JPanel {
                     row[9] = stock.getDaylow();
                     row[10] = stock.getLastfetched();
                     row[11] = stock.getPrevprice();
+                    row[12] = stock.getQty();
 
                     stkTagPortfolio.add(stock.getStocktag());
                     stocksTableModel.addRow(row);
@@ -711,7 +714,7 @@ public class MainProfile extends javax.swing.JPanel {
                 stocksTableModel.setRowCount(0);
                 int i =0;
                 for(NSEClass stock: allNSEStocks){
-                    Object[] row = new Object[12];
+                    Object[] row = new Object[13];
 
                     row[0] = stock.getStocktag();
                     row[1] = stock.getStockname();
@@ -725,7 +728,7 @@ public class MainProfile extends javax.swing.JPanel {
                     row[9] = stock.getDaylow();
                     row[10] = stock.getLastfetched();
                     row[11] = stock.getPrevprice();
-
+                    row[12] = stock.getQty();
                     stkTagPortfolio.add(stock.getStocktag());
                     stocksTableModel.addRow(row);
 
@@ -738,7 +741,7 @@ public class MainProfile extends javax.swing.JPanel {
             }catch(Exception e){e.printStackTrace();}
             
         }
-        else{
+        else if(String.valueOf(stockMarket_ui.getSelectedItem()).equals("NYSE")){
             //NYSE Populate Table
             stkTagPortfolio = new ArrayList<String>();
             loss = new ArrayList<>();
@@ -748,7 +751,7 @@ public class MainProfile extends javax.swing.JPanel {
                 stocksTableModel.setRowCount(0);
                 int i =0;
                 for(NYSEClass stock: allNYSEStocks){
-                    Object[] row = new Object[12];
+                    Object[] row = new Object[13];
 
                     row[0] = stock.getStocktag();
                     row[1] = stock.getStockname();
@@ -762,6 +765,43 @@ public class MainProfile extends javax.swing.JPanel {
                     row[9] = stock.getDaylow();
                     row[10] = stock.getLastfetched();
                     row[11] = stock.getPrevprice();
+                    row[12] = stock.getQty();
+
+                    stkTagPortfolio.add(stock.getStocktag());
+                    stocksTableModel.addRow(row);
+
+                    if(stock.getStockprice() < stock.getPrevprice()){
+                        down.add(i);
+                    }
+
+                    i++;
+                }
+            }catch(Exception e){e.printStackTrace();}
+        }
+        else{
+            stkTagPortfolio = new ArrayList<String>();
+            loss = new ArrayList<>();
+            try{
+                down = new ArrayList<>();
+                ArrayList<NeuSEClass> allNeuSEStocks  = DbConnectionNEUSE.readNEUSETable();
+                stocksTableModel.setRowCount(0);
+                int i =0;
+                for(NeuSEClass stock: allNeuSEStocks){
+                    Object[] row = new Object[13];
+
+                    row[0] = stock.getStocktag();
+                    row[1] = stock.getStockname();
+                    row[2] = stock.getDate();
+                    row[3] = stock.getType();
+                    row[4] = stock.getStockprice();
+                    row[5] = stock.getChangerate();
+                    row[6] = stock.getCurency();
+                    row[7] = stock.getBid();
+                    row[8] = stock.getDayhigh();
+                    row[9] = stock.getDaylow();
+                    row[10] = stock.getLastfetched();
+                    row[11] = stock.getPrevprice();
+                    row[12] = stock.getQty();
 
                     stkTagPortfolio.add(stock.getStocktag());
                     stocksTableModel.addRow(row);
@@ -774,8 +814,7 @@ public class MainProfile extends javax.swing.JPanel {
                 }
             }catch(Exception e){e.printStackTrace();}
         }//populate end
-        
-        
+             
     }//GEN-LAST:event_loadStocks_ui1ActionPerformed
 
     private void addFunds_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFunds_uiActionPerformed
@@ -1072,7 +1111,7 @@ public class MainProfile extends javax.swing.JPanel {
                 stocksTableModel.setRowCount(0);
                 int i =0;
                 for(BSEClass stock: allBSEStocks){
-                    Object[] row = new Object[12];
+                    Object[] row = new Object[13];
 
                     row[0] = stock.getStocktag();
                     row[1] = stock.getStockname();
@@ -1086,6 +1125,7 @@ public class MainProfile extends javax.swing.JPanel {
                     row[9] = stock.getDaylow();
                     row[10] = stock.getLastfetched();
                     row[11] = stock.getPrevprice();
+                    row[12] = stock.getQty();
 
                     stkTagPortfolio.add(stock.getStocktag());
                     stocksTableModel.addRow(row);
@@ -1109,7 +1149,7 @@ public class MainProfile extends javax.swing.JPanel {
                 stocksTableModel.setRowCount(0);
                 int i =0;
                 for(NSEClass stock: allNSEStocks){
-                    Object[] row = new Object[12];
+                    Object[] row = new Object[13];
 
                     row[0] = stock.getStocktag();
                     row[1] = stock.getStockname();
@@ -1123,7 +1163,7 @@ public class MainProfile extends javax.swing.JPanel {
                     row[9] = stock.getDaylow();
                     row[10] = stock.getLastfetched();
                     row[11] = stock.getPrevprice();
-
+                    row[12] = stock.getQty();
                     stkTagPortfolio.add(stock.getStocktag());
                     stocksTableModel.addRow(row);
 
@@ -1136,7 +1176,7 @@ public class MainProfile extends javax.swing.JPanel {
             }catch(Exception e){e.printStackTrace();}
             
         }
-        else{
+        else if(String.valueOf(stockMarket_ui.getSelectedItem()).equals("NYSE")){
             //NYSE Populate Table
             stkTagPortfolio = new ArrayList<String>();
             loss = new ArrayList<>();
@@ -1146,7 +1186,7 @@ public class MainProfile extends javax.swing.JPanel {
                 stocksTableModel.setRowCount(0);
                 int i =0;
                 for(NYSEClass stock: allNYSEStocks){
-                    Object[] row = new Object[12];
+                    Object[] row = new Object[13];
 
                     row[0] = stock.getStocktag();
                     row[1] = stock.getStockname();
@@ -1160,6 +1200,43 @@ public class MainProfile extends javax.swing.JPanel {
                     row[9] = stock.getDaylow();
                     row[10] = stock.getLastfetched();
                     row[11] = stock.getPrevprice();
+                    row[12] = stock.getQty();
+
+                    stkTagPortfolio.add(stock.getStocktag());
+                    stocksTableModel.addRow(row);
+
+                    if(stock.getStockprice() < stock.getPrevprice()){
+                        down.add(i);
+                    }
+
+                    i++;
+                }
+            }catch(Exception e){e.printStackTrace();}
+        }
+        else{
+            stkTagPortfolio = new ArrayList<String>();
+            loss = new ArrayList<>();
+            try{
+                down = new ArrayList<>();
+                ArrayList<NeuSEClass> allNeuSEStocks  = DbConnectionNEUSE.readNEUSETable();
+                stocksTableModel.setRowCount(0);
+                int i =0;
+                for(NeuSEClass stock: allNeuSEStocks){
+                    Object[] row = new Object[13];
+
+                    row[0] = stock.getStocktag();
+                    row[1] = stock.getStockname();
+                    row[2] = stock.getDate();
+                    row[3] = stock.getType();
+                    row[4] = stock.getStockprice();
+                    row[5] = stock.getChangerate();
+                    row[6] = stock.getCurency();
+                    row[7] = stock.getBid();
+                    row[8] = stock.getDayhigh();
+                    row[9] = stock.getDaylow();
+                    row[10] = stock.getLastfetched();
+                    row[11] = stock.getPrevprice();
+                    row[12] = stock.getQty();
 
                     stkTagPortfolio.add(stock.getStocktag());
                     stocksTableModel.addRow(row);

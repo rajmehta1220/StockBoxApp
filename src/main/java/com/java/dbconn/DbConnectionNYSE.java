@@ -82,6 +82,9 @@ public class DbConnectionNYSE {
                     obj.setLastfetched(String.valueOf(lastfetched));
                     obj.setDate(String.valueOf(rs.getDate("stockdate")));
                     
+                    int qty = rs.getInt("qty");
+                    obj.setQty(qty);
+                    
 
                     allNYSEStocks.add(obj);
                     System.out.println("OBJ: "+obj);
@@ -98,7 +101,7 @@ public class DbConnectionNYSE {
     }
     return null;
     }
-    public static Object readBSEStock(String stocktag) throws ClassNotFoundException, SQLException{
+    public static Object readNYSEStock(String stocktag) throws ClassNotFoundException, SQLException{
             try 
             {
                 Connection con = null;
@@ -137,7 +140,7 @@ public class DbConnectionNYSE {
                         stock[8] = rs.getDouble("prevprice");
                         stock[9] = rs.getDouble("daylow");
                         stock[10] = rs.getDate("lastfetched");
-
+                        stock[11] = rs.getInt("qty");
                       
                     }
                     return stock;
@@ -153,7 +156,7 @@ public class DbConnectionNYSE {
         return null;
     }
     
-    public void deleteBSEStock(String stocktag) throws ClassNotFoundException{
+    public void deleteNYSEStock(String stocktag) throws ClassNotFoundException{
         try 
             {
                 Connection con = null;

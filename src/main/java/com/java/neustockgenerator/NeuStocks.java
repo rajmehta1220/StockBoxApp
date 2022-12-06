@@ -39,19 +39,24 @@ public class NeuStocks {
             
             counter = c.getProfessor().size();
             while(price == 0){
-                price = counter * (random.nextDouble(3050.84 - 50.24)+50.24);
+                price = counter * (random.nextDouble() * (3050.84 - 50.24)+50.24);
+//                price = counter *(random.nextDouble(3050.84 - 50.24)+50.24);
             }
             flag = random.nextBoolean();
             if(flag){
-                prevprice = price - (random.nextDouble(20.12 - 0.24)+0.24); 
+                prevprice = price - (random.nextDouble() * (20.12 - 0.24)+0.24);
+//                prevprice = price - (random.nextDouble(20.12 - 0.24)+0.24); 
             }
             else {
-                prevprice = price + (random.nextDouble(20.12 - 0.24)+0.24); 
+                prevprice = price + (random.nextDouble() * (13.12 - 1.24)+1.24);
+//                prevprice = price + (random.nextDouble(20.12 - 0.24)+0.24); 
             }
             stocktag = c.getCourse_name();
             changerate = price - prevprice;
-            dayhigh = price + (random.nextDouble(50.12 - 10)+10);
-            daylow = price - (random.nextDouble(50.12 - 10)+10);
+            dayhigh = price + (random.nextDouble() * (50.12 - 10)+10);
+            daylow = price - (random.nextDouble() * (50.12 - 10)+10);
+//            dayhigh = price + (random.nextDouble(50.12 - 10)+10);
+//            daylow = price - (random.nextDouble(50.12 - 10)+10);
             bid = price + 1;
             
             System.out.println("Stock Name: "+c.getCourse_name()+" Price: "+price+ " Prev Price : "+prevprice+" Change Rate: "+changerate+" dayhigh :"+dayhigh+" daylow: "+daylow);
