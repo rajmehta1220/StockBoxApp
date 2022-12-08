@@ -96,8 +96,9 @@ public class IPO {
         this.password = password;
     }
 
-     public void ApproveIPOReq(String companyname, double revenue, String region, String type, double listingprice, int qty, String cpassword,String currency) throws ClassNotFoundException{
-        
+     public void ApproveIPOReq(String companyname, double revenue, String region, double listingprice, int qty) throws ClassNotFoundException{
+        String type ="";
+        String currency="";
          if(region.equalsIgnoreCase("INDIA"))
          {
              type="NSE";
@@ -145,7 +146,42 @@ public class IPO {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
-        }  
+        } 
+        
+        try
+        {
+            Connection con = null;
+            PreparedStatement p = null;
+            ResultSet rs = null;
+
+            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+            String username = "root"; // MySQL credentials
+            String password = "root123$";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+
+            if (con != null) 
+            {
+                System.out.println("Connected to the database Company");
+
+                String sql = "DELETE FROM company WHERE companyname='"+companyname+"';";
+                
+                System.out.println(sql);
+                p = con.prepareStatement(sql);
+                int rowInsert = p.executeUpdate(); 
+                if(rowInsert > 0){
+                    System.out.println("Rejected IPO!");
+                }
+            }
+        } 
+        catch (SQLException ex)
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
         
      }
       public void RejectIPOReq(String companyname) throws ClassNotFoundException{

@@ -4,6 +4,9 @@
  */
 package com.java.ui;
 
+import Company.Company;
+import Company.CompanyHandler;
+import com.java.ipo.IPO;
 import com.java.rules.RulesClass;
 import com.java.sebprofiles.SEBProfileClass;
 import java.awt.Color;
@@ -39,6 +42,7 @@ public class SEBPanel extends javax.swing.JPanel {
     String loginboard;
     String loginregion;
     DefaultTableModel banUser;
+    DefaultTableModel IpoTbl;
     
     public SEBPanel() {
         initComponents();
@@ -72,7 +76,7 @@ public class SEBPanel extends javax.swing.JPanel {
         IPOPanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbIPO = new javax.swing.JTable();
+        tbIPO_ui = new javax.swing.JTable();
         btApprove = new javax.swing.JButton();
         btReject = new javax.swing.JButton();
         btBacktoMain = new javax.swing.JButton();
@@ -116,7 +120,7 @@ public class SEBPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPwd_ui))
                     .addComponent(btLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
         LoginPanelLayout.setVerticalGroup(
             LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +137,7 @@ public class SEBPanel extends javax.swing.JPanel {
                     .addComponent(txtPwd_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(btLogin)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         add(LoginPanel, "card2");
@@ -173,17 +177,18 @@ public class SEBPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addComponent(btIPO, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btBan, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MainPanelLayout.createSequentialGroup()
                         .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(txtName_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(102, 102, 102)
                         .addComponent(lblRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtRegion_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtRegion_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(btIPO, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btBan, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(98, 98, 98))
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addGap(127, 127, 127)
@@ -206,7 +211,7 @@ public class SEBPanel extends javax.swing.JPanel {
                         .addComponent(txtName_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtRegion_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btIPO, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBan, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -221,7 +226,7 @@ public class SEBPanel extends javax.swing.JPanel {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("IPO BOARD");
 
-        tbIPO.setModel(new javax.swing.table.DefaultTableModel(
+        tbIPO_ui.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -240,11 +245,21 @@ public class SEBPanel extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tbIPO);
+        jScrollPane1.setViewportView(tbIPO_ui);
 
         btApprove.setText("Approve");
+        btApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btApproveActionPerformed(evt);
+            }
+        });
 
         btReject.setText("Reject");
+        btReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRejectActionPerformed(evt);
+            }
+        });
 
         btBacktoMain.setText("Back");
         btBacktoMain.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +282,7 @@ public class SEBPanel extends javax.swing.JPanel {
                         .addComponent(btApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(137, 137, 137)
                         .addComponent(btReject, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 141, Short.MAX_VALUE)))
+                        .addGap(0, 117, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IPOPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -340,7 +355,7 @@ public class SEBPanel extends javax.swing.JPanel {
                     .addGroup(BanPanelLayout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(btBanUser, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BanPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -461,6 +476,8 @@ public class SEBPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         IPOPanel.setVisible(true);
         MainPanel.setVisible(false);
+        
+        refreshIpoTable();
     }//GEN-LAST:event_btIPOActionPerformed
 
     private void backbtn_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtn_uiActionPerformed
@@ -482,6 +499,48 @@ public class SEBPanel extends javax.swing.JPanel {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btBanUserActionPerformed
+
+    private void btApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btApproveActionPerformed
+        // TODO add your handling code here:
+        IpoTbl = (DefaultTableModel) tbIPO_ui.getModel();
+        int selindex = tbIPO_ui.getSelectedRow();
+        if(selindex>=0){
+            String companyname=(String)IpoTbl.getValueAt(selindex, 0);
+            double revenue= (Double)IpoTbl.getValueAt(selindex, 1); 
+            String region= (String)IpoTbl.getValueAt(selindex, 2); 
+            double listingprice= (Double)IpoTbl.getValueAt(selindex, 4); 
+            int qty=(Integer)IpoTbl.getValueAt(selindex, 5);
+
+            IPO iobj = new IPO();
+            try {
+                iobj.ApproveIPOReq(companyname, revenue, region, listingprice, qty);
+                refreshIpoTable();
+                JOptionPane.showMessageDialog(this, "Approved IPO and released Stock in "+region+" Market");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+        else{JOptionPane.showMessageDialog(this, "Please Select a row");
+}
+    }//GEN-LAST:event_btApproveActionPerformed
+
+    private void btRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRejectActionPerformed
+        // TODO add your handling code here:
+        try{
+            IPO iobj = new IPO();
+            
+            int selindex = tbIPO_ui.getSelectedRow();
+            if(selindex>=0){
+                String companyname=(String)IpoTbl.getValueAt(selindex, 0);
+                iobj.RejectIPOReq(companyname);
+                refreshIpoTable();
+                JOptionPane.showMessageDialog(this, "Rejected IPO for "+companyname);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Please Select a row");
+            }
+        }catch(Exception e){e.printStackTrace();}
+    }//GEN-LAST:event_btRejectActionPerformed
 
     private void putProftoTable(int proid, double ttotal, String profType) {
         banUser = (DefaultTableModel)tbBanUser.getModel();
@@ -517,7 +576,7 @@ public class SEBPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JTable tbBanUser;
-    private javax.swing.JTable tbIPO;
+    private javax.swing.JTable tbIPO_ui;
     private javax.swing.JTextField txtId_ui;
     private javax.swing.JTextField txtName_ui;
     private javax.swing.JTextField txtPwd_ui;
@@ -546,5 +605,27 @@ public class SEBPanel extends javax.swing.JPanel {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private void refreshIpoTable() {
+        IpoTbl = (DefaultTableModel) tbIPO_ui.getModel();
+        IpoTbl.setRowCount(0);
+     
+        CompanyHandler cobj = new CompanyHandler();
+        
+        try{
+            Object[] row= new Object[6];
+            ArrayList<Company> allCompanyList= cobj.viewAllCompanyInfo(loginregion);
+            for(Company c:allCompanyList){
+                row[0] = c.getCompanyname();
+                row[1] = c.getRevenue();
+                row[2] = c.getRegion();
+                row[3] = c.getType();
+                row[4] = c.getListingprice();
+                row[5] = c.getQty();
+                IpoTbl.addRow(row);
+            }
+        }
+        catch(Exception e){e.printStackTrace();}
     }
 }
