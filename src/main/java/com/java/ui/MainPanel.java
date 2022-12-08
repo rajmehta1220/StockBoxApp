@@ -18,14 +18,22 @@ import com.java.stocks.NSEClass;
 import com.java.stocks.NYSEClass;
 import java.awt.Color;
 import java.awt.Component;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -55,6 +63,30 @@ public class MainPanel extends javax.swing.JFrame {
         initComponents();
         
         loginPage_ui.setVisible(true);
+        
+        //run shell script that triggers pythonscript to fetch API data
+        ProcessBuilder pb = new ProcessBuilder();
+        pb.command("sh", "-c", "/Users/rajmehta/Desktop/StockBox/StockBoxApp/src/main/java/com/pythonscripts/runPythonScripts.sh");
+        
+        ExecutorService pool = Executors.newSingleThreadExecutor();
+        try{
+            Process process = pb.start();
+            ProcessReader task = new ProcessReader(process.getInputStream());
+            Future<List<String>> future = pool.submit(task);
+            
+            List<String> results = future.get();
+            for(String res:results){
+                System.out.println(res);
+            }
+            
+            int exitcode = process.waitFor();
+            System.out.println("ExitCode= "+exitcode);
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            pool.shutdown();
+        }
+        
 //        try {
 //            fakerobj = new FakerClass();
 //        } catch (ClassNotFoundException ex) {
@@ -125,6 +157,8 @@ public class MainPanel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
+
+        loginPage_ui.setPreferredSize(new java.awt.Dimension(1440, 900));
 
         passLogin_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -683,6 +717,19 @@ public class MainPanel extends javax.swing.JFrame {
         }
         
 }
+    
+    private static class ProcessReader implements Callable{
+        private InputStream inputstream;
+        
+        public ProcessReader(InputStream is){
+            this.inputstream=is;
+        }
+        
+        @Override
+        public Object call() throws Exception{
+            return new BufferedReader(new InputStreamReader(inputstream)).lines().collect(Collectors.toList());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backSignin_ui;
