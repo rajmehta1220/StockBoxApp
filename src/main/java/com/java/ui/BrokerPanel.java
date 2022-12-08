@@ -586,7 +586,7 @@ public class BrokerPanel extends javax.swing.JPanel {
             commission_db = (Double) transactionTable.getValueAt(selectedRowIndex, 8);
             transactiondate_db = (String) transactionTable.getValueAt(selectedRowIndex, 9);
             action_db = (String) transactionTable.getValueAt(selectedRowIndex, 10);
-  
+
             System.out.println("TransactionId is: "+tid);
             System.out.println("StockTag for approval is: "+stocktag_db);
 
@@ -656,6 +656,7 @@ public class BrokerPanel extends javax.swing.JPanel {
                             
                             transactionTable.addRow(row);
                     }
+
             }
         } 
         catch (SQLException ex) 

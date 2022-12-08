@@ -54,6 +54,7 @@ public class MainProfile extends javax.swing.JPanel {
     DefaultTableModel stocksTableModel;
     List<Integer> down = new ArrayList();
     List<Integer> loss = new ArrayList();
+    List<String> sellstkdropbox = new ArrayList();
     String loginPass;
     String loginType;
     ArrayList<String> stkTagPortfolio;
@@ -64,6 +65,7 @@ public class MainProfile extends javax.swing.JPanel {
     double selectedCommission;
     int selectedBrokerId;
     DefaultTableModel portfolioTable;
+    double tt;
     
     double currPrice=0;
     String portType;
@@ -169,6 +171,11 @@ public class MainProfile extends javax.swing.JPanel {
         }
 
         
+        sellStockDropbox();
+        sellstockssell_ui.removeAllItems();
+        for(int y=0;y<sellstkdropbox.size();y++){
+            sellstockssell_ui.addItem(sellstkdropbox.get(y));
+        }
     }
 
     /**
@@ -218,6 +225,17 @@ public class MainProfile extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         balance_ui = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        sellstockssell_ui = new javax.swing.JComboBox<>();
+        qtysell_ui = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        pricesell_ui = new javax.swing.JTextField();
+        commsell_ui = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         addFundsPage = new javax.swing.JPanel();
         addFunds_ui = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
@@ -439,21 +457,54 @@ public class MainProfile extends javax.swing.JPanel {
 
         jLabel19.setText("Portfolio P&L:");
 
+        jLabel20.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel20.setText("Sell Stocks");
+
+        sellstockssell_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel21.setText("Price");
+
+        pricesell_ui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pricesell_uiActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setText("Commission");
+
+        jToggleButton1.setText("Load Price");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Sell Stocks");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setText("StockTag");
+
+        jLabel24.setText("Qty");
+
         javax.swing.GroupLayout portfolioPageLayout = new javax.swing.GroupLayout(portfolioPage);
         portfolioPage.setLayout(portfolioPageLayout);
         portfolioPageLayout.setHorizontalGroup(
             portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
-                .addContainerGap(261, Short.MAX_VALUE)
+                .addContainerGap(283, Short.MAX_VALUE)
                 .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
                         .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addComponent(portfolioTitle_ui)
-                                .addGap(89, 89, 89))
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(portfolioPageLayout.createSequentialGroup()
+                                .addComponent(portfolioTitle_ui)
+                                .addGap(123, 123, 123)))
                         .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(fundsUSDPortfolio_ui, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
                             .addComponent(fundsINRPortfolio_ui))
@@ -466,46 +517,70 @@ public class MainProfile extends javax.swing.JPanel {
                         .addComponent(jButton3)
                         .addContainerGap())))
             .addGroup(portfolioPageLayout.createSequentialGroup()
-                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(portfolioPageLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(portfolioPageLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(portfolioPageLayout.createSequentialGroup()
-                                        .addComponent(jLabel18)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(portfolioComm_ui))
-                                    .addGroup(portfolioPageLayout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(portfolioPrice_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(portfolioPageLayout.createSequentialGroup()
-                                        .addComponent(portfolioStockTag_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(portfolioQty_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(portfolioPageLayout.createSequentialGroup()
-                                        .addGap(82, 82, 82)
-                                        .addComponent(jLabel14))
-                                    .addGroup(portfolioPageLayout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(jLabel15)
-                                        .addGap(68, 68, 68)
-                                        .addComponent(jLabel16))))
-                            .addComponent(portfolioLoadPrice_ui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(portfolioBuy_ui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
-                .addGap(0, 173, Short.MAX_VALUE)
+                .addGap(0, 258, Short.MAX_VALUE)
                 .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(balance_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(276, 276, 276))
+                .addGap(241, 241, 241))
+            .addGroup(portfolioPageLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(portfolioPageLayout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(18, 18, 18)
+                                .addComponent(portfolioComm_ui))
+                            .addGroup(portfolioPageLayout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addGap(18, 18, 18)
+                                .addComponent(portfolioPrice_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(portfolioPageLayout.createSequentialGroup()
+                                .addComponent(portfolioStockTag_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(portfolioQty_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(portfolioPageLayout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addComponent(jLabel14))
+                            .addGroup(portfolioPageLayout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel15)
+                                .addGap(68, 68, 68)
+                                .addComponent(jLabel16))))
+                    .addComponent(portfolioLoadPrice_ui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(portfolioBuy_ui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addGap(147, 147, 147))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(portfolioPageLayout.createSequentialGroup()
+                                .addComponent(sellstockssell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(qtysell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, portfolioPageLayout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pricesell_ui))
+                            .addGroup(portfolioPageLayout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(commsell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(63, 63, 63))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel24)
+                        .addGap(110, 110, 110))))
         );
         portfolioPageLayout.setVerticalGroup(
             portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -531,29 +606,55 @@ public class MainProfile extends javax.swing.JPanel {
                 .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(balance_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16))
-                .addGap(2, 2, 2)
-                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(portfolioStockTag_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(portfolioQty_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(portfolioPrice_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
-                .addGap(12, 12, 12)
-                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(portfolioComm_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(portfolioLoadPrice_ui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(portfolioBuy_ui)
-                .addGap(33, 33, 33)
+                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16))
+                        .addGap(2, 2, 2)
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(portfolioStockTag_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(portfolioQty_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(portfolioPrice_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addGap(12, 12, 12)
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(portfolioComm_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(portfolioLoadPrice_ui)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(portfolioBuy_ui)
+                        .addGap(33, 33, 33))
+                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel24))
+                        .addGap(2, 2, 2)
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(sellstockssell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(qtysell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(pricesell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(commsell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jToggleButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jButton3)
                 .addContainerGap())
         );
@@ -915,12 +1016,72 @@ public class MainProfile extends javax.swing.JPanel {
         // TODO add your handling code here:
         TransactionHandler obj = new TransactionHandler();
         try {
-            obj.stockRequest(selectedBrokerId, loginId, selectedQty, selectedMarket, selectedPrice, selectedTag, selectedCommission);
+            obj.stockRequestBuy(selectedBrokerId, loginId, selectedQty, selectedMarket, selectedPrice, selectedTag, selectedCommission);
             refreshPortfolioTable();
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_portfolioBuy_uiActionPerformed
+
+    private void pricesell_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pricesell_uiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pricesell_uiActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        portfolioTable = (DefaultTableModel) portfolioTable_ui.getModel();
+        
+        selectedTag= String.valueOf(sellstockssell_ui.getSelectedItem());
+        selectedQty = Integer.parseInt(qtysell_ui.getText());
+        
+        for(int l=0;l<portfolioTable.getRowCount();l++){
+            if(portfolioTable.getValueAt(l, 0).equals(selectedTag)){
+                if((Integer)portfolioTable.getValueAt(l, 2) < selectedQty){
+                    tt = (Double)portfolioTable.getValueAt(l, 5);
+                    System.out.println(tt);
+                    JOptionPane.showMessageDialog(this,"Please set sell qty less or equal to owned");
+                }
+                else{
+                    TransactionHandler obj = new TransactionHandler();
+                    BrokerHandler bobj = new BrokerHandler();
+
+                    selectedMarket = String.valueOf(stockMarket_ui.getSelectedItem());
+
+                    try {
+                        selectedPrice = obj.buyStock(selectedTag, selectedQty, selectedMarket);
+                        pricesell_ui.setText(String.valueOf(df.format(selectedPrice)));
+
+                        selectedBrokerId = bobj.getCustomerBroker(loginId);
+                        selectedCommission = obj.getCommission(selectedBrokerId, selectedPrice);
+                        commsell_ui.setText(String.valueOf(df.format(selectedCommission)));
+
+                    } catch (Exception ex) {ex.printStackTrace();}
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        TransactionHandler obj = new TransactionHandler();
+        portfolioTable = (DefaultTableModel) portfolioTable_ui.getModel();
+        try {
+            for(int l=0;l<portfolioTable.getRowCount();l++){
+            if(portfolioTable.getValueAt(l, 0).equals(selectedTag)){
+                tt = (Double) portfolioTable.getValueAt(l, 5);
+                System.out.println("TT:"+tt);
+                }
+            }
+            int tid = obj.getTid(tt);
+            System.out.println(tid);
+            //obj.stockRequestSell(selectedBrokerId, loginId, selectedQty, selectedMarket, selectedPrice, selectedTag, selectedCommission, tid);
+            obj.sellStock(tid, selectedPrice, selectedCommission, loginId, selectedMarket, selectedQty, selectedTag, selectedBrokerId);
+            refreshPortfolioTable();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     public void fundsConverter(){
         if(fundsType.equals("INR")){convertedFunds = loginFunds/80;}
@@ -1016,7 +1177,7 @@ public class MainProfile extends javax.swing.JPanel {
             {
                 System.out.println("Connected to the database StockDB");
 
-                String sql = "Select * from transaction where profileid="+loginId+";";
+                String sql = "Select * from transaction where profileid="+loginId+" AND action ='APPROVED';";
                 p = con.prepareStatement(sql);
                 rs = p.executeQuery();
                 Object[] row = new Object[11];
@@ -1061,6 +1222,14 @@ public class MainProfile extends javax.swing.JPanel {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         balance_ui.setText(String.valueOf(pnl));
+    }
+    
+    public void sellStockDropbox(){
+        portfolioTable = (DefaultTableModel) portfolioTable_ui.getModel();
+        int lastRow = portfolioTable.getRowCount();
+        for(int o=0;o<lastRow;o++){
+            sellstkdropbox.add(String.valueOf(portfolioTable.getValueAt(o, 0)));
+        }
     }
 
     private void getPortfolioValues() throws ClassNotFoundException {
@@ -1283,6 +1452,7 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JPanel addFundsPage;
     private javax.swing.JButton addFunds_ui;
     private javax.swing.JTextField balance_ui;
+    private javax.swing.JTextField commsell_ui;
     private javax.swing.JTextField fundsINRPortfolio_ui;
     private javax.swing.JTextField fundsINR_ui;
     private javax.swing.JTextField fundsUSDPortfolio_ui;
@@ -1292,6 +1462,7 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1304,6 +1475,11 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1317,6 +1493,7 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton loadStocks_ui1;
     private javax.swing.JPanel mainProfilePage;
     private javax.swing.JPanel newsPage;
@@ -1329,6 +1506,9 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> portfolioStockTag_ui;
     private javax.swing.JTable portfolioTable_ui;
     private javax.swing.JLabel portfolioTitle_ui;
+    private javax.swing.JTextField pricesell_ui;
+    private javax.swing.JTextField qtysell_ui;
+    private javax.swing.JComboBox<String> sellstockssell_ui;
     private javax.swing.JComboBox<String> stockMarket_ui;
     private javax.swing.JTable stocksTable;
     // End of variables declaration//GEN-END:variables

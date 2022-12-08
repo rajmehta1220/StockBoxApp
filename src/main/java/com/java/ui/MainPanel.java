@@ -60,13 +60,6 @@ public class MainPanel extends javax.swing.JFrame {
 //        } catch (ClassNotFoundException ex) {
 //            Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-//
-//        //verify is SEBProfile Exist
-//        try{
-//            Object[] loginProfileSEB = (Object[]) sebverify.verifySEBProfile(185047);
-//            sebverify.banUser(1);
-//            JOptionPane.showMessageDialog(this, loginProfileSEB[1] + " "+ loginProfileSEB[2]+ " "+ loginProfileSEB[3]);
-//        }catch(Exception e){e.printStackTrace();}
 
 //AcceptIPO
 //        try{
@@ -379,7 +372,7 @@ public class MainPanel extends javax.swing.JFrame {
 
         getContentPane().add(profileLink_ui, "card4");
 
-        loginProfile_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Broker", "SEB" }));
+        loginProfile_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Broker", "SEB", "Company" }));
 
         jLabel8.setText("Login Profiles");
 
@@ -408,7 +401,7 @@ public class MainPanel extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addComponent(jButton3))
                     .addComponent(jLabel8))
-                .addGap(0, 744, Short.MAX_VALUE))
+                .addGap(0, 874, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -605,7 +598,14 @@ public class MainPanel extends javax.swing.JFrame {
             BrokerPanel bpObj = new BrokerPanel();
             splitPane1.setRightComponent(bpObj);
         }
-        else{}
+        else if(String.valueOf(loginProfile_ui.getSelectedItem()).equals("Company")){
+            CompanyPanel cpObj = new CompanyPanel();
+            splitPane1.setRightComponent(cpObj);
+        }
+        else{
+            SEBPanel sObj = new SEBPanel();
+            splitPane1.setRightComponent(sObj);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
