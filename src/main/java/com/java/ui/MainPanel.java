@@ -60,13 +60,6 @@ public class MainPanel extends javax.swing.JFrame {
 //        } catch (ClassNotFoundException ex) {
 //            Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-//
-//        //verify is SEBProfile Exist
-//        try{
-//            Object[] loginProfileSEB = (Object[]) sebverify.verifySEBProfile(185047);
-//            sebverify.banUser(1);
-//            JOptionPane.showMessageDialog(this, loginProfileSEB[1] + " "+ loginProfileSEB[2]+ " "+ loginProfileSEB[3]);
-//        }catch(Exception e){e.printStackTrace();}
 
 //AcceptIPO
 //        try{

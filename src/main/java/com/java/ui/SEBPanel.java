@@ -4,14 +4,23 @@
  */
 package com.java.ui;
 
+import com.java.rules.RulesClass;
+import com.java.sebprofiles.SEBProfileClass;
+import java.awt.Color;
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -29,6 +38,7 @@ public class SEBPanel extends javax.swing.JPanel {
     String loginname;
     String loginboard;
     String loginregion;
+    DefaultTableModel banUser;
     
     public SEBPanel() {
         initComponents();
@@ -161,7 +171,6 @@ public class SEBPanel extends javax.swing.JPanel {
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addComponent(btIPO, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,18 +311,15 @@ public class SEBPanel extends javax.swing.JPanel {
             new String [] {
                 "ProfileId", "Type", "Transactiontotal"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         jScrollPane2.setViewportView(tbBanUser);
 
         btBanUser.setText("BAN USER");
+        btBanUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBanUserActionPerformed(evt);
+            }
+        });
 
         backbtn_ui.setText("Back");
         backbtn_ui.addActionListener(new java.awt.event.ActionListener() {
@@ -332,15 +338,14 @@ public class SEBPanel extends javax.swing.JPanel {
                         .addGap(173, 173, 173)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BanPanelLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(BanPanelLayout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(btBanUser, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BanPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(backbtn_ui)
+                .addGroup(BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backbtn_ui))
                 .addGap(18, 18, 18))
         );
         BanPanelLayout.setVerticalGroup(
@@ -348,11 +353,11 @@ public class SEBPanel extends javax.swing.JPanel {
             .addGroup(BanPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(btBanUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backbtn_ui)
                 .addGap(14, 14, 14))
         );
@@ -423,6 +428,27 @@ public class SEBPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         BanPanel.setVisible(true);
         MainPanel.setVisible(false);
+        RulesClass robj = new RulesClass();
+        try {
+            banUser = (DefaultTableModel)tbBanUser.getModel();
+            banUser.setRowCount(0);
+            
+            ArrayList<Integer> rulesInvalidate = robj.RulesValidation(loginregion);
+            
+            for(int u=0;u<rulesInvalidate.size();u++){
+                System.out.println(rulesInvalidate.get(u));
+                System.out.println("TT: "+robj.returnTransTotal(rulesInvalidate.get(u)));
+                System.out.println("Type: "+robj.returnProfType(rulesInvalidate.get(u)));
+                
+                int i = rulesInvalidate.get(u);
+                double t = robj.returnTransTotal(rulesInvalidate.get(u));
+                String r = robj.returnProfType(rulesInvalidate.get(u));
+                putProftoTable(i,t,r);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btBanActionPerformed
 
     private void btBacktoMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBacktoMainActionPerformed
@@ -439,11 +465,32 @@ public class SEBPanel extends javax.swing.JPanel {
 
     private void backbtn_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtn_uiActionPerformed
         // TODO add your handling code here:
-        
         MainPanel.setVisible(true);
         BanPanel.setVisible(false);
     }//GEN-LAST:event_backbtn_uiActionPerformed
 
+    private void btBanUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBanUserActionPerformed
+        // TODO add your handling code here:
+        banUser = (DefaultTableModel)tbBanUser.getModel();
+        int selrow =tbBanUser.getSelectedRow();
+        int banid = (Integer) banUser.getValueAt(selrow, 0);
+        SEBProfileClass sobj = new SEBProfileClass();
+        try {
+            sobj.banUser(banid);
+            refreshBanTable();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btBanUserActionPerformed
+
+    private void putProftoTable(int proid, double ttotal, String profType) {
+        banUser = (DefaultTableModel)tbBanUser.getModel();
+        Object row[]= new Object[3];
+        row[0]= proid;
+        row[1]= ttotal;
+        row[2] = profType;
+        banUser.addRow(row);      
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BanPanel;
@@ -476,4 +523,28 @@ public class SEBPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtPwd_ui;
     private javax.swing.JTextField txtRegion_ui;
     // End of variables declaration//GEN-END:variables
+
+    private void refreshBanTable() {
+        RulesClass robj = new RulesClass();
+        try {
+            banUser = (DefaultTableModel)tbBanUser.getModel();
+            banUser.setRowCount(0);
+            
+            ArrayList<Integer> rulesInvalidate = robj.RulesValidation(loginregion);
+            
+            for(int u=0;u<rulesInvalidate.size();u++){
+                System.out.println(rulesInvalidate.get(u));
+                System.out.println("TT: "+robj.returnTransTotal(rulesInvalidate.get(u)));
+                System.out.println("Type: "+robj.returnProfType(rulesInvalidate.get(u)));
+                
+                int i = rulesInvalidate.get(u);
+                double t = robj.returnTransTotal(rulesInvalidate.get(u));
+                String r = robj.returnProfType(rulesInvalidate.get(u));
+                putProftoTable(i,t,r);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }
