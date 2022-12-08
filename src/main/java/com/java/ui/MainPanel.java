@@ -609,6 +609,10 @@ public class MainPanel extends javax.swing.JFrame {
             CompanyPanel cpObj = new CompanyPanel();
             splitPane1.setRightComponent(cpObj);
         }
+        else{
+            SEBPanel sObj = new SEBPanel();
+            splitPane1.setRightComponent(sObj);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

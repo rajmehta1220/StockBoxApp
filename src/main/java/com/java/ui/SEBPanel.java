@@ -71,6 +71,7 @@ public class SEBPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbBanUser = new javax.swing.JTable();
         btBanUser = new javax.swing.JButton();
+        backbtn_ui = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -160,7 +161,7 @@ public class SEBPanel extends javax.swing.JPanel {
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addGap(0, 99, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addComponent(btIPO, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,6 +315,13 @@ public class SEBPanel extends javax.swing.JPanel {
 
         btBanUser.setText("BAN USER");
 
+        backbtn_ui.setText("Back");
+        backbtn_ui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtn_uiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout BanPanelLayout = new javax.swing.GroupLayout(BanPanel);
         BanPanel.setLayout(BanPanelLayout);
         BanPanelLayout.setHorizontalGroup(
@@ -329,7 +337,11 @@ public class SEBPanel extends javax.swing.JPanel {
                     .addGroup(BanPanelLayout.createSequentialGroup()
                         .addGap(125, 125, 125)
                         .addComponent(btBanUser, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BanPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backbtn_ui)
+                .addGap(18, 18, 18))
         );
         BanPanelLayout.setVerticalGroup(
             BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,7 +352,9 @@ public class SEBPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btBanUser)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addComponent(backbtn_ui)
+                .addGap(14, 14, 14))
         );
 
         add(BanPanel, "card5");
@@ -369,7 +383,7 @@ public class SEBPanel extends javax.swing.JPanel {
             {
                 System.out.println("Connected to the database StockDB");
 
-                String sql = "Select * from profile where id="+id+" AND password= '"+pass+"';";
+                String sql = "Select * from SEBtable where id="+id+" AND name= '"+pass+"';";
                 p = con.prepareStatement(sql);
                 rs = p.executeQuery();
                 
@@ -379,7 +393,7 @@ public class SEBPanel extends javax.swing.JPanel {
                             loginid = rs.getInt("id");
                             loginname= rs.getString("name");
                             loginboard = rs.getString("board");
-                            loginregion= rs.getString("board");
+                            loginregion= rs.getString("region");
                             
                             login = true;
                             JOptionPane.showMessageDialog(this,"Login successful for "+loginid+ " Name: "+loginname);  
@@ -413,6 +427,8 @@ public class SEBPanel extends javax.swing.JPanel {
 
     private void btBacktoMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBacktoMainActionPerformed
         // TODO add your handling code here:
+        MainPanel.setVisible(true);
+        IPOPanel.setVisible(false);
     }//GEN-LAST:event_btBacktoMainActionPerformed
 
     private void btIPOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIPOActionPerformed
@@ -421,12 +437,20 @@ public class SEBPanel extends javax.swing.JPanel {
         MainPanel.setVisible(false);
     }//GEN-LAST:event_btIPOActionPerformed
 
+    private void backbtn_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtn_uiActionPerformed
+        // TODO add your handling code here:
+        
+        MainPanel.setVisible(true);
+        BanPanel.setVisible(false);
+    }//GEN-LAST:event_backbtn_uiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BanPanel;
     private javax.swing.JPanel IPOPanel;
     private javax.swing.JPanel LoginPanel;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JButton backbtn_ui;
     private javax.swing.JButton btApprove;
     private javax.swing.JButton btBack;
     private javax.swing.JButton btBacktoMain;
