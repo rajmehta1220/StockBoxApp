@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class CompanyHandler {
     
-     public ArrayList viewAllCompanyInfo(String companyname) throws ClassNotFoundException{
+     public ArrayList viewAllCompanyInfo(String cregion) throws ClassNotFoundException{
         try 
         {
             Connection con = null;
@@ -35,7 +35,7 @@ public class CompanyHandler {
             {
                 System.out.println("Connected to the database StockDB");
 
-                String sql = "select * from Company where companyname = '"+companyname+"';";
+                String sql = "select * from Company where region = '"+cregion+"';";
                 
                 System.out.println(sql);
                 p = con.prepareStatement(sql);
