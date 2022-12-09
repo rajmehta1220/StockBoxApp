@@ -4,6 +4,7 @@
  */
 package com.java.ui;
 
+import com.java.broker.Broker;
 import com.java.broker.BrokerHandler;
 import com.java.dbconn.DbConnectionBSE;
 import com.java.dbconn.DbConnectionNEUSE;
@@ -70,6 +71,7 @@ public class MainProfile extends javax.swing.JPanel {
     double currPrice=0;
     String portType;
     String portStockTag;
+    DefaultTableModel newsTable;
     
     private static final DecimalFormat df = new DecimalFormat("0.000");
     
@@ -250,6 +252,10 @@ public class MainProfile extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         newsPage = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        newsTable_ui = new javax.swing.JTable();
+        jButton7 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
@@ -283,6 +289,11 @@ public class MainProfile extends javax.swing.JPanel {
         jScrollPane2.setViewportView(stocksTable);
 
         jButton4.setText("Today's News");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("My Portfolio");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -311,16 +322,14 @@ public class MainProfile extends javax.swing.JPanel {
         mainProfilePageLayout.setHorizontalGroup(
             mainProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainProfilePageLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(mainProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainProfilePageLayout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jButton4)
-                        .addGap(50, 50, 50)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(mainProfilePageLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2)))
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainProfilePageLayout.createSequentialGroup()
                 .addGroup(mainProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -341,7 +350,7 @@ public class MainProfile extends javax.swing.JPanel {
                                 .addComponent(jButton1))
                             .addGroup(mainProfilePageLayout.createSequentialGroup()
                                 .addComponent(loadStocks_ui1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fundsUSD_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -374,11 +383,11 @@ public class MainProfile extends javax.swing.JPanel {
                         .addComponent(jLabel10)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(mainProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addGap(34, 34, 34))
+                    .addComponent(jButton5)
+                    .addComponent(jButton4))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         add(mainProfilePage, "card14");
@@ -752,15 +761,59 @@ public class MainProfile extends javax.swing.JPanel {
 
         add(addFundsPage, "card15");
 
+        newsTable_ui.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Date", "NewsText"
+            }
+        ));
+        jScrollPane3.setViewportView(newsTable_ui);
+
+        jButton7.setText("Back");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel25.setText("Latest News Panel");
+
         javax.swing.GroupLayout newsPageLayout = new javax.swing.GroupLayout(newsPage);
         newsPage.setLayout(newsPageLayout);
         newsPageLayout.setHorizontalGroup(
             newsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+            .addGroup(newsPageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(newsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(newsPageLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newsPageLayout.createSequentialGroup()
+                        .addGap(0, 277, Short.MAX_VALUE)
+                        .addGroup(newsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newsPageLayout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addGap(271, 271, 271))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newsPageLayout.createSequentialGroup()
+                                .addComponent(jButton7)
+                                .addContainerGap())))))
         );
         newsPageLayout.setVerticalGroup(
             newsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 635, Short.MAX_VALUE)
+            .addGroup(newsPageLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel25)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jButton7)
+                .addGap(16, 16, 16))
         );
 
         add(newsPage, "card15");
@@ -1082,6 +1135,55 @@ public class MainProfile extends javax.swing.JPanel {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        newsPage.setVisible(false);
+        mainProfilePage.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        newsPage.setVisible(true);
+        mainProfilePage.setVisible(false);
+        try 
+        {
+            Connection con = null;
+            PreparedStatement p = null;
+            ResultSet rs = null;
+
+            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+            String username = "root"; // MySQL credentials
+            String password = "root123$";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+
+            if (con != null) 
+            {
+                System.out.println("Connected to the database StockDB");
+
+                String sql = "select * from news;";
+                
+                System.out.println(sql);
+                p = con.prepareStatement(sql);
+                rs = p.executeQuery();
+                Object[] rows = new Object[3];
+                newsTable = (DefaultTableModel) newsTable_ui.getModel();
+                newsTable.setRowCount(0);
+                while (rs.next()) 
+                {
+                    rows[0] = rs.getDate("newsdate");
+                    rows[1] = rs.getString("newstext");
+                    newsTable.addRow(rows);
+                }
+            }
+        } 
+        catch (Exception ex) 
+        {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     public void fundsConverter(){
         if(fundsType.equals("INR")){convertedFunds = loginFunds/80;}
@@ -1446,6 +1548,7 @@ public class MainProfile extends javax.swing.JPanel {
             }
         }  
     }
+   
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addBal_ui;
@@ -1463,6 +1566,7 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1480,6 +1584,7 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1489,6 +1594,7 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -1497,6 +1603,7 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JButton loadStocks_ui1;
     private javax.swing.JPanel mainProfilePage;
     private javax.swing.JPanel newsPage;
+    private javax.swing.JTable newsTable_ui;
     private javax.swing.JButton portfolioBuy_ui;
     private javax.swing.JTextField portfolioComm_ui;
     private javax.swing.JButton portfolioLoadPrice_ui;

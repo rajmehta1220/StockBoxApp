@@ -7,6 +7,7 @@ package com.java.ui;
 import Company.Company;
 import Company.CompanyHandler;
 import com.java.ipo.IPO;
+import com.java.news.News;
 import com.java.rules.RulesClass;
 import com.java.sebprofiles.SEBProfileClass;
 import java.awt.Color;
@@ -510,10 +511,15 @@ public class SEBPanel extends javax.swing.JPanel {
             String region= (String)IpoTbl.getValueAt(selindex, 2); 
             double listingprice= (Double)IpoTbl.getValueAt(selindex, 4); 
             int qty=(Integer)IpoTbl.getValueAt(selindex, 5);
+            
+            News nobj = new News();
 
             IPO iobj = new IPO();
             try {
                 iobj.ApproveIPOReq(companyname, revenue, region, listingprice, qty);
+                String news = nobj.approvedCompanyIPONews(companyname, revenue, region, listingprice, qty);
+                System.out.println("News: "+news);
+                newsDBinsert(news);
                 refreshIpoTable();
                 JOptionPane.showMessageDialog(this, "Approved IPO and released Stock in "+region+" Market");
             } catch (Exception ex) {
@@ -627,5 +633,40 @@ public class SEBPanel extends javax.swing.JPanel {
             }
         }
         catch(Exception e){e.printStackTrace();}
+    }
+    
+    private void newsDBinsert(String news) throws ClassNotFoundException {
+        try 
+        {
+            Connection con = null;
+            PreparedStatement p = null;
+            ResultSet rs = null;
+
+            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+            String username = "root"; // MySQL credentials
+            String password = "root123$";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+
+            if (con != null) 
+            {
+                System.out.println("Insert into news StockDB");
+
+                String sql = "Insert into news (newsdate, newstext) VALUES (SYSDATE(), '"+news+"');";
+                p = con.prepareStatement(sql);
+                int rowInsert = p.executeUpdate(); 
+                if(rowInsert > 0){
+                    System.out.println("Assigned Broker to Customer");
+                }
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
     }
 }

@@ -6,6 +6,7 @@ package com.java.ui;
 
 //import com.java.broker.BrokerHandler;
 import Company.CompanyProfile;
+import com.java.news.News;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -205,9 +206,14 @@ public class CompanyPanel extends javax.swing.JPanel {
         int qty = Integer.parseInt(qty_ui.getText());
         String password = String.valueOf(enterpassword_ui.getText());
         
-        
+        News nobj = new News();
+    
         try {
             comobj.createCompanyProfile(companyname, revenue, region, type, listingprice,qty,password);
+            String news = nobj.newCompanyIPONews(companyname, revenue, region, type, listingprice, qty);
+            
+            newsDBinsert(news);
+            
             // TODO add your handling code here:
         } catch (Exception ex) {
             //Logger.getLogger(CompanyPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -242,4 +248,39 @@ public class CompanyPanel extends javax.swing.JPanel {
     private javax.swing.JTextField revenue_ui;
     private javax.swing.JTextField type_ui;
     // End of variables declaration//GEN-END:variables
+
+    private void newsDBinsert(String news) throws ClassNotFoundException {
+        try 
+        {
+            Connection con = null;
+            PreparedStatement p = null;
+            ResultSet rs = null;
+
+            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+            String username = "root"; // MySQL credentials
+            String password = "root123$";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+
+            if (con != null) 
+            {
+                System.out.println("Connected to the database StockDB");
+
+                String sql = "Insert into news (newsdate, newstext) VALUES (SYSDATE(), '"+news+"');";
+                p = con.prepareStatement(sql);
+                int rowInsert = p.executeUpdate(); 
+                if(rowInsert > 0){
+                    System.out.println("Assigned Broker to Customer");
+                }
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+    }
 }
