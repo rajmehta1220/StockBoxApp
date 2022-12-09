@@ -125,6 +125,7 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
         signinPage_ui = new javax.swing.JPanel();
         nameSignin_ui = new javax.swing.JTextField();
         passSignin_ui = new javax.swing.JTextField();
@@ -191,33 +192,38 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        jLabel10.setText("Profile Login Page");
+
         javax.swing.GroupLayout loginPage_uiLayout = new javax.swing.GroupLayout(loginPage_ui);
         loginPage_ui.setLayout(loginPage_uiLayout);
         loginPage_uiLayout.setHorizontalGroup(
             loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPage_uiLayout.createSequentialGroup()
-                .addGap(293, 293, 293)
-                .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(passLogin_ui)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPage_uiLayout.createSequentialGroup()
+                .addContainerGap(262, Short.MAX_VALUE)
+                .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(loginPage_uiLayout.createSequentialGroup()
                         .addComponent(login_ui)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(signin_ui))
-                    .addComponent(idLogin_ui))
-                .addContainerGap(431, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPage_uiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(48, 48, 48))
+                    .addGroup(loginPage_uiLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(12, 12, 12)
+                        .addComponent(idLogin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(loginPage_uiLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(12, 12, 12)
+                        .addComponent(passLogin_ui))
+                    .addComponent(jButton1)
+                    .addComponent(jLabel10))
+                .addGap(388, 388, 388))
         );
         loginPage_uiLayout.setVerticalGroup(
             loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPage_uiLayout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel10)
+                .addGap(103, 103, 103)
                 .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idLogin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -229,7 +235,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(login_ui)
                     .addComponent(signin_ui))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addGap(100, 100, 100)
                 .addComponent(jButton1)
                 .addGap(31, 31, 31))
         );
@@ -375,7 +381,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addComponent(loginName_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(proceedMain_ui)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(jPanel1);
@@ -388,7 +394,7 @@ public class MainPanel extends javax.swing.JFrame {
         );
         profileMain_uiLayout.setVerticalGroup(
             profileMain_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
+            .addGap(0, 454, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(profileMain_ui);
@@ -435,7 +441,7 @@ public class MainPanel extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addComponent(jButton3))
                     .addComponent(jLabel8))
-                .addGap(0, 874, Short.MAX_VALUE))
+                .addGap(0, 868, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -461,7 +467,7 @@ public class MainPanel extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 429, Short.MAX_VALUE)
+            .addGap(0, 454, Short.MAX_VALUE)
         );
 
         splitPane1.setLeftComponent(jPanel3);
@@ -739,6 +745,7 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
