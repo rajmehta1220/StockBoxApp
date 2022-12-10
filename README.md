@@ -54,3 +54,5 @@
  [FlowChart](https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg)
   
 
+## Group
+[RajMehta AaksahBhatt HimanshiMotwani](https://github.com/rajmehta1220/StockBoxApp/blob/main/src/main/resources/icons/group.jpg)
