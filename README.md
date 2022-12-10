@@ -51,7 +51,10 @@
     
  
  ## Model
- [FlowChart](https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg)
+ <p align="center">
+  <img src="https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg" width="350" title="hover text">
+  <img src="https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg" width="350" alt="accessibility text">
+</p>
   
 
 ## Group
