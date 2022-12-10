@@ -57,7 +57,9 @@
   
 
 ## Group
-[RajMehta AaksahBhatt HimanshiMotwani]()
+Raj Mehta
+Aaksah Bhatt 
+Himanshi Motwani
 <p align="center">
   <img src="https://github.com/rajmehta1220/StockBoxApp/blob/main/src/main/resources/icons/group_pic.jpg" width="500" title="Group">
 </p>
