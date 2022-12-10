@@ -260,10 +260,13 @@ public class MainProfile extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
+        mainProfilePage.setBackground(new java.awt.Color(43, 63, 87));
+
         stockMarket_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         stockMarket_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Main Profile Panel");
 
         loadStocks_ui1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -275,6 +278,7 @@ public class MainProfile extends javax.swing.JPanel {
         });
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Select Stock Market:");
 
         stocksTable.setDefaultRenderer(Object.class, new MonCellRenderer());
@@ -317,9 +321,11 @@ public class MainProfile extends javax.swing.JPanel {
         fundsINR_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Funds USD");
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Funds INR");
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -373,7 +379,7 @@ public class MainProfile extends javax.swing.JPanel {
                                 .addComponent(jButton1))
                             .addGroup(mainProfilePageLayout.createSequentialGroup()
                                 .addComponent(loadStocks_ui1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fundsUSD_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -411,12 +417,15 @@ public class MainProfile extends javax.swing.JPanel {
                     .addComponent(jButton5)
                     .addComponent(jButton4)
                     .addComponent(btLogout))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         add(mainProfilePage, "card14");
 
+        portfolioPage.setBackground(new java.awt.Color(43, 63, 87));
+
         jLabel11.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Funds");
 
         fundsUSDPortfolio_ui.setEditable(false);
@@ -431,9 +440,11 @@ public class MainProfile extends javax.swing.JPanel {
         fundsINRPortfolio_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("USD");
 
         jLabel13.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("INR");
 
         jButton3.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -445,6 +456,7 @@ public class MainProfile extends javax.swing.JPanel {
         });
 
         portfolioTitle_ui.setFont(new java.awt.Font("Helvetica Neue", 1, 30)); // NOI18N
+        portfolioTitle_ui.setForeground(new java.awt.Color(255, 255, 255));
         portfolioTitle_ui.setText("Raj's Portfolio Page");
 
         portfolioTable_ui.setDefaultRenderer(Object.class, new MonCellRenderer());
@@ -471,12 +483,15 @@ public class MainProfile extends javax.swing.JPanel {
         portfolioQty_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Buy Stocks");
 
         jLabel15.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("StockTag");
 
         jLabel16.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Qty");
 
         portfolioPrice_ui.setEditable(false);
@@ -502,18 +517,22 @@ public class MainProfile extends javax.swing.JPanel {
         portfolioComm_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Price");
 
         jLabel18.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Commission");
 
         balance_ui.setEditable(false);
         balance_ui.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Portfolio P&L:");
 
         jLabel20.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Sell Stocks");
 
         sellstockssell_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -522,6 +541,7 @@ public class MainProfile extends javax.swing.JPanel {
         qtysell_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Price");
 
         pricesell_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -534,6 +554,7 @@ public class MainProfile extends javax.swing.JPanel {
         commsell_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel22.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Commission");
 
         jToggleButton1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -553,9 +574,11 @@ public class MainProfile extends javax.swing.JPanel {
         });
 
         jLabel23.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("StockTag");
 
         jLabel24.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Qty");
 
         javax.swing.GroupLayout portfolioPageLayout = new javax.swing.GroupLayout(portfolioPage);
@@ -720,12 +743,14 @@ public class MainProfile extends javax.swing.JPanel {
                         .addComponent(jToggleButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(40, 40, 40))
         );
 
         add(portfolioPage, "card15");
+
+        addFundsPage.setBackground(new java.awt.Color(43, 63, 87));
 
         addFunds_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         addFunds_ui.setText("Add Funds");
@@ -746,18 +771,23 @@ public class MainProfile extends javax.swing.JPanel {
         jTextField5.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Card Number");
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Expiry");
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CVV ");
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Funds to add");
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Add Funds");
 
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -800,7 +830,7 @@ public class MainProfile extends javax.swing.JPanel {
                     .addGroup(addFundsPageLayout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(jLabel5)))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(347, Short.MAX_VALUE))
         );
         addFundsPageLayout.setVerticalGroup(
             addFundsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -827,12 +857,14 @@ public class MainProfile extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addGap(28, 28, 28)
                 .addComponent(addFunds_ui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(19, 19, 19))
         );
 
         add(addFundsPage, "card15");
+
+        newsPage.setBackground(new java.awt.Color(43, 63, 87));
 
         newsTable_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         newsTable_ui.setModel(new javax.swing.table.DefaultTableModel(
@@ -857,6 +889,7 @@ public class MainProfile extends javax.swing.JPanel {
         });
 
         jLabel25.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Latest News Panel");
 
         javax.swing.GroupLayout newsPageLayout = new javax.swing.GroupLayout(newsPage);
@@ -870,7 +903,7 @@ public class MainProfile extends javax.swing.JPanel {
                         .addComponent(jScrollPane3)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newsPageLayout.createSequentialGroup()
-                        .addGap(0, 277, Short.MAX_VALUE)
+                        .addGap(0, 424, Short.MAX_VALUE)
                         .addGroup(newsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, newsPageLayout.createSequentialGroup()
                                 .addComponent(jLabel25)
@@ -886,7 +919,7 @@ public class MainProfile extends javax.swing.JPanel {
                 .addComponent(jLabel25)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(jButton7)
                 .addGap(16, 16, 16))
         );
