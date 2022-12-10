@@ -56,12 +56,17 @@
  <p align="center">
   <img src="https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg" width="1000" title="FlowChart">
 </p>
+
+## Class Diagram
+ <p align="center">
+  <img src="https://github.com/rajmehta1220/StockBoxApp/blob/main/class diagram stockboxApp.jpg" width="1000" title="ClassDiagram">
+</p>
   
 
 ## Group
 Raj Mehta
 <br>
-Aaksah Bhatt
+Aakash Bhatt
 <br>
 Himanshi Motwani
 <p align="center">
