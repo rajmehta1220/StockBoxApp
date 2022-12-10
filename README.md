@@ -50,7 +50,7 @@
     * CRUD IPOs, Customers, Business, Investors
     
  
- ** Model
- [Model Diagram](https://drive.google.com/file/d/1OkJYy75t4YJSft6IBh0iJWV1vXcC22_5/view?usp=sharing)
+ ## Model
+ [FlowChart](https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg)
   
 
