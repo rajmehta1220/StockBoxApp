@@ -67,6 +67,7 @@ public class BrokerPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
         loginPage_ui = new javax.swing.JPanel();
         id_brokerLogin_ui = new javax.swing.JTextField();
         pass_brokerLogin_ui = new javax.swing.JTextField();
@@ -111,6 +112,9 @@ public class BrokerPanel extends javax.swing.JPanel {
         aproveStock = new javax.swing.JButton();
         denyStock = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        back = new javax.swing.JButton();
+
+        jButton2.setText("jButton2");
 
         setLayout(new java.awt.CardLayout());
 
@@ -407,13 +411,12 @@ public class BrokerPanel extends javax.swing.JPanel {
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(totalCommUSD_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(totalCommINR_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(totalCommUSD_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(totalCommINR_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addGap(0, 24, Short.MAX_VALUE)))
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainBrokerPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -422,14 +425,14 @@ public class BrokerPanel extends javax.swing.JPanel {
                         .addComponent(jLabel7)
                         .addGap(344, 344, 344))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainBrokerPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(396, 396, 396))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainBrokerPanelLayout.createSequentialGroup()
                         .addComponent(transactionReq_ui)
                         .addGap(394, 394, 394))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainBrokerPanelLayout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))))
+                        .addGap(87, 87, 87))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainBrokerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(396, 396, 396))))
         );
         MainBrokerPanelLayout.setVerticalGroup(
             MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -502,6 +505,14 @@ public class BrokerPanel extends javax.swing.JPanel {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("CUSTOMER TRANSACTION REQUESTS");
 
+        back.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout TransactionRequestPanel_uiLayout = new javax.swing.GroupLayout(TransactionRequestPanel_ui);
         TransactionRequestPanel_ui.setLayout(TransactionRequestPanel_uiLayout);
         TransactionRequestPanel_uiLayout.setHorizontalGroup(
@@ -513,25 +524,31 @@ public class BrokerPanel extends javax.swing.JPanel {
                     .addGroup(TransactionRequestPanel_uiLayout.createSequentialGroup()
                         .addComponent(aproveStock, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(denyStock, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)))
+                        .addComponent(denyStock, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(TransactionRequestPanel_uiLayout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TransactionRequestPanel_uiLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(14, 14, 14))
         );
         TransactionRequestPanel_uiLayout.setVerticalGroup(
             TransactionRequestPanel_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TransactionRequestPanel_uiLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(TransactionRequestPanel_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aproveStock)
                     .addComponent(denyStock))
-                .addGap(26, 26, 26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(14, 14, 14))
         );
 
         add(TransactionRequestPanel_ui, "card5");
@@ -717,6 +734,11 @@ public class BrokerPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         MainBrokerPanel.setVisible(false);
         loginPage_ui.setVisible(true);
+        try {
+            loadBrokerPage();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BrokerPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void back1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back1ActionPerformed
@@ -731,6 +753,17 @@ public class BrokerPanel extends javax.swing.JPanel {
         refreshTransactionRequest();
     }//GEN-LAST:event_denyStockActionPerformed
 
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        try {
+            // TODO add your handling code here:
+            loadBrokerPage();
+            TransactionRequestPanel_ui.setVisible(false);
+            MainBrokerPanel.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BrokerPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_backActionPerformed
+
     public void loadBrokerPage() throws ClassNotFoundException{
         brokerName_ui.setText(loginName);
         commRate_ui.setText(String.valueOf(loginCommrate));
@@ -744,6 +777,7 @@ public class BrokerPanel extends javax.swing.JPanel {
             rows[2]=p.getType();
             brokerClients.addRow(rows);
         }
+        
         try 
         {
             Connection con = null;
@@ -759,7 +793,7 @@ public class BrokerPanel extends javax.swing.JPanel {
 
             if (con != null) 
             {
-                System.out.println("Connected to the database StockDB");
+                System.out.println("Connected to broker");
 
                 String sql = "Select * from broker where brokerid="+loginId+";";
                 System.out.println(sql);
@@ -775,12 +809,8 @@ public class BrokerPanel extends javax.swing.JPanel {
                             else{
                                 totalCommUSD_ui.setText(String.valueOf(rs.getDouble("commission")));
                                 totalCommINR_ui.setText(String.valueOf(currencyconverter(rs.getDouble("commission"), "USA")));
-                            }
-
-                            
-                            transactionTable.addRow(row);
+                            }  
                     }
-
             }
         } 
         catch (SQLException ex) 
@@ -832,12 +862,9 @@ public class BrokerPanel extends javax.swing.JPanel {
                             row[7] = rs.getString("stocktag");
                             row[8] = rs.getDouble("commission");
                             row[9] = rs.getString("transactiondate");
-                            row[10] = rs.getString("action");
-
-                            
+                            row[10] = rs.getString("action");                            
                             transactionTable.addRow(row);
                     }
-
             }
         } 
         catch (SQLException ex) 
@@ -856,6 +883,7 @@ public class BrokerPanel extends javax.swing.JPanel {
     private javax.swing.JPanel MainBrokerPanel;
     private javax.swing.JPanel TransactionRequestPanel_ui;
     private javax.swing.JButton aproveStock;
+    private javax.swing.JButton back;
     private javax.swing.JButton back1;
     private javax.swing.JButton backSignin_ui;
     private javax.swing.JTable brokerClients_ui;
@@ -865,6 +893,7 @@ public class BrokerPanel extends javax.swing.JPanel {
     private javax.swing.JButton denyStock;
     private javax.swing.JTextField id_brokerLogin_ui;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
