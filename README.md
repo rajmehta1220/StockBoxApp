@@ -51,6 +51,6 @@
     
  
  ** Model
- [Model Diagram](FlowChart.jpg)
+ [Model Diagram](https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg))
   
 
