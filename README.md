@@ -50,7 +50,7 @@
     * CRUD IPOs, Customers, Business, Investors
  
  ## Prediction Model
- (https://github.com/rajmehta1220/StockBoxApp/blob/main/src/main/java/com/pythonscripts/Stock_Prediction.ipynb)
+ [Prediction_model.ipynb](https://github.com/rajmehta1220/StockBoxApp/blob/main/src/main/java/com/pythonscripts/Stock_Prediction.ipynb)
  
  ## Model
  <p align="center">
