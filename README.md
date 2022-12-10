@@ -51,6 +51,13 @@
     
  
  ## Model
- [FlowChart](https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg)
+ <p align="center">
+  <img src="https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg" width="500" title="FlowChart">
+</p>
   
 
+## Group
+[RajMehta AaksahBhatt HimanshiMotwani]()
+<p align="center">
+  <img src="https://github.com/rajmehta1220/StockBoxApp/blob/main/src/main/resources/icons/group.jpg" width="500" title="Group">
+</p>
