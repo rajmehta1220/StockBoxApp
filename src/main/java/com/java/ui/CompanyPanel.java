@@ -6,7 +6,6 @@ package com.java.ui;
 
 //import com.java.broker.BrokerHandler;
 import Company.CompanyProfile;
-import com.java.news.News;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -70,26 +69,43 @@ public class CompanyPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel1.setText("Create Company Profile");
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel2.setText("Revenue");
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel5.setText("Company Name");
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel6.setText("Region");
 
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel7.setText("Type");
 
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel8.setText("Listing Price");
 
+        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel9.setText("Quantity");
 
+        revenue_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         revenue_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 revenue_uiActionPerformed(evt);
             }
         });
 
+        companyname_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        type_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        listingprice_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        qty_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        btnCreate.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,14 +113,17 @@ public class CompanyPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel10.setText("Password");
 
+        enterpassword_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         enterpassword_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterpassword_uiActionPerformed(evt);
             }
         });
 
+        region_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         region_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INDIA", "USA", "BOSTON" }));
 
         javax.swing.GroupLayout createCompanyProfileLayout = new javax.swing.GroupLayout(createCompanyProfile);
@@ -113,42 +132,36 @@ public class CompanyPanel extends javax.swing.JPanel {
             createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createCompanyProfileLayout.createSequentialGroup()
                 .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(createCompanyProfileLayout.createSequentialGroup()
-                            .addGap(121, 121, 121)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(createCompanyProfileLayout.createSequentialGroup()
-                            .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(createCompanyProfileLayout.createSequentialGroup()
-                                    .addGap(37, 37, 37)
-                                    .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel10)))
-                                .addGroup(createCompanyProfileLayout.createSequentialGroup()
-                                    .addGap(78, 78, 78)
-                                    .addComponent(jLabel9)))
-                            .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(createCompanyProfileLayout.createSequentialGroup()
-                                    .addGap(37, 37, 37)
-                                    .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(revenue_ui)
-                                        .addComponent(companyname_ui)
-                                        .addComponent(type_ui)
-                                        .addComponent(listingprice_ui)
-                                        .addComponent(qty_ui)
-                                        .addComponent(enterpassword_ui)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createCompanyProfileLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(region_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(51, 51, 51)))))
+                    .addGroup(createCompanyProfileLayout.createSequentialGroup()
+                        .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(createCompanyProfileLayout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel10)))
+                            .addGroup(createCompanyProfileLayout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(jLabel9)))
+                        .addGap(37, 37, 37)
+                        .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(revenue_ui, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(companyname_ui)
+                            .addComponent(type_ui)
+                            .addComponent(listingprice_ui)
+                            .addComponent(qty_ui)
+                            .addComponent(enterpassword_ui)
+                            .addComponent(region_ui, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(createCompanyProfileLayout.createSequentialGroup()
                         .addGap(190, 190, 190)
-                        .addComponent(btnCreate)))
-                .addContainerGap(173, Short.MAX_VALUE))
+                        .addComponent(btnCreate))
+                    .addGroup(createCompanyProfileLayout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(164, 164, 164))
         );
         createCompanyProfileLayout.setVerticalGroup(
             createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,14 +219,9 @@ public class CompanyPanel extends javax.swing.JPanel {
         int qty = Integer.parseInt(qty_ui.getText());
         String password = String.valueOf(enterpassword_ui.getText());
         
-        News nobj = new News();
-    
+        
         try {
             comobj.createCompanyProfile(companyname, revenue, region, type, listingprice,qty,password);
-            String news = nobj.newCompanyIPONews(companyname, revenue, region, type, listingprice, qty);
-            
-            newsDBinsert(news);
-            
             // TODO add your handling code here:
         } catch (Exception ex) {
             //Logger.getLogger(CompanyPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -248,39 +256,4 @@ public class CompanyPanel extends javax.swing.JPanel {
     private javax.swing.JTextField revenue_ui;
     private javax.swing.JTextField type_ui;
     // End of variables declaration//GEN-END:variables
-
-    private void newsDBinsert(String news) throws ClassNotFoundException {
-        try 
-        {
-            Connection con = null;
-            PreparedStatement p = null;
-            ResultSet rs = null;
-
-            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
-            String username = "root"; // MySQL credentials
-            String password = "root123$";
-
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(url, username, password);
-
-            if (con != null) 
-            {
-                System.out.println("Connected to the database StockDB");
-
-                String sql = "Insert into news (newsdate, newstext) VALUES (SYSDATE(), '"+news+"');";
-                p = con.prepareStatement(sql);
-                int rowInsert = p.executeUpdate(); 
-                if(rowInsert > 0){
-                    System.out.println("Assigned Broker to Customer");
-                }
-            }
-        } 
-        catch (SQLException ex) 
-        {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        }
-    }
 }

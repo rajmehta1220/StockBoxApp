@@ -7,7 +7,6 @@ package com.java.ui;
 import Company.Company;
 import Company.CompanyHandler;
 import com.java.ipo.IPO;
-import com.java.news.News;
 import com.java.rules.RulesClass;
 import com.java.sebprofiles.SEBProfileClass;
 import java.awt.Color;
@@ -65,6 +64,7 @@ public class SEBPanel extends javax.swing.JPanel {
         lblPwd = new javax.swing.JLabel();
         txtPwd_ui = new javax.swing.JTextField();
         btLogin = new javax.swing.JButton();
+        back = new javax.swing.JButton();
         MainPanel = new javax.swing.JPanel();
         lblSEB = new javax.swing.JLabel();
         btIPO = new javax.swing.JButton();
@@ -90,17 +90,46 @@ public class SEBPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
+        lbl.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
         lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl.setText("SEB Login");
+        lbl.setAlignmentX(5.0F);
+        lbl.setAlignmentY(5.0F);
+        lbl.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        lblLoginId.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         lblLoginId.setText("Login ID :");
+        lblLoginId.setAlignmentX(5.0F);
+        lblLoginId.setAlignmentY(5.0F);
 
+        txtId_ui.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        txtId_ui.setAlignmentX(5.0F);
+        txtId_ui.setAlignmentY(5.0F);
+
+        lblPwd.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         lblPwd.setText("Password :");
+        lblPwd.setAlignmentX(5.0F);
+        lblPwd.setAlignmentY(5.0F);
 
+        txtPwd_ui.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        txtPwd_ui.setAlignmentX(5.0F);
+        txtPwd_ui.setAlignmentY(5.0F);
+
+        btLogin.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         btLogin.setText("Submit");
+        btLogin.setAlignmentX(5.0F);
+        btLogin.setAlignmentY(5.0F);
         btLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLoginActionPerformed(evt);
+            }
+        });
+
+        back.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
             }
         });
 
@@ -109,19 +138,28 @@ public class SEBPanel extends javax.swing.JPanel {
         LoginPanelLayout.setHorizontalGroup(
             LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginPanelLayout.createSequentialGroup()
-                .addGap(195, 195, 195)
-                .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(LoginPanelLayout.createSequentialGroup()
-                        .addComponent(lblLoginId, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtId_ui, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
-                    .addGroup(LoginPanelLayout.createSequentialGroup()
-                        .addComponent(lblPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPwd_ui))
-                    .addComponent(btLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(261, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(LoginPanelLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LoginPanelLayout.createSequentialGroup()
+                            .addGap(177, 177, 177)
+                            .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblLoginId, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtId_ui, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                                .addComponent(txtPwd_ui)))))
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
         LoginPanelLayout.setVerticalGroup(
             LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +176,9 @@ public class SEBPanel extends javax.swing.JPanel {
                     .addComponent(txtPwd_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(btLogin)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(21, 21, 21))
         );
 
         add(LoginPanel, "card2");
@@ -147,6 +187,7 @@ public class SEBPanel extends javax.swing.JPanel {
         lblSEB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSEB.setText("STOCK EXCHANGE BOARD");
 
+        btIPO.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         btIPO.setText("IPO APPROVE/REJECT");
         btIPO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +195,7 @@ public class SEBPanel extends javax.swing.JPanel {
             }
         });
 
+        btBan.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         btBan.setText("USER CONTROL");
         btBan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,35 +203,54 @@ public class SEBPanel extends javax.swing.JPanel {
             }
         });
 
+        btBack.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         btBack.setText("Back to Login");
+        btBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBackActionPerformed(evt);
+            }
+        });
 
+        lblWelcome.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         lblWelcome.setText("WELCOME BACK ");
 
         txtName_ui.setEditable(false);
+        txtName_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        txtName_ui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtName_uiActionPerformed(evt);
+            }
+        });
 
+        lblRegion.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         lblRegion.setText("REGION :");
 
         txtRegion_ui.setEditable(false);
+        txtRegion_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtName_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(btIPO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(55, 55, 55)))
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MainPanelLayout.createSequentialGroup()
                         .addComponent(lblRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtRegion_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(btIPO, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btBan, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btBan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(32, 32, 32)))
                 .addGap(98, 98, 98))
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addGap(127, 127, 127)
@@ -197,8 +258,8 @@ public class SEBPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btBack, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(323, 323, 323))
+                .addComponent(btBack)
+                .addGap(295, 295, 295))
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,21 +273,22 @@ public class SEBPanel extends javax.swing.JPanel {
                         .addComponent(txtName_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtRegion_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addGap(65, 65, 65)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btIPO, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBan, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                    .addComponent(btIPO, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(btBan, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                .addGap(76, 76, 76)
                 .addComponent(btBack)
                 .addGap(25, 25, 25))
         );
 
         add(MainPanel, "card3");
 
-        lblTitle.setFont(new java.awt.Font("Helvetica Neue", 3, 14)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("IPO BOARD");
 
+        tbIPO_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         tbIPO_ui.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -248,6 +310,7 @@ public class SEBPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbIPO_ui);
 
+        btApprove.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         btApprove.setText("Approve");
         btApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,6 +318,7 @@ public class SEBPanel extends javax.swing.JPanel {
             }
         });
 
+        btReject.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         btReject.setText("Reject");
         btReject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,6 +326,7 @@ public class SEBPanel extends javax.swing.JPanel {
             }
         });
 
+        btBacktoMain.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         btBacktoMain.setText("Back");
         btBacktoMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,12 +343,12 @@ public class SEBPanel extends javax.swing.JPanel {
                     .addGroup(IPOPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1))
-                    .addGroup(IPOPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IPOPanelLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(btApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(137, 137, 137)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
                         .addComponent(btReject, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 117, Short.MAX_VALUE)))
+                        .addGap(117, 117, 117)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IPOPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -313,10 +378,11 @@ public class SEBPanel extends javax.swing.JPanel {
 
         add(IPOPanel, "card4");
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SUSPICIOUS CUSTOMERS/ INVESTORS / BUSINESS");
 
+        tbBanUser.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         tbBanUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -330,6 +396,7 @@ public class SEBPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tbBanUser);
 
+        btBanUser.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         btBanUser.setText("BAN USER");
         btBanUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,6 +404,7 @@ public class SEBPanel extends javax.swing.JPanel {
             }
         });
 
+        backbtn_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         backbtn_ui.setText("Back");
         backbtn_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,21 +416,21 @@ public class SEBPanel extends javax.swing.JPanel {
         BanPanel.setLayout(BanPanelLayout);
         BanPanelLayout.setHorizontalGroup(
             BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BanPanelLayout.createSequentialGroup()
-                .addGroup(BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BanPanelLayout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(BanPanelLayout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(btBanUser, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BanPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backbtn_ui))
                 .addGap(18, 18, 18))
+            .addGroup(BanPanelLayout.createSequentialGroup()
+                .addGroup(BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BanPanelLayout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(btBanUser, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(BanPanelLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(38, 38, 38))
         );
         BanPanelLayout.setVerticalGroup(
             BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -511,15 +579,10 @@ public class SEBPanel extends javax.swing.JPanel {
             String region= (String)IpoTbl.getValueAt(selindex, 2); 
             double listingprice= (Double)IpoTbl.getValueAt(selindex, 4); 
             int qty=(Integer)IpoTbl.getValueAt(selindex, 5);
-            
-            News nobj = new News();
 
             IPO iobj = new IPO();
             try {
                 iobj.ApproveIPOReq(companyname, revenue, region, listingprice, qty);
-                String news = nobj.approvedCompanyIPONews(companyname, revenue, region, listingprice, qty);
-                System.out.println("News: "+news);
-                newsDBinsert(news);
                 refreshIpoTable();
                 JOptionPane.showMessageDialog(this, "Approved IPO and released Stock in "+region+" Market");
             } catch (Exception ex) {
@@ -548,6 +611,24 @@ public class SEBPanel extends javax.swing.JPanel {
         }catch(Exception e){e.printStackTrace();}
     }//GEN-LAST:event_btRejectActionPerformed
 
+    private void txtName_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtName_uiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtName_uiActionPerformed
+
+    private void btBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBackActionPerformed
+        // TODO add your handling code here:
+        MainPanel.setVisible(false);
+        LoginPanel.setVisible(true);
+    }//GEN-LAST:event_btBackActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        // TODO add your handling code here:
+        LoginPanel.setVisible(false);
+        MainPanel back = new MainPanel();
+        back.setVisible(true);
+        
+    }//GEN-LAST:event_backActionPerformed
+
     private void putProftoTable(int proid, double ttotal, String profType) {
         banUser = (DefaultTableModel)tbBanUser.getModel();
         Object row[]= new Object[3];
@@ -562,6 +643,7 @@ public class SEBPanel extends javax.swing.JPanel {
     private javax.swing.JPanel IPOPanel;
     private javax.swing.JPanel LoginPanel;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JButton back;
     private javax.swing.JButton backbtn_ui;
     private javax.swing.JButton btApprove;
     private javax.swing.JButton btBack;
@@ -633,40 +715,5 @@ public class SEBPanel extends javax.swing.JPanel {
             }
         }
         catch(Exception e){e.printStackTrace();}
-    }
-    
-    private void newsDBinsert(String news) throws ClassNotFoundException {
-        try 
-        {
-            Connection con = null;
-            PreparedStatement p = null;
-            ResultSet rs = null;
-
-            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
-            String username = "root"; // MySQL credentials
-            String password = "root123$";
-
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection(url, username, password);
-
-            if (con != null) 
-            {
-                System.out.println("Insert into news StockDB");
-
-                String sql = "Insert into news (newsdate, newstext) VALUES (SYSDATE(), '"+news+"');";
-                p = con.prepareStatement(sql);
-                int rowInsert = p.executeUpdate(); 
-                if(rowInsert > 0){
-                    System.out.println("Assigned Broker to Customer");
-                }
-            }
-        } 
-        catch (SQLException ex) 
-        {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        }
     }
 }

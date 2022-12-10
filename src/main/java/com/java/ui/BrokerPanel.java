@@ -74,6 +74,8 @@ public class BrokerPanel extends javax.swing.JPanel {
         signin_ui = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        back1 = new javax.swing.JButton();
         signinPage_ui = new javax.swing.JPanel();
         name_brokerSignin_ui = new javax.swing.JTextField();
         pass_brokerSignin_ui = new javax.swing.JTextField();
@@ -85,6 +87,7 @@ public class BrokerPanel extends javax.swing.JPanel {
         backSignin_ui = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         commrate_brokerSignup_ui = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
         MainBrokerPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -101,20 +104,26 @@ public class BrokerPanel extends javax.swing.JPanel {
         jLabel13 = new javax.swing.JLabel();
         commRate_ui = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         TransactionRequestPanel_ui = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         transacionTable_ui = new javax.swing.JTable();
         aproveStock = new javax.swing.JButton();
         denyStock = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
 
         setLayout(new java.awt.CardLayout());
 
+        id_brokerLogin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        pass_brokerLogin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         pass_brokerLogin_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pass_brokerLogin_uiActionPerformed(evt);
             }
         });
 
+        login_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         login_ui.setText("Sign In");
         login_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +131,7 @@ public class BrokerPanel extends javax.swing.JPanel {
             }
         });
 
+        signin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         signin_ui.setText("Sign Up");
         signin_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,9 +139,23 @@ public class BrokerPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel1.setText("Id:");
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel2.setText("Password:");
+
+        jLabel17.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("BROKER'S LOGIN");
+
+        back1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        back1.setText("Back to Login");
+        back1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                back1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginPage_uiLayout = new javax.swing.GroupLayout(loginPage_ui);
         loginPage_ui.setLayout(loginPage_uiLayout);
@@ -150,12 +174,23 @@ public class BrokerPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(signin_ui))
                     .addComponent(id_brokerLogin_ui))
-                .addContainerGap(431, Short.MAX_VALUE))
+                .addContainerGap(375, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPage_uiLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPage_uiLayout.createSequentialGroup()
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(360, 360, 360))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPage_uiLayout.createSequentialGroup()
+                        .addComponent(back1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(163, 163, 163))))
         );
         loginPage_uiLayout.setVerticalGroup(
             loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPage_uiLayout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(48, 48, 48)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
                 .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id_brokerLogin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -167,13 +202,21 @@ public class BrokerPanel extends javax.swing.JPanel {
                 .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(login_ui)
                     .addComponent(signin_ui))
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addComponent(back1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
         );
 
         add(loginPage_ui, "card2");
 
+        name_brokerSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        pass_brokerSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        regionSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         regionSignin_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INDIA", "USA", "BOSTON" }));
 
+        signinSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         signinSignin_ui.setText("Sign Up");
         signinSignin_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,12 +224,16 @@ public class BrokerPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel3.setText("Name:");
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel4.setText("Password:");
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel5.setText("Region:");
 
+        backSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         backSignin_ui.setText("Back");
         backSignin_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,7 +241,14 @@ public class BrokerPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel6.setText("Commission Rate:");
+
+        commrate_brokerSignup_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        jLabel16.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("SIGN UP PAGE");
 
         javax.swing.GroupLayout signinPage_uiLayout = new javax.swing.GroupLayout(signinPage_ui);
         signinPage_ui.setLayout(signinPage_uiLayout);
@@ -205,25 +259,32 @@ public class BrokerPanel extends javax.swing.JPanel {
                 .addComponent(backSignin_ui)
                 .addGap(31, 31, 31))
             .addGroup(signinPage_uiLayout.createSequentialGroup()
-                .addGap(0, 332, Short.MAX_VALUE)
-                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(signinSignin_ui)
-                    .addComponent(regionSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING, 0, 170, Short.MAX_VALUE)
-                    .addComponent(name_brokerSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pass_brokerSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(commrate_brokerSignup_ui))
-                .addContainerGap(337, Short.MAX_VALUE))
+                .addGap(0, 313, Short.MAX_VALUE)
+                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(signinPage_uiLayout.createSequentialGroup()
+                        .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(signinSignin_ui)
+                            .addComponent(regionSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING, 0, 170, Short.MAX_VALUE)
+                            .addComponent(name_brokerSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pass_brokerSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(commrate_brokerSignup_ui)))
+                    .addGroup(signinPage_uiLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         signinPage_uiLayout.setVerticalGroup(
             signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signinPage_uiLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name_brokerSignin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -241,7 +302,7 @@ public class BrokerPanel extends javax.swing.JPanel {
                     .addComponent(commrate_brokerSignup_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(signinSignin_ui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
                 .addComponent(backSignin_ui)
                 .addGap(16, 16, 16))
         );
@@ -251,13 +312,17 @@ public class BrokerPanel extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
         jLabel7.setText("Broker Panel");
 
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel8.setText("Welcome Back:");
 
         brokerName_ui.setEditable(false);
+        brokerName_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
+        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel9.setText("Total Commission");
 
         totalCommUSD_ui.setEditable(false);
+        totalCommUSD_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         totalCommUSD_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 totalCommUSD_uiActionPerformed(evt);
@@ -265,11 +330,15 @@ public class BrokerPanel extends javax.swing.JPanel {
         });
 
         totalCommINR_ui.setEditable(false);
+        totalCommINR_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel10.setText("USD");
 
+        jLabel11.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel11.setText("INR");
 
+        brokerClients_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         brokerClients_ui.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -286,6 +355,7 @@ public class BrokerPanel extends javax.swing.JPanel {
         jLabel12.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel12.setText("My Clients");
 
+        transactionReq_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         transactionReq_ui.setText("Transaction Requests");
         transactionReq_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,11 +363,27 @@ public class BrokerPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel13.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel13.setText("My Commission Rate:");
 
         commRate_ui.setEditable(false);
+        commRate_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        commRate_ui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                commRate_uiActionPerformed(evt);
+            }
+        });
 
+        jLabel14.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel14.setText("%");
+
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout MainBrokerPanelLayout = new javax.swing.GroupLayout(MainBrokerPanel);
         MainBrokerPanel.setLayout(MainBrokerPanelLayout);
@@ -306,30 +392,29 @@ public class BrokerPanel extends javax.swing.JPanel {
             .addGroup(MainBrokerPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MainBrokerPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
+                    .addComponent(jScrollPane1)
                     .addGroup(MainBrokerPanelLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(brokerName_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(151, 151, 151)
+                        .addGap(119, 119, 119)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(commRate_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(totalCommUSD_ui)
-                            .addComponent(totalCommINR_ui, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(totalCommUSD_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(totalCommINR_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(12, 12, 12))))
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(0, 24, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainBrokerPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,7 +426,10 @@ public class BrokerPanel extends javax.swing.JPanel {
                         .addGap(396, 396, 396))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainBrokerPanelLayout.createSequentialGroup()
                         .addComponent(transactionReq_ui)
-                        .addGap(394, 394, 394))))
+                        .addGap(394, 394, 394))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainBrokerPanelLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87))))
         );
         MainBrokerPanelLayout.setVerticalGroup(
             MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,7 +448,7 @@ public class BrokerPanel extends javax.swing.JPanel {
                             .addComponent(jLabel14)))
                     .addGroup(MainBrokerPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(totalCommUSD_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -373,11 +461,14 @@ public class BrokerPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(transactionReq_ui)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(MainBrokerPanel, "card4");
 
+        transacionTable_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         transacionTable_ui.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null},
@@ -391,6 +482,7 @@ public class BrokerPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(transacionTable_ui);
 
+        aproveStock.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         aproveStock.setText("Approve");
         aproveStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -398,7 +490,12 @@ public class BrokerPanel extends javax.swing.JPanel {
             }
         });
 
+        denyStock.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         denyStock.setText("Deny");
+
+        jLabel15.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("CUSTOMER TRANSACTION REQUESTS");
 
         javax.swing.GroupLayout TransactionRequestPanel_uiLayout = new javax.swing.GroupLayout(TransactionRequestPanel_ui);
         TransactionRequestPanel_ui.setLayout(TransactionRequestPanel_uiLayout);
@@ -413,11 +510,17 @@ public class BrokerPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(denyStock, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(TransactionRequestPanel_uiLayout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TransactionRequestPanel_uiLayout.setVerticalGroup(
             TransactionRequestPanel_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TransactionRequestPanel_uiLayout.createSequentialGroup()
-                .addContainerGap(106, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(TransactionRequestPanel_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -599,6 +702,23 @@ public class BrokerPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_aproveStockActionPerformed
 
+    private void commRate_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commRate_uiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_commRate_uiActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        MainBrokerPanel.setVisible(false);
+        loginPage_ui.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void back1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back1ActionPerformed
+        // TODO add your handling code here:
+        loginPage_ui.setVisible(false);
+        MainPanel back1 = new MainPanel();
+        back1.setVisible(true);
+    }//GEN-LAST:event_back1ActionPerformed
+
     public void loadBrokerPage() throws ClassNotFoundException{
         brokerName_ui.setText(loginName);
         commRate_ui.setText(String.valueOf(loginCommrate));
@@ -675,6 +795,7 @@ public class BrokerPanel extends javax.swing.JPanel {
     private javax.swing.JPanel MainBrokerPanel;
     private javax.swing.JPanel TransactionRequestPanel_ui;
     private javax.swing.JButton aproveStock;
+    private javax.swing.JButton back1;
     private javax.swing.JButton backSignin_ui;
     private javax.swing.JTable brokerClients_ui;
     private javax.swing.JTextField brokerName_ui;
@@ -682,12 +803,16 @@ public class BrokerPanel extends javax.swing.JPanel {
     private javax.swing.JTextField commrate_brokerSignup_ui;
     private javax.swing.JButton denyStock;
     private javax.swing.JTextField id_brokerLogin_ui;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

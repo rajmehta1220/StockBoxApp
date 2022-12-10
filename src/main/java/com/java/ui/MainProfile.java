@@ -204,6 +204,7 @@ public class MainProfile extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btLogout = new javax.swing.JButton();
         portfolioPage = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         fundsUSDPortfolio_ui = new javax.swing.JTextField();
@@ -259,11 +260,13 @@ public class MainProfile extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
+        stockMarket_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         stockMarket_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel6.setText("Main Profile Panel");
 
+        loadStocks_ui1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         loadStocks_ui1.setText("Load Stocks");
         loadStocks_ui1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,9 +274,11 @@ public class MainProfile extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel7.setText("Select Stock Market:");
 
         stocksTable.setDefaultRenderer(Object.class, new MonCellRenderer());
+        stocksTable.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         stocksTable.setForeground(new java.awt.Color(255, 255, 255));
         stocksTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -286,8 +291,10 @@ public class MainProfile extends javax.swing.JPanel {
                 "Tag", "CompanyName", "Date", "Market", "Price", "ChangeRate", "Currency", "Bid", "DayHigh", "DayLow", "LastFetched", "PrevPrice", "Qty"
             }
         ));
+        stocksTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane2.setViewportView(stocksTable);
 
+        jButton4.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jButton4.setText("Today's News");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,6 +302,7 @@ public class MainProfile extends javax.swing.JPanel {
             }
         });
 
+        jButton5.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jButton5.setText("My Portfolio");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -303,17 +311,30 @@ public class MainProfile extends javax.swing.JPanel {
         });
 
         fundsUSD_ui.setEditable(false);
+        fundsUSD_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         fundsINR_ui.setEditable(false);
+        fundsINR_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel8.setText("Funds USD");
 
+        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel9.setText("Funds INR");
 
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jButton1.setText("Add Funds");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        btLogout.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        btLogout.setText("Logout");
+        btLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLogoutActionPerformed(evt);
             }
         });
 
@@ -325,9 +346,11 @@ public class MainProfile extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(mainProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainProfilePageLayout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
@@ -350,7 +373,7 @@ public class MainProfile extends javax.swing.JPanel {
                                 .addComponent(jButton1))
                             .addGroup(mainProfilePageLayout.createSequentialGroup()
                                 .addComponent(loadStocks_ui1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fundsUSD_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -386,15 +409,18 @@ public class MainProfile extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(mainProfilePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
-                    .addComponent(jButton4))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(jButton4)
+                    .addComponent(btLogout))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         add(mainProfilePage, "card14");
 
+        jLabel11.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel11.setText("Funds");
 
         fundsUSDPortfolio_ui.setEditable(false);
+        fundsUSDPortfolio_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         fundsUSDPortfolio_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fundsUSDPortfolio_uiActionPerformed(evt);
@@ -402,11 +428,15 @@ public class MainProfile extends javax.swing.JPanel {
         });
 
         fundsINRPortfolio_ui.setEditable(false);
+        fundsINRPortfolio_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
+        jLabel12.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel12.setText("USD");
 
+        jLabel13.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel13.setText("INR");
 
+        jButton3.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -418,6 +448,7 @@ public class MainProfile extends javax.swing.JPanel {
         portfolioTitle_ui.setText("Raj's Portfolio Page");
 
         portfolioTable_ui.setDefaultRenderer(Object.class, new MonCellRenderer());
+        portfolioTable_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         portfolioTable_ui.setForeground(new java.awt.Color(255, 255, 255));
         portfolioTable_ui.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -431,19 +462,27 @@ public class MainProfile extends javax.swing.JPanel {
             }
         ));
         portfolioTable_ui.setToolTipText("");
+        portfolioTable_ui.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(portfolioTable_ui);
 
+        portfolioStockTag_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         portfolioStockTag_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel14.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        portfolioQty_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel14.setText("Buy Stocks");
 
+        jLabel15.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel15.setText("StockTag");
 
+        jLabel16.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel16.setText("Qty");
 
         portfolioPrice_ui.setEditable(false);
+        portfolioPrice_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
+        portfolioLoadPrice_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         portfolioLoadPrice_ui.setText("Load Price");
         portfolioLoadPrice_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -451,6 +490,7 @@ public class MainProfile extends javax.swing.JPanel {
             }
         });
 
+        portfolioBuy_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         portfolioBuy_ui.setText("Buy Stocks");
         portfolioBuy_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -459,28 +499,44 @@ public class MainProfile extends javax.swing.JPanel {
         });
 
         portfolioComm_ui.setEditable(false);
+        portfolioComm_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
+        jLabel17.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel17.setText("Price");
 
+        jLabel18.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel18.setText("Commission");
 
+        balance_ui.setEditable(false);
+        balance_ui.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
+
+        jLabel19.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
         jLabel19.setText("Portfolio P&L:");
 
-        jLabel20.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel20.setText("Sell Stocks");
 
+        sellstockssell_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         sellstockssell_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        qtysell_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        jLabel21.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel21.setText("Price");
 
+        pricesell_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         pricesell_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pricesell_uiActionPerformed(evt);
             }
         });
 
+        commsell_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        jLabel22.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel22.setText("Commission");
 
+        jToggleButton1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jToggleButton1.setText("Load Price");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -488,6 +544,7 @@ public class MainProfile extends javax.swing.JPanel {
             }
         });
 
+        jButton6.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jButton6.setText("Sell Stocks");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -495,17 +552,22 @@ public class MainProfile extends javax.swing.JPanel {
             }
         });
 
+        jLabel23.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel23.setText("StockTag");
 
+        jLabel24.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel24.setText("Qty");
 
         javax.swing.GroupLayout portfolioPageLayout = new javax.swing.GroupLayout(portfolioPage);
         portfolioPage.setLayout(portfolioPageLayout);
         portfolioPageLayout.setHorizontalGroup(
             portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
-                .addContainerGap(283, Short.MAX_VALUE)
+            .addGroup(portfolioPageLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
                         .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(portfolioPageLayout.createSequentialGroup()
@@ -522,74 +584,72 @@ public class MainProfile extends javax.swing.JPanel {
                             .addComponent(jLabel12)
                             .addComponent(jLabel13))
                         .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addContainerGap())))
-            .addGroup(portfolioPageLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
-                .addGap(0, 258, Short.MAX_VALUE)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(balance_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(241, 241, 241))
-            .addGroup(portfolioPageLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addComponent(jLabel18)
-                                .addGap(18, 18, 18)
-                                .addComponent(portfolioComm_ui))
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addGap(18, 18, 18)
-                                .addComponent(portfolioPrice_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addComponent(portfolioStockTag_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(portfolioQty_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(jLabel14))
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
+                                .addGap(48, 48, 48)
                                 .addComponent(jLabel15)
                                 .addGap(68, 68, 68)
-                                .addComponent(jLabel16))))
-                    .addComponent(portfolioLoadPrice_ui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(portfolioBuy_ui, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addGap(147, 147, 147))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
-                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel16))
                             .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addComponent(sellstockssell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(qtysell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(95, 95, 95)
+                                .addComponent(jLabel14)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, portfolioPageLayout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pricesell_ui))
-                            .addGroup(portfolioPageLayout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(commsell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(63, 63, 63))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
-                        .addComponent(jLabel23)
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel24)
-                        .addGap(110, 110, 110))))
+                                .addGap(31, 31, 31)
+                                .addComponent(portfolioLoadPrice_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, portfolioPageLayout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(portfolioStockTag_ui, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+                                .addGap(46, 46, 46)
+                                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(portfolioComm_ui, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                                    .addComponent(portfolioQty_ui)
+                                    .addComponent(portfolioPrice_ui)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, portfolioPageLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(portfolioBuy_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20)
+                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
+                                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                                        .addComponent(jLabel19)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(balance_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
+                                        .addComponent(jLabel20)
+                                        .addGap(120, 120, 120))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
+                                        .addComponent(jLabel23)
+                                        .addGap(70, 70, 70)
+                                        .addComponent(jLabel24)
+                                        .addGap(83, 83, 83))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, portfolioPageLayout.createSequentialGroup()
+                                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(portfolioPageLayout.createSequentialGroup()
+                                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(sellstockssell_ui, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(commsell_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(pricesell_ui)
+                                                .addComponent(qtysell_ui, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))))
+                                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(36, 36, 36)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         portfolioPageLayout.setVerticalGroup(
             portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -612,12 +672,11 @@ public class MainProfile extends javax.swing.JPanel {
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(balance_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
                 .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(balance_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel19))
                     .addGroup(portfolioPageLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -638,10 +697,8 @@ public class MainProfile extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(portfolioLoadPrice_ui)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(portfolioBuy_ui)
-                        .addGap(33, 33, 33))
+                        .addComponent(portfolioBuy_ui))
                     .addGroup(portfolioPageLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(portfolioPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -662,14 +719,15 @@ public class MainProfile extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jToggleButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jButton6)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addContainerGap())
+                .addGap(40, 40, 40))
         );
 
         add(portfolioPage, "card15");
 
+        addFunds_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         addFunds_ui.setText("Add Funds");
         addFunds_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -677,17 +735,32 @@ public class MainProfile extends javax.swing.JPanel {
             }
         });
 
+        jTextField1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        jTextField2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        jTextField3.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        addBal_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        jTextField5.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel1.setText("Card Number");
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel2.setText("Expiry");
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel3.setText("CVV ");
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel4.setText("Funds to add");
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel5.setText("Add Funds");
 
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -727,7 +800,7 @@ public class MainProfile extends javax.swing.JPanel {
                     .addGroup(addFundsPageLayout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(jLabel5)))
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         addFundsPageLayout.setVerticalGroup(
             addFundsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -754,13 +827,14 @@ public class MainProfile extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addGap(28, 28, 28)
                 .addComponent(addFunds_ui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(19, 19, 19))
         );
 
         add(addFundsPage, "card15");
 
+        newsTable_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         newsTable_ui.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -774,6 +848,7 @@ public class MainProfile extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(newsTable_ui);
 
+        jButton7.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jButton7.setText("Back");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -811,7 +886,7 @@ public class MainProfile extends javax.swing.JPanel {
                 .addComponent(jLabel25)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jButton7)
                 .addGap(16, 16, 16))
         );
@@ -1185,6 +1260,13 @@ public class MainProfile extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void btLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogoutActionPerformed
+        // TODO add your handling code here:
+        mainProfilePage.setVisible(false);
+        MainPanel login = new MainPanel();
+        login.setVisible(true);
+    }//GEN-LAST:event_btLogoutActionPerformed
+
     public void fundsConverter(){
         if(fundsType.equals("INR")){convertedFunds = loginFunds/80;}
         else{convertedFunds = loginFunds * 80;}
@@ -1555,6 +1637,7 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JPanel addFundsPage;
     private javax.swing.JButton addFunds_ui;
     private javax.swing.JTextField balance_ui;
+    private javax.swing.JButton btLogout;
     private javax.swing.JTextField commsell_ui;
     private javax.swing.JTextField fundsINRPortfolio_ui;
     private javax.swing.JTextField fundsINR_ui;

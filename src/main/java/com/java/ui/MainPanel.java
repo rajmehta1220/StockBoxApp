@@ -140,6 +140,7 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         chooseBroker_ui = new javax.swing.JComboBox<>();
         loadBrokers = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
         profileLink_ui = new javax.swing.JPanel();
         splitPane = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
@@ -159,14 +160,19 @@ public class MainPanel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
 
+        loginPage_ui.setForeground(new java.awt.Color(255, 255, 255));
         loginPage_ui.setPreferredSize(new java.awt.Dimension(1440, 900));
 
+        idLogin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 24)); // NOI18N
+
+        passLogin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 24)); // NOI18N
         passLogin_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passLogin_uiActionPerformed(evt);
             }
         });
 
+        login_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 24)); // NOI18N
         login_ui.setText("Sign In");
         login_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +180,7 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
+        signin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 24)); // NOI18N
         signin_ui.setText("Sign Up");
         signin_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,10 +188,13 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 2, 24)); // NOI18N
         jLabel1.setText("Id:");
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 2, 24)); // NOI18N
         jLabel2.setText("Password:");
 
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 2, 24)); // NOI18N
         jButton1.setText("More Login Options");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,38 +202,45 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
-        jLabel10.setText("Profile Login Page");
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
+        jLabel10.setText("PROFILE LOGIN PAGE");
 
         javax.swing.GroupLayout loginPage_uiLayout = new javax.swing.GroupLayout(loginPage_ui);
         loginPage_ui.setLayout(loginPage_uiLayout);
         loginPage_uiLayout.setHorizontalGroup(
             loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPage_uiLayout.createSequentialGroup()
-                .addContainerGap(262, Short.MAX_VALUE)
-                .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addContainerGap(431, Short.MAX_VALUE)
+                .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(loginPage_uiLayout.createSequentialGroup()
                         .addComponent(login_ui)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(signin_ui))
-                    .addGroup(loginPage_uiLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(12, 12, 12)
-                        .addComponent(idLogin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(loginPage_uiLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(12, 12, 12)
-                        .addComponent(passLogin_ui))
-                    .addComponent(jButton1)
-                    .addComponent(jLabel10))
-                .addGap(388, 388, 388))
+                        .addGap(18, 18, 18)
+                        .addComponent(signin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1)
+                        .addGroup(loginPage_uiLayout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(12, 12, 12)
+                            .addComponent(idLogin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(loginPage_uiLayout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(12, 12, 12)
+                            .addComponent(passLogin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(505, 505, 505))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPage_uiLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(495, 495, 495))
         );
+
+        loginPage_uiLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {idLogin_ui, jButton1, login_ui, passLogin_ui, signin_ui});
+
         loginPage_uiLayout.setVerticalGroup(
             loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginPage_uiLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel10)
-                .addGap(103, 103, 103)
+                .addGap(51, 51, 51)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
                 .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idLogin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -235,17 +252,26 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGroup(loginPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(login_ui)
                     .addComponent(signin_ui))
-                .addGap(100, 100, 100)
+                .addGap(108, 108, 108)
                 .addComponent(jButton1)
-                .addGap(31, 31, 31))
+                .addGap(51, 51, 51))
         );
+
+        loginPage_uiLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {idLogin_ui, jButton1, login_ui, passLogin_ui, signin_ui});
 
         getContentPane().add(loginPage_ui, "card2");
 
+        nameSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        passSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+
+        regionSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         regionSignin_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INDIA", "USA", "BOSTON" }));
 
+        typeSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         typeSignin_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Business", "Investor" }));
 
+        signinSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         signinSignin_ui.setText("Sign Up");
         signinSignin_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,14 +279,19 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel3.setText("Name:");
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel4.setText("Password:");
 
+        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel5.setText("Region:");
 
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel6.setText("Type:");
 
+        backSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         backSignin_ui.setText("Back");
         backSignin_ui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,10 +299,13 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel9.setText("Choose Broker:");
 
+        chooseBroker_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         chooseBroker_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        loadBrokers.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         loadBrokers.setText("Load Brokers in your region");
         loadBrokers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,41 +313,55 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("PROFILE SIGN-UP PAGE");
+
         javax.swing.GroupLayout signinPage_uiLayout = new javax.swing.GroupLayout(signinPage_ui);
         signinPage_ui.setLayout(signinPage_uiLayout);
         signinPage_uiLayout.setHorizontalGroup(
             signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signinPage_uiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backSignin_ui)
-                .addGap(31, 31, 31))
             .addGroup(signinPage_uiLayout.createSequentialGroup()
-                .addGap(0, 236, Short.MAX_VALUE)
+                .addGap(363, 363, 363)
                 .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(regionSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nameSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(passSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(typeSignin_ui, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(chooseBroker_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(loadBrokers)
-                .addContainerGap(242, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signinPage_uiLayout.createSequentialGroup()
+                        .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameSignin_ui)
+                            .addComponent(passSignin_ui)
+                            .addComponent(regionSignin_ui, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(typeSignin_ui, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(chooseBroker_ui, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(loadBrokers, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(147, 147, 147))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signinPage_uiLayout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signinPage_uiLayout.createSequentialGroup()
+                                .addGap(490, 490, 490)
+                                .addComponent(backSignin_ui, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signinPage_uiLayout.createSequentialGroup()
+                                .addComponent(signinSignin_ui, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(486, 486, 486)))))
+                .addContainerGap())
             .addGroup(signinPage_uiLayout.createSequentialGroup()
-                .addGap(371, 371, 371)
-                .addComponent(signinSignin_ui)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(309, 309, 309)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(296, 296, 296))
         );
         signinPage_uiLayout.setVerticalGroup(
             signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signinPage_uiLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel11)
+                .addGap(51, 51, 51)
                 .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameSignin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -330,15 +378,15 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(typeSignin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
-                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                .addGroup(signinPage_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(loadBrokers)
                     .addComponent(chooseBroker_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loadBrokers))
+                    .addComponent(jLabel9))
                 .addGap(49, 49, 49)
                 .addComponent(signinSignin_ui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(backSignin_ui)
-                .addGap(16, 16, 16))
+                .addGap(53, 53, 53)
+                .addComponent(backSignin_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(signinPage_ui, "card3");
@@ -346,7 +394,9 @@ public class MainPanel extends javax.swing.JFrame {
         splitPane.setDividerLocation(100);
         splitPane.setDividerSize(8);
 
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(150, 459));
+
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel7.setText("Welcome Back");
 
         loginName_ui.setEditable(false);
@@ -365,12 +415,14 @@ public class MainPanel extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(proceedMain_ui, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                            .addComponent(loginName_ui, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(loginName_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(proceedMain_ui, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,7 +433,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addComponent(loginName_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(proceedMain_ui)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         splitPane.setLeftComponent(jPanel1);
@@ -390,11 +442,11 @@ public class MainPanel extends javax.swing.JFrame {
         profileMain_ui.setLayout(profileMain_uiLayout);
         profileMain_uiLayout.setHorizontalGroup(
             profileMain_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 856, Short.MAX_VALUE)
+            .addGap(0, 811, Short.MAX_VALUE)
         );
         profileMain_uiLayout.setVerticalGroup(
             profileMain_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGap(0, 459, Short.MAX_VALUE)
         );
 
         splitPane.setRightComponent(profileMain_ui);
@@ -403,7 +455,10 @@ public class MainPanel extends javax.swing.JFrame {
         profileLink_ui.setLayout(profileLink_uiLayout);
         profileLink_uiLayout.setHorizontalGroup(
             profileLink_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 964, Short.MAX_VALUE)
+            .addGroup(profileLink_uiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
         );
         profileLink_uiLayout.setVerticalGroup(
             profileLink_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,10 +467,13 @@ public class MainPanel extends javax.swing.JFrame {
 
         getContentPane().add(profileLink_ui, "card4");
 
+        loginProfile_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         loginProfile_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Broker", "SEB", "Company" }));
 
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel8.setText("Login Profiles");
 
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jButton2.setText("Login");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -423,6 +481,7 @@ public class MainPanel extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jButton3.setText("Back");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -441,7 +500,7 @@ public class MainPanel extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addComponent(jButton3))
                     .addComponent(jLabel8))
-                .addGap(0, 868, Short.MAX_VALUE))
+                .addGap(0, 847, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,7 +511,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addComponent(loginProfile_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(14, 14, 14))
         );
@@ -467,7 +526,7 @@ public class MainPanel extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGap(0, 429, Short.MAX_VALUE)
         );
 
         splitPane1.setLeftComponent(jPanel3);
@@ -476,7 +535,7 @@ public class MainPanel extends javax.swing.JFrame {
         moreLoginPages_ui.setLayout(moreLoginPages_uiLayout);
         moreLoginPages_uiLayout.setHorizontalGroup(
             moreLoginPages_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane1)
+            .addComponent(splitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
         );
         moreLoginPages_uiLayout.setVerticalGroup(
             moreLoginPages_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -746,6 +805,7 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
