@@ -52,7 +52,7 @@
  
  ## Model
  <p align="center">
-  <img src="https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg" width="500" title="FlowChart">
+  <img src="https://github.com/rajmehta1220/StockBoxApp/blob/main/FlowChart.jpg" width="900" title="FlowChart">
 </p>
   
 
