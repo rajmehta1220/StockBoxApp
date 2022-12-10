@@ -90,7 +90,10 @@ public class SEBPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
+        LoginPanel.setBackground(new java.awt.Color(43, 63, 87));
+
         lbl.setFont(new java.awt.Font("Helvetica Neue", 3, 36)); // NOI18N
+        lbl.setForeground(new java.awt.Color(255, 255, 255));
         lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl.setText("SEB Login");
         lbl.setAlignmentX(5.0F);
@@ -98,6 +101,7 @@ public class SEBPanel extends javax.swing.JPanel {
         lbl.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lblLoginId.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        lblLoginId.setForeground(new java.awt.Color(255, 255, 255));
         lblLoginId.setText("Login ID :");
         lblLoginId.setAlignmentX(5.0F);
         lblLoginId.setAlignmentY(5.0F);
@@ -107,6 +111,7 @@ public class SEBPanel extends javax.swing.JPanel {
         txtId_ui.setAlignmentY(5.0F);
 
         lblPwd.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        lblPwd.setForeground(new java.awt.Color(255, 255, 255));
         lblPwd.setText("Password :");
         lblPwd.setAlignmentX(5.0F);
         lblPwd.setAlignmentY(5.0F);
@@ -155,7 +160,7 @@ public class SEBPanel extends javax.swing.JPanel {
                             .addGroup(LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtId_ui, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                                 .addComponent(txtPwd_ui)))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,14 +181,17 @@ public class SEBPanel extends javax.swing.JPanel {
                     .addComponent(txtPwd_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(btLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(back)
                 .addGap(21, 21, 21))
         );
 
         add(LoginPanel, "card2");
 
+        MainPanel.setBackground(new java.awt.Color(43, 63, 87));
+
         lblSEB.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        lblSEB.setForeground(new java.awt.Color(255, 255, 255));
         lblSEB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSEB.setText("STOCK EXCHANGE BOARD");
 
@@ -212,6 +220,7 @@ public class SEBPanel extends javax.swing.JPanel {
         });
 
         lblWelcome.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        lblWelcome.setForeground(new java.awt.Color(255, 255, 255));
         lblWelcome.setText("WELCOME BACK ");
 
         txtName_ui.setEditable(false);
@@ -223,6 +232,7 @@ public class SEBPanel extends javax.swing.JPanel {
         });
 
         lblRegion.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        lblRegion.setForeground(new java.awt.Color(255, 255, 255));
         lblRegion.setText("REGION :");
 
         txtRegion_ui.setEditable(false);
@@ -284,7 +294,10 @@ public class SEBPanel extends javax.swing.JPanel {
 
         add(MainPanel, "card3");
 
+        IPOPanel.setBackground(new java.awt.Color(43, 63, 87));
+
         lblTitle.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("IPO BOARD");
 
@@ -346,7 +359,7 @@ public class SEBPanel extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IPOPanelLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(btApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                         .addComponent(btReject, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(117, 117, 117)))
                 .addContainerGap())
@@ -378,7 +391,11 @@ public class SEBPanel extends javax.swing.JPanel {
 
         add(IPOPanel, "card4");
 
+        BanPanel.setBackground(new java.awt.Color(43, 63, 87));
+        BanPanel.setToolTipText("");
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SUSPICIOUS CUSTOMERS/ INVESTORS / BUSINESS");
 

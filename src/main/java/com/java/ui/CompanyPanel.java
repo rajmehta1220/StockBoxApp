@@ -69,25 +69,34 @@ public class CompanyPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
+        createCompanyProfile.setBackground(new java.awt.Color(43, 63, 87));
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Create Company Profile");
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Revenue");
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Company Name");
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Region");
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Type");
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Listing Price");
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Quantity");
 
         revenue_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -114,6 +123,7 @@ public class CompanyPanel extends javax.swing.JPanel {
         });
 
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Password");
 
         enterpassword_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N

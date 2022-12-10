@@ -118,6 +118,8 @@ public class BrokerPanel extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
+        loginPage_ui.setBackground(new java.awt.Color(43, 63, 87));
+
         id_brokerLogin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         pass_brokerLogin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -144,12 +146,15 @@ public class BrokerPanel extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Id:");
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Password:");
 
         jLabel17.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("BROKER'S LOGIN");
 
@@ -213,6 +218,8 @@ public class BrokerPanel extends javax.swing.JPanel {
 
         add(loginPage_ui, "card2");
 
+        signinPage_ui.setBackground(new java.awt.Color(43, 63, 87));
+
         name_brokerSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         pass_brokerSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -229,12 +236,15 @@ public class BrokerPanel extends javax.swing.JPanel {
         });
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Name:");
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password:");
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Region:");
 
         backSignin_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -246,11 +256,13 @@ public class BrokerPanel extends javax.swing.JPanel {
         });
 
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Commission Rate:");
 
         commrate_brokerSignup_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("SIGN UP PAGE");
 
@@ -313,16 +325,21 @@ public class BrokerPanel extends javax.swing.JPanel {
 
         add(signinPage_ui, "card3");
 
+        MainBrokerPanel.setBackground(new java.awt.Color(43, 63, 87));
+
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Broker Panel");
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Welcome Back:");
 
         brokerName_ui.setEditable(false);
         brokerName_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Total Commission");
 
         totalCommUSD_ui.setEditable(false);
@@ -337,9 +354,11 @@ public class BrokerPanel extends javax.swing.JPanel {
         totalCommINR_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("USD");
 
         jLabel11.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("INR");
 
         brokerClients_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -357,6 +376,7 @@ public class BrokerPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(brokerClients_ui);
 
         jLabel12.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("My Clients");
 
         transactionReq_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -368,6 +388,7 @@ public class BrokerPanel extends javax.swing.JPanel {
         });
 
         jLabel13.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("My Commission Rate:");
 
         commRate_ui.setEditable(false);
@@ -379,6 +400,7 @@ public class BrokerPanel extends javax.swing.JPanel {
         });
 
         jLabel14.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("%");
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
@@ -471,6 +493,8 @@ public class BrokerPanel extends javax.swing.JPanel {
 
         add(MainBrokerPanel, "card4");
 
+        TransactionRequestPanel_ui.setBackground(new java.awt.Color(43, 63, 87));
+
         transacionTable_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         transacionTable_ui.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -502,6 +526,7 @@ public class BrokerPanel extends javax.swing.JPanel {
         });
 
         jLabel15.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("CUSTOMER TRANSACTION REQUESTS");
 
