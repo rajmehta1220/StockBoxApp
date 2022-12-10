@@ -450,7 +450,7 @@ public class BrokerPanel extends javax.swing.JPanel {
                         .addGap(6, 6, 6)
                         .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(totalCommUSD_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(totalCommUSD_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(MainBrokerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(totalCommINR_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -492,6 +492,11 @@ public class BrokerPanel extends javax.swing.JPanel {
 
         denyStock.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         denyStock.setText("Deny");
+        denyStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                denyStockActionPerformed(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -508,7 +513,7 @@ public class BrokerPanel extends javax.swing.JPanel {
                     .addGroup(TransactionRequestPanel_uiLayout.createSequentialGroup()
                         .addComponent(aproveStock, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(denyStock, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)))
+                        .addComponent(denyStock, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(TransactionRequestPanel_uiLayout.createSequentialGroup()
                 .addGap(146, 146, 146)
@@ -520,7 +525,7 @@ public class BrokerPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TransactionRequestPanel_uiLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(TransactionRequestPanel_uiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -692,6 +697,8 @@ public class BrokerPanel extends javax.swing.JPanel {
 
             System.out.println("TransactionId is: "+tid);
             System.out.println("StockTag for approval is: "+stocktag_db);
+            
+            refreshTransactionRequest();
 
             try {
                 thobj.ApproveStkReq(tid, transactiontotal_db, commission_db, profileid_db, type_db, qty_db, stocktag_db,loginId);
@@ -719,6 +726,11 @@ public class BrokerPanel extends javax.swing.JPanel {
         back1.setVisible(true);
     }//GEN-LAST:event_back1ActionPerformed
 
+    private void denyStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_denyStockActionPerformed
+        // TODO add your handling code here:
+        refreshTransactionRequest();
+    }//GEN-LAST:event_denyStockActionPerformed
+
     public void loadBrokerPage() throws ClassNotFoundException{
         brokerName_ui.setText(loginName);
         commRate_ui.setText(String.valueOf(loginCommrate));
@@ -732,6 +744,55 @@ public class BrokerPanel extends javax.swing.JPanel {
             rows[2]=p.getType();
             brokerClients.addRow(rows);
         }
+        try 
+        {
+            Connection con = null;
+            PreparedStatement p = null;
+            ResultSet rs = null;
+
+            String url= "jdbc:mysql://127.0.0.1:3306/stockdb"; // table details 
+            String username = "root"; // MySQL credentials
+            String password = "root123$";
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+
+            if (con != null) 
+            {
+                System.out.println("Connected to the database StockDB");
+
+                String sql = "Select * from broker where brokerid="+loginId+";";
+                System.out.println(sql);
+                p = con.prepareStatement(sql);
+                rs = p.executeQuery();
+                Object[] row = new Object[11];
+                    while (rs.next()) 
+                    {   
+                            if(rs.getString("region").equals("INDIA")){
+                                totalCommINR_ui.setText(String.valueOf(rs.getDouble("commission")));
+                                totalCommUSD_ui.setText(String.valueOf(currencyconverter(rs.getDouble("commission"), "INDIA")));
+                            }
+                            else{
+                                totalCommUSD_ui.setText(String.valueOf(rs.getDouble("commission")));
+                                totalCommINR_ui.setText(String.valueOf(currencyconverter(rs.getDouble("commission"), "USA")));
+                            }
+
+                            
+                            transactionTable.addRow(row);
+                    }
+
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     public void refreshTransactionRequest(){
@@ -837,4 +898,14 @@ public class BrokerPanel extends javax.swing.JPanel {
     private javax.swing.JTable transacionTable_ui;
     private javax.swing.JToggleButton transactionReq_ui;
     // End of variables declaration//GEN-END:variables
+
+    private double currencyconverter(double comm, String region) {
+        if(region.equals("INDIA")){
+            comm = comm*80;
+        }
+        else{
+            comm = comm/80;
+        }
+        return comm;
+    }
 }
