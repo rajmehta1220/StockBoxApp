@@ -4,6 +4,7 @@
  */
 package com.java.ui;
 
+import com.java.Faker.Parser;
 import com.java.broker.Broker;
 import com.java.broker.BrokerHandler;
 import com.java.dbconn.DbConnectionBSE;
@@ -241,11 +242,11 @@ public class MainProfile extends javax.swing.JPanel {
         jLabel24 = new javax.swing.JLabel();
         addFundsPage = new javax.swing.JPanel();
         addFunds_ui = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        a_ui = new javax.swing.JTextField();
+        b_ui = new javax.swing.JTextField();
+        c_ui = new javax.swing.JTextField();
         addBal_ui = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        d_ui = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -760,15 +761,15 @@ public class MainProfile extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        a_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        b_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
-        jTextField3.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        c_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         addBal_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
-        jTextField5.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        d_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -820,13 +821,13 @@ public class MainProfile extends javax.swing.JPanel {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(addFundsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
+                            .addComponent(a_ui)
                             .addGroup(addFundsPageLayout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(b_ui, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
+                                .addComponent(c_ui, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
                             .addComponent(addBal_ui)
-                            .addComponent(jTextField5)))
+                            .addComponent(d_ui)))
                     .addGroup(addFundsPageLayout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(jLabel5)))
@@ -841,16 +842,16 @@ public class MainProfile extends javax.swing.JPanel {
                 .addGroup(addFundsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(addFundsPageLayout.createSequentialGroup()
                         .addGroup(addFundsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(a_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(addFundsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(b_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(c_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addGap(24, 24, 24)
                         .addGroup(addFundsPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(d_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(addBal_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1081,6 +1082,11 @@ public class MainProfile extends javax.swing.JPanel {
 
     private void addFunds_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFunds_uiActionPerformed
         // TODO add your handling code here:
+        Parser parser = new Parser();
+        boolean flag3 = parser.isInteger(addBal_ui.getText());
+        if(a_ui.getText().isEmpty() || b_ui.getText().isEmpty() || c_ui.getText().isEmpty() || d_ui.getText().isEmpty() || addBal_ui.getText().isEmpty()){flag3 = false;}
+        
+        if(flag3){
         double balancetoadd = loginFunds + Double.parseDouble(addBal_ui.getText());
         
         try 
@@ -1118,6 +1124,7 @@ public class MainProfile extends javax.swing.JPanel {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{JOptionPane.showMessageDialog(this, "Null or type Mismached");}
         
     }//GEN-LAST:event_addFunds_uiActionPerformed
 
@@ -1159,6 +1166,9 @@ public class MainProfile extends javax.swing.JPanel {
         BrokerHandler bobj = new BrokerHandler();
         
         selectedTag= String.valueOf(portfolioStockTag_ui.getSelectedItem());
+        Parser parser = new Parser();
+        boolean flag = parser.isInteger(portfolioQty_ui.getText());
+        if(!portfolioQty_ui.getText().isEmpty() && flag == true){
         selectedQty = Integer.parseInt(portfolioQty_ui.getText());
         selectedMarket = String.valueOf(stockMarket_ui.getSelectedItem());
         
@@ -1171,10 +1181,13 @@ public class MainProfile extends javax.swing.JPanel {
             portfolioComm_ui.setText(String.valueOf(df.format(selectedCommission)));
             
         } catch (Exception ex) {ex.printStackTrace();}
+        
+        }else{JOptionPane.showMessageDialog(this, "Check datatypes or null");}
     }//GEN-LAST:event_portfolioLoadPrice_uiActionPerformed
 
     private void portfolioBuy_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portfolioBuy_uiActionPerformed
         // TODO add your handling code here:
+        if(!portfolioPrice_ui.getText().isEmpty()){
         TransactionHandler obj = new TransactionHandler();
         try {
             obj.stockRequestBuy(selectedBrokerId, loginId, selectedQty, selectedMarket, selectedPrice, selectedTag, selectedCommission);
@@ -1182,6 +1195,7 @@ public class MainProfile extends javax.swing.JPanel {
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
+        }else{JOptionPane.showMessageDialog(this, "Please load price first");}
     }//GEN-LAST:event_portfolioBuy_uiActionPerformed
 
     private void pricesell_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pricesell_uiActionPerformed
@@ -1666,12 +1680,16 @@ public class MainProfile extends javax.swing.JPanel {
    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField a_ui;
     private javax.swing.JTextField addBal_ui;
     private javax.swing.JPanel addFundsPage;
     private javax.swing.JButton addFunds_ui;
+    private javax.swing.JTextField b_ui;
     private javax.swing.JTextField balance_ui;
     private javax.swing.JButton btLogout;
+    private javax.swing.JTextField c_ui;
     private javax.swing.JTextField commsell_ui;
+    private javax.swing.JTextField d_ui;
     private javax.swing.JTextField fundsINRPortfolio_ui;
     private javax.swing.JTextField fundsINR_ui;
     private javax.swing.JTextField fundsUSDPortfolio_ui;
@@ -1711,10 +1729,6 @@ public class MainProfile extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton loadStocks_ui1;
     private javax.swing.JPanel mainProfilePage;

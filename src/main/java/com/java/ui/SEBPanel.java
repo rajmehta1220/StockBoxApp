@@ -6,6 +6,7 @@ package com.java.ui;
 
 import Company.Company;
 import Company.CompanyHandler;
+import com.java.Faker.Parser;
 import com.java.ipo.IPO;
 import com.java.rules.RulesClass;
 import com.java.sebprofiles.SEBProfileClass;
@@ -468,7 +469,11 @@ public class SEBPanel extends javax.swing.JPanel {
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         // TODO add your handling code here:
+        Parser parser = new Parser();
+        boolean flag = parser.isInteger(txtId_ui.getText());
+        if(txtId_ui.getText().isEmpty() || txtPwd_ui.getText().isEmpty()){flag = false;}
                 
+        if(flag){
       id = Integer.parseInt(txtId_ui.getText());
       pass = String.valueOf(txtPwd_ui.getText());
       
@@ -523,6 +528,7 @@ public class SEBPanel extends javax.swing.JPanel {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{JOptionPane.showMessageDialog(this, "TypeMismached or Null");}
     }//GEN-LAST:event_btLoginActionPerformed
 
     private void btBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBanActionPerformed

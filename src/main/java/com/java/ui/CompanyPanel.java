@@ -6,6 +6,7 @@ package com.java.ui;
 
 //import com.java.broker.BrokerHandler;
 import Company.CompanyProfile;
+import com.java.Faker.Parser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -233,6 +234,10 @@ public class CompanyPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_revenue_uiActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        Parser parser=new Parser();
+        boolean flag3 = parser.isInteger(qty_ui.getText());
+        if(revenue_ui.getText().isEmpty() || companyname_ui.getText().isEmpty() || enterpassword_ui.getText().isEmpty() || type_ui.getText().isEmpty() || listingprice_ui.getText().isEmpty() || qty_ui.getText().isEmpty()){flag3 = false;}
+        if(flag3){
         CompanyProfile comobj = new CompanyProfile();
         
         double revenue = Double.parseDouble(revenue_ui.getText());
@@ -253,7 +258,7 @@ public class CompanyPanel extends javax.swing.JPanel {
         } /*catch (SQLException ex) {
             Logger.getLogger(CompanyPanel.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-
+        }else{JOptionPane.showMessageDialog(this, "TypeMismatched or null");}
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void enterpassword_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpassword_uiActionPerformed

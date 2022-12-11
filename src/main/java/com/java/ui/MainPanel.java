@@ -5,6 +5,7 @@
 package com.java.ui;
 
 import com.java.Faker.FakerClass;
+import com.java.Faker.Parser;
 import com.java.broker.Broker;
 import com.java.broker.BrokerHandler;
 import com.java.dbconn.DbConnectionBSE;
@@ -576,6 +577,10 @@ public class MainPanel extends javax.swing.JFrame {
 
     private void login_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_uiActionPerformed
         // TODO add your handling code here:
+        Parser parser = new Parser();
+        boolean flag = parser.isInteger(idLogin_ui.getText());
+        if(idLogin_ui.getText() == null|| passLogin_ui.getText() == null){flag = false;}
+        if(flag){
         try 
         {
             Connection con = null;
@@ -627,6 +632,8 @@ public class MainPanel extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
+        else{JOptionPane.showMessageDialog(this, "Enter a integer for Id");}
     }//GEN-LAST:event_login_uiActionPerformed
 
     private void signin_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signin_uiActionPerformed
@@ -637,11 +644,13 @@ public class MainPanel extends javax.swing.JFrame {
 
     private void signinSignin_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signinSignin_uiActionPerformed
         // TODO add your handling code here:
-        
+
         String fundsType = "";
         int id =0;
         if(String.valueOf(regionSignin_ui.getSelectedItem()).equals("INDIA")){fundsType = "INR";}
         else{fundsType = "USD";}
+
+        if(!nameSignin_ui.getText().isEmpty() && !passSignin_ui.getText().isEmpty()){
 
         try 
         {
@@ -700,6 +709,8 @@ public class MainPanel extends javax.swing.JFrame {
             }
             brokHandlerobj.assignBrokertoProfile(id, brokerId);
         }catch(Exception e){e.printStackTrace();}
+        
+        }else{JOptionPane.showMessageDialog(this, "Cannot keep null");}
     }//GEN-LAST:event_signinSignin_uiActionPerformed
 
     private void backSignin_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backSignin_uiActionPerformed

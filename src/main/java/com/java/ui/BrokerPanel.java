@@ -4,6 +4,7 @@
  */
 package com.java.ui;
 
+import com.java.Faker.Parser;
 import com.java.broker.BrokerHandler;
 import com.java.profile.Profile;
 import com.java.transaction.TransactionHandler;
@@ -590,6 +591,10 @@ public class BrokerPanel extends javax.swing.JPanel {
 
     private void login_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_uiActionPerformed
         // TODO add your handling code here:
+        Parser parser = new Parser();
+        boolean flag = parser.isInteger(id_brokerLogin_ui.getText());
+        if(id_brokerLogin_ui.getText().isEmpty() || pass_brokerLogin_ui.getText().isEmpty()){flag = false;}
+        if(flag){
         try
         {
             Connection con = null;
@@ -643,6 +648,7 @@ public class BrokerPanel extends javax.swing.JPanel {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{JOptionPane.showMessageDialog(this, "Null or Type Mismatch");}
     }//GEN-LAST:event_login_uiActionPerformed
 
     private void signin_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signin_uiActionPerformed
@@ -653,7 +659,9 @@ public class BrokerPanel extends javax.swing.JPanel {
 
     private void signinSignin_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signinSignin_uiActionPerformed
         // TODO add your handling code here:
-
+        boolean flag2= true;
+        if(name_brokerSignin_ui.getText().isEmpty() || pass_brokerSignin_ui.getText().isEmpty() || commrate_brokerSignup_ui.getText().isEmpty()){flag2 = false;}
+        if(flag2){
         String fundsType = "";
 
         try
@@ -702,6 +710,7 @@ public class BrokerPanel extends javax.swing.JPanel {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MainPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{JOptionPane.showMessageDialog(this, "Null or Type Mismatch");}
     }//GEN-LAST:event_signinSignin_uiActionPerformed
 
     private void backSignin_uiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backSignin_uiActionPerformed
