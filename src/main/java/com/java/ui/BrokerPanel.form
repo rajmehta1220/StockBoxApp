@@ -773,14 +773,14 @@
                     <Column editable="true" title="transactionId" type="java.lang.Object"/>
                     <Column editable="true" title="brokerId" type="java.lang.Object"/>
                     <Column editable="true" title="profileId" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 5" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 6" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 7" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 8" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 9" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 10" type="java.lang.Object"/>
-                    <Column editable="true" title="Title 11" type="java.lang.Object"/>
+                    <Column editable="true" title="qty" type="java.lang.Object"/>
+                    <Column editable="true" title="Type" type="java.lang.Object"/>
+                    <Column editable="true" title="stockprice" type="java.lang.Object"/>
+                    <Column editable="true" title="transtotal" type="java.lang.Object"/>
+                    <Column editable="true" title="stocktag" type="java.lang.Object"/>
+                    <Column editable="true" title="commission" type="java.lang.Object"/>
+                    <Column editable="true" title="date" type="java.lang.Object"/>
+                    <Column editable="true" title="action" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

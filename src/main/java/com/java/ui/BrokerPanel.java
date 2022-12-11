@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +29,7 @@ public class BrokerPanel extends javax.swing.JPanel {
     /**
      * Creates new form BrokerPanel
      */
-    
+    private static final DecimalFormat df = new DecimalFormat("0.000");
     int loginId = 0;
     String loginName = "";
     String loginRegion = "";
@@ -510,7 +511,7 @@ public class BrokerPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "transactionId", "brokerId", "profileId", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11"
+                "transactionId", "brokerId", "profileId", "qty", "Type", "stockprice", "transtotal", "stocktag", "commission", "date", "action"
             }
         ));
         jScrollPane2.setViewportView(transacionTable_ui);
@@ -842,12 +843,12 @@ public class BrokerPanel extends javax.swing.JPanel {
                     while (rs.next()) 
                     {   
                             if(rs.getString("region").equals("INDIA")){
-                                totalCommINR_ui.setText(String.valueOf(rs.getDouble("commission")));
-                                totalCommUSD_ui.setText(String.valueOf(currencyconverter(rs.getDouble("commission"), "INDIA")));
+                                totalCommINR_ui.setText(String.valueOf(df.format(rs.getDouble("commission"))));
+                                totalCommUSD_ui.setText(String.valueOf(df.format(currencyconverter(rs.getDouble("commission"), "INDIA"))));
                             }
                             else{
-                                totalCommUSD_ui.setText(String.valueOf(rs.getDouble("commission")));
-                                totalCommINR_ui.setText(String.valueOf(currencyconverter(rs.getDouble("commission"), "USA")));
+                                totalCommUSD_ui.setText(String.valueOf(df.format(rs.getDouble("commission"))));
+                                totalCommINR_ui.setText(String.valueOf(df.format(currencyconverter(rs.getDouble("commission"), "USA"))));
                             }  
                     }
             }
@@ -969,10 +970,10 @@ public class BrokerPanel extends javax.swing.JPanel {
 
     private double currencyconverter(double comm, String region) {
         if(region.equals("INDIA")){
-            comm = comm*80;
+            comm = comm/80.30;
         }
         else{
-            comm = comm/80;
+            comm = comm* 80.30;
         }
         return comm;
     }
