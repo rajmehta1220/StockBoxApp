@@ -433,12 +433,12 @@ public class SEBPanel extends javax.swing.JPanel {
         BanPanel.setLayout(BanPanelLayout);
         BanPanelLayout.setHorizontalGroup(
             BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BanPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(BanPanelLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addGroup(BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backbtn_ui))
-                .addGap(18, 18, 18))
+                .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(BanPanelLayout.createSequentialGroup()
                 .addGroup(BanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BanPanelLayout.createSequentialGroup()

@@ -66,6 +66,7 @@ public class CompanyPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         enterpassword_ui = new javax.swing.JTextField();
         region_ui = new javax.swing.JComboBox<>();
+        btback = new javax.swing.JButton();
 
         setLayout(new java.awt.CardLayout());
 
@@ -136,6 +137,14 @@ public class CompanyPanel extends javax.swing.JPanel {
         region_ui.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
         region_ui.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INDIA", "USA", "BOSTON" }));
 
+        btback.setFont(new java.awt.Font("Helvetica Neue", 2, 18)); // NOI18N
+        btback.setText("Back");
+        btback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btbackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout createCompanyProfileLayout = new javax.swing.GroupLayout(createCompanyProfile);
         createCompanyProfile.setLayout(createCompanyProfileLayout);
         createCompanyProfileLayout.setHorizontalGroup(
@@ -145,6 +154,9 @@ public class CompanyPanel extends javax.swing.JPanel {
                     .addGroup(createCompanyProfileLayout.createSequentialGroup()
                         .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(createCompanyProfileLayout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(jLabel9))
+                            .addGroup(createCompanyProfileLayout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel5)
@@ -152,10 +164,7 @@ public class CompanyPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel8)
-                                    .addComponent(jLabel10)))
-                            .addGroup(createCompanyProfileLayout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addComponent(jLabel9)))
+                                    .addComponent(jLabel10))))
                         .addGap(37, 37, 37)
                         .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(revenue_ui, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
@@ -166,12 +175,15 @@ public class CompanyPanel extends javax.swing.JPanel {
                             .addComponent(enterpassword_ui)
                             .addComponent(region_ui, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(createCompanyProfileLayout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addComponent(btnCreate))
-                    .addGroup(createCompanyProfileLayout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(164, 164, 164))
+                .addGap(158, 158, 158))
+            .addGroup(createCompanyProfileLayout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(btnCreate)
+                .addGap(65, 65, 65)
+                .addComponent(btback)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         createCompanyProfileLayout.setVerticalGroup(
             createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,7 +198,7 @@ public class CompanyPanel extends javax.swing.JPanel {
                 .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(companyname_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(enterpassword_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,7 +219,9 @@ public class CompanyPanel extends javax.swing.JPanel {
                     .addComponent(qty_ui, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(18, 18, 18)
-                .addComponent(btnCreate)
+                .addGroup(createCompanyProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCreate)
+                    .addComponent(btback))
                 .addGap(22, 22, 22))
         );
 
@@ -246,8 +260,16 @@ public class CompanyPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_enterpassword_uiActionPerformed
 
+    private void btbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbackActionPerformed
+        // TODO add your handling code here:
+        createCompanyProfile.setVisible(false);
+        MainPanel back = new MainPanel();
+        back.setVisible(true);
+    }//GEN-LAST:event_btbackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btback;
     private javax.swing.JButton btnCreate;
     private javax.swing.JTextField companyname_ui;
     private javax.swing.JPanel createCompanyProfile;
