@@ -134,7 +134,8 @@ public class MainProfile extends javax.swing.JPanel {
         }
         
         fundsConverter();
-        if(loginType.equals("INDIA")){
+        System.out.println(loginRegion);
+        if(loginRegion.equals("INDIA")){
             fundsUSD_ui.setText(String.valueOf(convertedFunds));
             fundsINR_ui.setText(String.valueOf(loginFunds));
             
@@ -1315,7 +1316,7 @@ public class MainProfile extends javax.swing.JPanel {
     }//GEN-LAST:event_btLogoutActionPerformed
 
     public void fundsConverter(){
-        if(fundsType.equals("INR")){convertedFunds = loginFunds/80;}
+        if(fundsType.equals("INR") || loginRegion.equals("INDIA")){convertedFunds = loginFunds/80; }
         else{convertedFunds = loginFunds * 80;}
     }
 
